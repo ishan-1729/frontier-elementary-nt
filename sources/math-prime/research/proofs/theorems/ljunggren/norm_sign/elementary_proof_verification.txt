@@ -1,0 +1,10 @@
+PASS: quartic transforms, norms, and opposite-parity congruence
+PASS: centered Vierzahlensatz continuation and coefficient-956 form
+PASS: rational divided-difference and quartic-error constants
+PASS: sharper positive-quartic height and integer-gap identity
+PASS: finite polynomial identities and positive coefficients, N=0..10
+PASS: integer approximants and explicit nonzero determinants, N=0..11
+PASS: approximation and height-bound integer comparisons
+PASS: rational bracket, determinant-one exclusion, U < 600
+PASS: exhaustive six-row terminal table and reconstructed solutions
+All exact checks passed. Universal arguments are separately proved in Lean.
