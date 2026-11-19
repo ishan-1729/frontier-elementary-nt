@@ -1,0 +1,38 @@
+4.1 root interval
+PASS  l1 in [lo, hi] with f(lo) <= 0 <= f(hi) (exact) and width < 2^-200; l1 = -1.671699881657161 (the only real root, 04_ring.py 1.7)
+4.2 the real values of EPS = (-1, 1, 1)
+PASS  N(EPS) = 1 and EPS * EPS^-1 = 1 with EPS^-1 = (2, -2, 1)
+PASS  e := sigma1(EPS) lies in [0.122880612675, 0.122880612675], so 0 < e < 1
+PASS  E := Q(EPS) lies in [8.13798025765, 8.13798025765]; sigma1 Q = N = 1 (identity modulo f(L)) and the product interval contains 1, so E = 1/e > 1
+PASS  sigma1(EPS^-1) = E and Q(EPS^-1) = e (identities modulo f(L): sigma1(U) sigma1(U^-1) = 1 and Q(U) Q(U^-1) = 1)
+4.3 descent lemma
+PASS  T2(y U) - T2(y) = (E - 1)(2q - x(E+1)/E^2) and T2(y U^-1) - T2(y) = (E - 1)(x(E+1) - 2q/E)
+PASS  as E > 1, x > 0, q > 0: T2(y U) < T2(y) iff x/q > rho_hi = 2E^2/(E+1), and T2(y U^-1) < T2(y) iff x/q < rho_lo = 2/(E(E+1))
+PASS  rho_hi increases and rho_lo decreases with E: d/dE 2E^2/(E+1) = 2E(E+2)/(E+1)^2 > 0 and d/dE 2/(E(E+1)) = -2(2E+1)/(E^2(E+1)^2) < 0
+PASS  E < E_UP = 8137981/1000000 = 8.137981; so rho_hi < 2 E_UP^2/(E_UP + 1) = 14.494828728 <= RH_UP = 14.49483 and rho_lo > 2/(E_UP(E_UP + 1)) = 2.689447515e-02 >= RL_DN = 2.6894460e-02
+PASS  A = 410137/1000000 with A^3 RH_UP = 0.999999948 <= 1, so q^3 >= 1/rho_hi > 1/RH_UP >= A^3 gives q >= A
+PASS  B = 417211/125000 with B^3 RL_DN = 1.000000094 >= 1, so q^3 <= 1/rho_lo < 1/RL_DN <= B^3 gives q <= B
+PASS  for a unit (x q^2 = 1): x/q = q^-3 and T2 = h(q) = q^-2 + 2q
+PASS  h(q) - h(A) = (q - A)(2 - (q + A)/(q^2 A^2)) and h(q) - h(B) = (q - B)(2 - (q + B)/(q^2 B^2)); for 0 < A <= B, (q + A)/A^2 = q/A^2 + 1/A >= q/B^2 + 1/B = (q + B)/B^2
+    So for A <= q <= B: if 2 - (q + A)/(q^2 A^2) <= 0 then h(q) <= h(A); otherwise 2 - (q + B)/(q^2 B^2) > 0 too,
+    and h(q) <= h(B). Hence h(q) <= max(h(A), h(B)) on [A, B].
+PASS  h(A) = 6.765140..., h(B) = 6.765141...; C := max(h(A), h(B)) <= C_TEXT = 6.76515
+PASS  scaled form: with n = m^3 and q = m^2 w, x = n^2/q^2 gives x/q = w^-3 and T2 = m^2 h(w); so if neither neighbour has smaller T2, T2(y) <= C |N(y)|^(2/3)
+    Lemma (units): if T2(u EPS) >= T2(u) and T2(u EPS^-1) >= T2(u), then T2(u) <= C <= 6.76515.
+4.4 the units of small height
+PASS  each entry of the Gram matrix of T2 lies within rho = 2^-30 of the rational matrix G'
+PASS  Glow := G' - 3 rho I has positive pivots ['3.000000', '6.383741', '12.479620'], and Glow(y) <= T2(y)
+PASS  the 5 integer triples with Glow <= C contain every triple with T2 <= C; the units among them are exactly (1,0,0) and (-1,0,0): [(-1, 0, 0), (1, 0, 0)]
+    the triples: (-1, 0, 0), (0, -1, 0), (0, 0, 0), (0, 1, 0), (1, 0, 0)
+4.5 conclusion
+    Every unit u is +-EPS^k: the set {u EPS^k : T2(u EPS^k) <= T2(u)} is finite (T2 is
+    positive definite) and nonempty; its element v of least T2 has T2(v U) >= T2(v) and T2(v U^-1) >= T2(v), so
+    T2(v) <= C (4.3) and v = +-1 (4.4).
+PASS  0 < sigma1(EPS) < 1, so sigma1(EPS^k) = sigma1(EPS)^k = +-1 only for k = 0: k is unique
+PASS  signs: sigma1(-1) = -1 < 0 < sigma1(U) and sigma1(v^2) = sigma1(v)^2 > 0, so -1 and -U are not squares of units
+PASS  size: a unit v with v^2 = EPS would have sigma1(v)^2 = e <= 0.122881 and Q(v) = sqrt(E) <= 570543/200000, so T2(v) <= 5.828311 <= C; then v = +-1 by 4.4, but (+-1)^2 = 1 != EPS
+    So the classes +-1, +-U are distinct modulo squares of units, and every unit is sigma U^l v^2 with
+    sigma = +-1 (the sign of sigma1(u)), l in {0, 1} and v a unit.
+PASS  illustration (not used): the greedy descent takes +-U^k to +-1 in |k| steps, |k| <= 3
+    T2(EPS) in [16.2910601603, 16.2910601603], T2(EPS^-1) in [66.4724838992, 66.4724838992]
+all checks of 06_units.py passed (3.6 s)

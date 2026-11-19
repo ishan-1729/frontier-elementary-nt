@@ -1,0 +1,80 @@
+2.1 Taylor identity
+PASS  N(v+w) = N(v) + sum g_i(v) w_i + sum_(i<=j) q_ij(v) w_i w_j + N(w), with g and q as printed below
+    g_1 = 3*x**2 + 4*x*z - y**2 + 9*y*z + z**2
+    g_2 = -2*x*y + 9*x*z - 9*y**2 + 3*z**2
+    g_3 = 2*x**2 + 9*x*y + 2*x*z + 6*y*z + 27*z**2
+    q_ij: q11 = 3*x + 2*z, q12 = -2*y + 9*z, q13 = 4*x + 9*y + 2*z, q22 = -x - 9*y, q23 = 9*x + 6*z, q33 = x + 3*y + 27*z
+    sum of |n_m| = 29
+2.2 the table euclid_boxes.txt
+PASS  the table has a unit line (2^-7) and 116 boxes
+PASS  all 116 boxes: the path is a word in x,y,z,X,Y,Z and gives the listed corners, the box lies in D, its ends are multiples of 2^-7, s in {1}, kappa is an integer triple, and B < 1
+    boxes with s = 1: 116
+    largest B: 130993/131072 = 0.999397278, on box ZyxYZxzyXyZxY (s = 1, kappa = (0, 0, 0))
+    largest |kappa_i|: 8; longest path: 17 splits
+    number of boxes by B: [0, 1/2): 0; [1/2, 9/10): 68; [9/10, 99/100): 43; [99/100, 999/1000): 4; [999/1000, 1): 1
+2.3 the boxes cover D
+PASS  no path occurs twice
+PASS  the 116 paths are exactly the leaves of a binary split tree of D: every node is either a box of the table or is halved at the midpoint of one axis into two nodes, and the file lists the leaves in depth-first order
+    By induction from the leaves, the boxes below a node cover that node's box (a box that is halved is the
+    union of its two halves). So the boxes cover D, and two of them meet at most in boundary points.
+PASS  second argument: each of the 128*128*64 = 1048576 cells of side 1/128 that tile D lies in exactly one box
+PASS  the volumes of the boxes add up to vol(D) = 1/2 (sum = 1/2)
+2.4 (no part (b): the only multiplier is 1)
+2.5 remark (not used by (H)): the coset of XS = ('-1/3', '-2/9', '4/9') needs |N| >= 8/9
+PASS  EPS*XS - XS = ('0', '-1', '-1') and EPS^-1*XS - XS = ('3', '-2', '1') are integer triples, so these units map the coset C = XS + R into itself
+  2.5.1 the real root l1 of f, and the two real forms sigma1 and Q (identities checked in 04_ring.py)
+PASS  l1 in [-1.671699881657161, -1.671699881657161], width 2^-80 (exact sign change)
+PASS  e := sigma1(EPS) lies in [0.122880612675, 0.122880612675] and 0 < e < 1 (hypothesis_H.md writes E := Q(U) = 1/e)
+  2.5.2 the scaled descent lemma under the unit
+    N(EPS) = 1 = e Q(EPS) gives Q(EPS) = 1/e; for y with r = sigma1(y)^2 and q = Q(y):
+    T2(EPS y) = e^2 r + 2q/e and T2(EPS^-1 y) = r/e^2 + 2eq; the sign does not change T2.
+PASS  T2(U y) - T2(y) = (1 - e)(2q/e - (1 + e) r) and T2(U^-1 y) - T2(y) = (1 - e)((1 + e) r/e^2 - 2q)
+PASS  with rho_hi = 2/(e(1+e)) and rho_lo = 2e^2/(1+e) (that is 2E^2/(E+1) and 2/(E(E+1)) for E = 1/e): r > rho_hi q gives T2(U y) < T2(y), and r < rho_lo q gives T2(U^-1 y) < T2(y)
+PASS  psi(t) = (t+2)^3/t has psi'(t) = 2(t+2)^2(t-1)/t^2, and T2^3/N^2 = (r + 2q)^3/(r q^2) = psi(r/q)
+PASS  psi(rho_hi) = psi(rho_lo) = 4(1 + e + e^2)^3/(e^2(1 + e)^2) = 4(E^2 + E + 1)^3/(E^2(E + 1)^2) with E = 1/e
+PASS  rho_hi <= RH := 2/(e-(1+e-)) = 14.494827 and rho_lo >= RL := 2e-^2/(1+e-) = 2.689448e-02 (rho_hi decreases and rho_lo increases with e; e- is the lower end of the enclosure of e), and RL < 1 < RH
+PASS  K3 := max(psi(RL), psi(RH)) = psi(RL) = psi(RH) = 4(1 + e- + e-^2)^3/(e-^2(1 + e-)^2) = 309.620902
+    psi decreases on (0, 1] and increases on [1, oo), so psi <= K3 on [RL, RH], which contains [rho_lo, rho_hi].
+    Lemma: for every y with N(y) != 0, T2(U y) < T2(y), or T2(U^-1 y) < T2(y), or T2(y)^3 <= K3 N(y)^2.
+    For y in C the set {U^k y : T2(U^k y) <= T2(y)} lies in C and is finite (T2 is positive definite and C is a
+    translate of the lattice R) and nonempty; its element y0 of least T2 has T2(U y0) >= T2(y0) and
+    T2(U^-1 y0) >= T2(y0), so T2(y0)^3 <= K3 N(y0)^2 = K3 N(y)^2.
+  2.5.3 a rational lower form for T2 and an exact enumeration of C
+PASS  each entry of the Gram matrix G of T2 lies within rho = 2^-20 of the rational matrix G' (entries rounded)
+PASS  Glow := G' - 3 rho I has positive LDL pivots ['2.999997', '6.383739', '12.479615'] (exact), and T2(y) >= Glow(y), since T2(y) - y^T G' y >= -rho (sum |y_i|)^2 >= -3 rho sum y_i^2
+PASS  T_e = 1251/200 = 6.255 satisfies T_e^3 >= K3 BOUND^2
+    with the rounded C = 6.76515 of (4.3') in place of K3: C^3 BOUND^2 = 244.6399 <= T_e^3 = 244.7270, so the rounded C would also fit; the proof uses K3
+PASS  every listed y is in C and has Glow(y) <= T_e
+PASS  the 5 elements y of C with Glow(y) <= T_e have min |N(y)| = 8/9 = BOUND, attained at [('2/3', '-2/9', '4/9')]
+    the next values of |N| on the list: 1, 1, 1, 7/3
+    Conclusion. If y in C had |N(y)| < 8/9, the element y0 of least T2 in its orbit (inside C) would have
+    Glow(y0)^3 <= T2(y0)^3 <= K3 N(y)^2 < K3 BOUND^2 <= T_e^3, so y0 would be on the list, where |N| >= BOUND:
+    impossible. So min over C of |N| = 8/9, and no kappa in R has |N(XS - kappa)| < 8/9.
+  2.5.4 the points fixed by +-U modulo R (exploration)
+PASS  +EPS: 9 = |N(EPS - 1)| classes of fixed points modulo Z^3
+    the largest least |N| over the classes, from the elements with Glow <= T_1 = 3383/500. By the orbit argument
+    with 1 in place of BOUND, a value below 1 is the exact least |N| of its class, and a class whose listed
+    least is >= 1 has no element with |N| < 1 (its exact least is not computed here):
+               8/9 = 0.888889   class of ('2/3', '7/9', '4/9')
+               8/9 = 0.888889   class of ('1/3', '2/9', '5/9')
+               1/3 = 0.333333   class of ('2/3', '4/9', '1/9')
+               1/3 = 0.333333   class of ('1/3', '5/9', '8/9')
+    nonzero classes with no element of norm below 1: 0; the other 8 have least |N| at most 8/9 (all values: 8/9, 8/9, 1/3, 1/3, 1/3, 1/3, 1/9, 1/9)
+PASS  -EPS: 9 = |N(-EPS - 1)| classes of fixed points modulo Z^3
+    the largest least |N| over the classes, from the elements with Glow <= T_1 = 3383/500. By the orbit argument
+    with 1 in place of BOUND, a value below 1 is the exact least |N| of its class, and a class whose listed
+    least is >= 1 has no element with |N| < 1 (its exact least is not computed here):
+               1/3 = 0.333333   class of ('2/3', '2/3', '2/3')
+               1/3 = 0.333333   class of ('2/3', '0', '1/3')
+               1/3 = 0.333333   class of ('1/3', '1/3', '1/3')
+               1/3 = 0.333333   class of ('1/3', '0', '2/3')
+    nonzero classes with no element of norm below 1: 0; the other 8 have least |N| at most 1/3 (all values: 1/3, 1/3, 1/3, 1/3, 1/3, 1/3, 1/9, 1/9)
+2.6 remark: Bernstein enclosures (a second, sharper certificate; not needed for the proof)
+PASS  on every box the corner Bernstein coefficients equal the values of N(s*xi - kappa) at the corners
+PASS  on every box max |b_IJK| < 1; the largest over all boxes is 32733/32768 = 0.998932
+    it is the corner coefficient at xi = ('-3/8', '-7/32', '7/16') of box ZyxYZxzyXyZxY (s = 1, kappa = (0, 0, 0)), so the largest value of |N(s*xi - kappa)| over the boxes, each with its own (s, kappa) on
+    its own closed box, is 32733/32768 exactly.
+    the corner lies in 5 other boxes, with N(s*xi - kappa) = 22973/32768, 26109/32768, 24061/32768, 26109/32768, 22973/32768
+2.7 confirmation (not used by the proof): random divisions
+PASS  3000 random pairs: 0 < |N(s alpha - kappa beta)| < |N(beta)| whenever beta does not divide alpha ({'a, s = 1': 2998, 'beta | alpha': 2})
+all checks of 05_cover.py passed (7.9 s)

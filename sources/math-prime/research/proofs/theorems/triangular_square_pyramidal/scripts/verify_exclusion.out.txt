@@ -1,0 +1,427 @@
+verify_exclusion.py (8604.a1) -- independent re-implementation of the exclusion step (exact)
+nothing imported from core.py, lifting2.py, 01_coverage.py or 02_exclusion.py; data copied as literals;
+every number is compared with 02_exclusion.out.txt and 01_coverage.out.txt
+
+   literals == current core.py (forms, bases, units, known): True
+   literals == current 01_coverage.out.txt (SEEDS): True
+   literals == current 02_exclusion.out.txt (12 orbits: seeds, zeros, moduli, steps, certified classes, Prop. 17 instances, |G_q|): True
+   literals == current 02_exclusion.out.txt (moduli available): True
+   literals == current 02_exclusion.out.txt (-1 non-residue moduli): True
+   literals == current 02_exclusion.out.txt ends with ALL ORBITS CERTIFIED: True
+
+self-test of the lattice routines (Hermite form, intersection, coset representatives) on 300 random lattices against brute-force membership in [-30,30]^2: True
+================================================================================================================
+CLASS (1,0)  G = (4, -5, -3, -2, 1)  g(t) = t**4 - 2*t**3 - 3*t**2 - 5*t + 4
+   regular representation integral: True; equals sympy products omega_i omega_j mod g: True; omega_0 = 1, omega_1 = beta, det of the (beta^2,beta^3)-block = 1/9; g irreducible over Q: True
+   => an element of O lies in Z + Z beta iff its markers x2, x3 vanish, and n - m beta = (n, -m, 0, 0)
+   eps1 = (0, 1, -1, 0): N = 1 (det) = 1 (resultant); inverse in O = (-3, -1, -1, 1)
+   eps2 = (0, -2, 1, 0): N = 1 (det) = 1 (resultant); inverse in O = (-2, 0, -2, 1)
+   G(m,n) = N(n - m beta) on 12 random pairs: True
+   |G_q| <= 5000 (BFS closure): 4(28), 8(56), 16(224), 32(896), 64(3584), 3(72), 9(216), 27(1944), 5(124), 25(3100), 7(200), 11(665), 13(1190), 17(4912)
+   agrees with 02's "moduli available" line (values and skipped moduli): True
+   -1 in G_q ?  4:yes, 8:NO, 16:NO, 32:NO, 64:NO, 3:yes, 9:yes, 27:yes, 5:yes, 25:yes, 7:yes, 11:NO, 13:yes, 17:yes
+   first modulus (02's order) with -1 not in G_q: 8 (02 prints 8).  Hence -1 is not in <eps1,eps2>: eps1^a eps2^b = -1 would give -1 in G_8.
+================================================================================================================
+CLASS (0,1)  G = (9, -72, 18, 0, 1)  g(t) = t**4 + 18*t**2 - 72*t + 9
+   regular representation integral: True; equals sympy products omega_i omega_j mod g: True; omega_0 = 1, omega_1 = beta, det of the (beta^2,beta^3)-block = 1/72; g irreducible over Q: True
+   => an element of O lies in Z + Z beta iff its markers x2, x3 vanish, and n - m beta = (n, -m, 0, 0)
+   eps1 = (1, -1, 1, 0): N = 1 (det) = 1 (resultant); inverse in O = (-11, 11, 7, 8)
+   eps2 = (1, 0, -2, 0): N = 1 (det) = 1 (resultant); inverse in O = (-203, 24, -14, 32)
+   G(m,n) = N(n - m beta) on 12 random pairs: True
+   |G_q| <= 5000 (BFS closure): 4(8), 8(32), 16(128), 32(512), 64(2048), 3(36), 9(108), 27(972), 5(124), 25(3100), 7(200), 11(1330), 13(336), 17(4912), 19(1620), 43(3234)
+   agrees with 02's "moduli available" line (values and skipped moduli): True
+   -1 in G_q ?  4:NO, 8:NO, 16:NO, 32:NO, 64:NO, 3:yes, 9:yes, 27:yes, 5:yes, 25:yes, 7:yes, 11:yes, 13:yes, 17:yes, 19:NO, 43:NO
+   first modulus (02's order) with -1 not in G_q: 4 (02 prints 4).  Hence -1 is not in <eps1,eps2>: eps1^a eps2^b = -1 would give -1 in G_4.
+================================================================================================================
+CLASS (1,1)  G = (36, -72, 0, 0, 1)  g(t) = t**4 - 72*t + 36
+   regular representation integral: True; equals sympy products omega_i omega_j mod g: True; omega_0 = 1, omega_1 = beta, det of the (beta^2,beta^3)-block = 1/72; g irreducible over Q: True
+   => an element of O lies in Z + Z beta iff its markers x2, x3 vanish, and n - m beta = (n, -m, 0, 0)
+   eps1 = (0, 0, -1, 0): N = 1 (det) = 1 (resultant); inverse in O = (-24, -2, 1, 4)
+   eps2 = (8, -4, 3, 0): N = 1 (det) = 1 (resultant); inverse in O = (-208, 226, 549, 276)
+   G(m,n) = N(n - m beta) on 12 random pairs: True
+   |G_q| <= 5000 (BFS closure): 4(4), 8(16), 16(64), 32(256), 64(1024), 3(12), 9(108), 27(972), 5(124), 25(3100), 7(24), 49(168), 11(1330), 13(1190), 17(4912), 19(3620), 23(2904), 31(4965)
+   agrees with 02's "moduli available" line (values and skipped moduli): True
+   -1 in G_q ?  4:NO, 8:NO, 16:NO, 32:NO, 64:NO, 3:yes, 9:yes, 27:yes, 5:yes, 25:yes, 7:NO, 49:NO, 11:yes, 13:yes, 17:yes, 19:yes, 23:NO, 31:NO
+   first modulus (02's order) with -1 not in G_q: 4 (02 prints 4).  Hence -1 is not in <eps1,eps2>: eps1^a eps2^b = -1 would give -1 in G_4.
+
+seeds printed by 02_exclusion.out.txt == SEEDS of 01_coverage.out.txt: True
+
+================================================================================================================
+CLASS (1,0)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - (0) beta) exactly; the only exponent in |a|,|b| <= 12; N = 1
+   q =   8 = 2^3: |G_q| = 56 (printed 56); Lambda_q = Hermite (28, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 28, h2 = 28; candidate classes = 2 (printed 2): [(0, 0), (14, 0)]
+   q =  16 = 2^4: |G_q| = 224 (printed 224); Lambda_q = Hermite (56, 12, 4) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 56, h2 = 56; candidate classes = 2 (printed 2): [(0, 0), (28, 0)]
+   Prop. 17 at (0, 1), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=3=e+lam, E=[(1, 0)]; f2': s*=4=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (0, 1), q = 16 (p = 2, e = 4, iota = 1, bound e-1-iota = 2): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=4=e+lam, E=[(1, 0)]; f2': s*=5=e+delta, E=[(0, 1)]; Lambda(2)=7; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 8 (p = 2, e = 3), zero (0, 1): lambda = 0, nu(J) = 1, delta = 1, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 4 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   sieve after q =   8: 2 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =  16: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (0, 1): Prop. 17 at q = 8": rep == exponent (0, 0) mod the step lattice (28, 6, 2): True
+   final lattice (56, 12, 4), index 224 (printed 224); recomputed from scratch as Lambda_16 (lcm of the moduli; BFS |G| = 224): True; live classes left: 0
+   direct check over all 224 classes mod the final lattice: 222 excluded by a candidate test, 2 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [16, 8]: steps [(16, 2, 1, 0, 1), (8, 1, 0, 1, 0)]; terminates with no live class: True; certified at q = [16]; sibling-empty classes: [(8, (28, 0), [(8, (0, 1))])]
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,0)  c = 4  seed w = (1, 0, 2, -1)
+   known solution (m,n) = (1, 0): eps1^1 eps2^0 w = +(0 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 4
+   q =   8 = 2^3: |G_q| = 56 (printed 56); Lambda_q = Hermite (28, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 28, h2 = 28; candidate classes = 1 (printed 1): [(1, 0)]
+   Prop. 17 at (1, 0), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=3=e+lam, E=[(1, 0)]; f2': s*=3=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 8 (p = 2, e = 3), zero (1, 0): lambda = 0, nu(J) = 0, delta = 0, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 3 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   sieve after q =   8: 1 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 0 left
+   printed "class (1, 0) contains (1, 0): Prop. 17 at q = 8": rep == exponent (1, 0) mod the step lattice (28, 6, 2): True
+   final lattice (28, 6, 2), index 56 (printed 56); recomputed from scratch as Lambda_8 (lcm of the moduli; BFS |G| = 56): True; live classes left: 0
+   direct check over all 56 classes mod the final lattice: 55 excluded by a candidate test, 1 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,0)  c = 9  seed w = (1, -2, 3, -1)
+   known solution (m,n) = (1, -1): eps1^1 eps2^-1 w = -(-1 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 9
+   known solution (m,n) = (2, 1): eps1^2 eps2^0 w = -(1 - (2) beta) exactly; the only exponent in |a|,|b| <= 12; N = 9
+   q =   8 = 2^3: |G_q| = 56 (printed 56); Lambda_q = Hermite (28, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 28, h2 = 28; candidate classes = 3 (printed 3): [(2, 0), (7, 1), (16, 0)]
+   q =  16 = 2^4: |G_q| = 224 (printed 224); Lambda_q = Hermite (56, 12, 4) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 56, h2 = 56; candidate classes = 3 (printed 3): [(2, 0), (13, 3), (30, 0)]
+   Prop. 17 at (1, -1), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=3=e+lam, E=[(0, 1), (1, 0)]; f2': s*=3=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (2, 1), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=3=e+lam, E=[(1, 0)]; f2': s*=4=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (1, -1), q = 16 (p = 2, e = 4, iota = 1, bound e-1-iota = 2): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=4=e+lam, E=[(0, 1), (1, 0)]; f2': s*=4=e+delta, E=[(0, 1)]; Lambda(2)=7; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (2, 1), q = 16 (p = 2, e = 4, iota = 1, bound e-1-iota = 2): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=4=e+lam, E=[(1, 0)]; f2': s*=5=e+delta, E=[(0, 1)]; Lambda(2)=7; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 8 (p = 2, e = 3), zero (1, -1): lambda = 0, nu(J) = 0, delta = 0, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 3 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   printed instance q = 8 (p = 2, e = 3), zero (2, 1): lambda = 0, nu(J) = 1, delta = 1, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 4 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   sieve after q =   8: 3 candidate classes mod the new lattice, 2 certified, 0 sibling-empty, 1 left
+   sieve after q =  16: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   printed "class (7, 1) contains (1, -1): Prop. 17 at q = 8": rep == exponent (1, -1) mod the step lattice (28, 6, 2): True
+   printed "class (2, 0) contains (2, 1): Prop. 17 at q = 8": rep == exponent (2, 0) mod the step lattice (28, 6, 2): True
+   final lattice (56, 12, 4), index 224 (printed 224); recomputed from scratch as Lambda_16 (lcm of the moduli; BFS |G| = 224): True; live classes left: 0
+   direct check over all 224 classes mod the final lattice: 221 excluded by a candidate test, 3 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [16, 8]: steps [(16, 3, 2, 0, 1), (8, 1, 0, 1, 0)]; terminates with no live class: True; certified at q = [16, 16]; sibling-empty classes: [(8, (30, 0), [(8, (2, 1))])]
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,0)  c = 36  seed w = (-2, -2, 3, -1)
+   no known solution in this orbit
+   q =   4 = 2^2: |G_q| = 28 (printed 28); Lambda_q = Hermite (14, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 14, h2 = 14; candidate classes = 0 (printed 0): []
+   sieve after q =   4: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   final lattice (14, 6, 2), index 28 (printed 28); recomputed from scratch as Lambda_4 (lcm of the moduli; BFS |G| = 28): True; live classes left: 0
+   direct check over all 28 classes mod the final lattice: 28 excluded by a candidate test, 0 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (0,1)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - (0) beta) exactly; the only exponent in |a|,|b| <= 12; N = 1
+   q =   8 = 2^3: |G_q| = 32 (printed 32); Lambda_q = Hermite (8, 0, 4) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 8, h2 = 4; candidate classes = 2 (printed 2): [(0, 0), (4, 0)]
+   q =  16 = 2^4: |G_q| = 128 (printed 128); Lambda_q = Hermite (16, 0, 8) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 16, h2 = 8; candidate classes = 2 (printed 2): [(0, 0), (8, 0)]
+   Prop. 17 at (0, 1), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=3=e+lam, E=[(1, 0)]; f2': s*=4=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (0, 1), q = 16 (p = 2, e = 4, iota = 1, bound e-1-iota = 2): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=4=e+lam, E=[(1, 0)]; f2': s*=5=e+delta, E=[(0, 1)]; Lambda(2)=7; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 8 (p = 2, e = 3), zero (0, 1): lambda = 0, nu(J) = 1, delta = 1, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 4 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   sieve after q =   8: 2 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =  16: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (0, 1): Prop. 17 at q = 8": rep == exponent (0, 0) mod the step lattice (8, 0, 4): True
+   final lattice (16, 0, 8), index 128 (printed 128); recomputed from scratch as Lambda_16 (lcm of the moduli; BFS |G| = 128): True; live classes left: 0
+   direct check over all 128 classes mod the final lattice: 126 excluded by a candidate test, 2 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [16, 8]: steps [(16, 2, 1, 0, 1), (8, 1, 0, 1, 0)]; terminates with no live class: True; certified at q = [16]; sibling-empty classes: [(8, (8, 0), [(8, (0, 1))])]
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (0,1)  c = 4  seed w = (1, 1, -2, 0)
+   no known solution in this orbit
+   q =   4 = 2^2: |G_q| = 8 (printed 8); Lambda_q = Hermite (4, 0, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 4, h2 = 2; candidate classes = 0 (printed 0): []
+   sieve after q =   4: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   final lattice (4, 0, 2), index 8 (printed 8); recomputed from scratch as Lambda_4 (lcm of the moduli; BFS |G| = 8): True; live classes left: 0
+   direct check over all 8 classes mod the final lattice: 8 excluded by a candidate test, 0 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (0,1)  c = 9  seed w = (0, -1, 0, 0)
+   known solution (m,n) = (1, 0): eps1^0 eps2^0 w = +(0 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 9
+   q =   8 = 2^3: |G_q| = 32 (printed 32); Lambda_q = Hermite (8, 0, 4) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 8, h2 = 4; candidate classes = 2 (printed 2): [(0, 0), (4, 0)]
+   q =  16 = 2^4: |G_q| = 128 (printed 128); Lambda_q = Hermite (16, 0, 8) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 16, h2 = 8; candidate classes = 2 (printed 2): [(0, 0), (8, 0)]
+   Prop. 17 at (1, 0), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=3=e+lam, E=[(1, 0)]; f2': s*=4=e+delta, E=[(0, 1)]; Lambda(2)=5; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (1, 0), q = 16 (p = 2, e = 4, iota = 1, bound e-1-iota = 2): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=1,mk=0); f1: s*=4=e+lam, E=[(1, 0)]; f2': s*=5=e+delta, E=[(0, 1)]; Lambda(2)=7; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 8 (p = 2, e = 3), zero (1, 0): lambda = 0, nu(J) = 1, delta = 1, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 4 < Lambda(2) = 5 (= 2e-iota: True) and e+lambda = 3 < 5: True
+   sieve after q =   8: 2 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =  16: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (1, 0): Prop. 17 at q = 8": rep == exponent (0, 0) mod the step lattice (8, 0, 4): True
+   final lattice (16, 0, 8), index 128 (printed 128); recomputed from scratch as Lambda_16 (lcm of the moduli; BFS |G| = 128): True; live classes left: 0
+   direct check over all 128 classes mod the final lattice: 126 excluded by a candidate test, 2 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [16, 8]: steps [(16, 2, 1, 0, 1), (8, 1, 0, 1, 0)]; terminates with no live class: True; certified at q = [16]; sibling-empty classes: [(8, (8, 0), [(8, (1, 0))])]
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (0,1)  c = 36  seed w = (3, -1, 0, 0)
+   known solution (m,n) = (1, 3): eps1^0 eps2^0 w = +(3 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 36
+   q =  43 = 43^1: |G_q| = 3234 (printed 3234); Lambda_q = Hermite (462, 399, 7) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 462, h2 = 154; candidate classes = 3 (printed 3): [(0, 0), (221, 0), (430, 4)]
+   q =  13 = 13^1: |G_q| = 336 (printed 336); Lambda_q = Hermite (84, 76, 4) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 84, h2 = 84; candidate classes = 4 (printed 4): [(0, 0), (19, 1), (38, 2), (57, 3)]
+   Prop. 17 at (1, 3), q = 43 (p = 43, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=1=e+lam, E=[(1, 0)]; f2': s*=1=e+delta, E=[(0, 1)]; Lambda(2)=2; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (1, 3), q = 13 (p = 13, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=1=e+lam, E=[(0, 1), (1, 0)]; f2': s*=1=e+delta, E=[(0, 1)]; Lambda(2)=2; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 43 (p = 43, e = 1), zero (1, 3): lambda = 0, nu(J) = 0, delta = 0, bound = 0: recomputed equal: True; hypotheses hold: True; strict: e+delta = 1 < Lambda(2) = 2 (= 2e-iota: True) and e+lambda = 1 < 2: True
+   sieve after q =  43: 3 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 2 left
+   sieve after q =  13: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (1, 3): Prop. 17 at q = 43": rep == exponent (0, 0) mod the step lattice (462, 399, 7): True
+   final lattice (924, 168, 84), index 77616 (printed 77616); recomputed from scratch as Lambda_559 (lcm of the moduli; BFS |G| = 77616): True; live classes left: 0
+   direct check over all 77616 classes mod the final lattice: 77612 excluded by a candidate test, 4 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [13, 43]: steps [(13, 4, 1, 0, 3), (43, 3, 0, 3, 0)]; terminates with no live class: True; certified at q = [13]; sibling-empty classes: [(43, (735, 21), [(43, (1, 3))]), (43, (546, 42), [(43, (1, 3))]), (43, (357, 63), [(43, (1, 3))])]
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,1)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - (0) beta) exactly; the only exponent in |a|,|b| <= 12; N = 1
+   known solution (m,n) = (2, 1): eps1^2 eps2^0 w = +(1 - (2) beta) exactly; the only exponent in |a|,|b| <= 12; N = 1
+   q =   4 = 2^2: |G_q| = 4 (printed 4); Lambda_q = Hermite (4, 3, 1) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 4, h2 = 4; candidate classes = 2 (printed 2): [(0, 0), (2, 0)]
+   q =   7 = 7^1: |G_q| = 24 (printed 24); Lambda_q = Hermite (24, 20, 1) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 24, h2 = 6; candidate classes = 2 (printed 2): [(0, 0), (2, 0)]
+   q =  23 = 23^1: |G_q| = 2904 (printed 2904); Lambda_q = Hermite (264, 22, 11) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 264, h2 = 132; candidate classes = 7 (printed 7): [(0, 0), (2, 0), (35, 8), (82, 8), (143, 6), (165, 10), (170, 2)]
+   Prop. 17 at (0, 1), q = 4 (p = 2, e = 2, iota = 1, bound e-1-iota = 0): hermite: lam=1 nuJ=2; 02: lam=1 nuJ=2; unimod: lam=1 nuJ=2; reduced: lam=1 nuJ=2 -> fails
+   Prop. 17 at (2, 1), q = 4 (p = 2, e = 2, iota = 1, bound e-1-iota = 0): hermite: lam=1 nuJ=2; 02: lam=1 nuJ=2; unimod: lam=1 nuJ=2; reduced: lam=1 nuJ=2 -> fails
+   Prop. 17 at (0, 1), q = 7 (p = 7, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=1; 02: lam=0 nuJ=1; unimod: lam=0 nuJ=1; reduced: lam=0 nuJ=1 -> fails
+   Prop. 17 at (2, 1), q = 7 (p = 7, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=1 nuJ=3; 02: lam=1 nuJ=3; unimod: lam=1 nuJ=4; reduced: lam=1 nuJ=3 -> fails  [basis-dependent values, all >= e: never certify]
+   Prop. 17 at (0, 1), q = 23 (p = 23, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=1=e+lam, E=[(0, 1), (1, 0)]; f2': s*=1=e+delta, E=[(0, 1)]; Lambda(2)=2; val>=Lambda(i+j) for 1<=i+j<=4: True
+   Prop. 17 at (2, 1), q = 23 (p = 23, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=1=e+lam, E=[(0, 1), (1, 0)]; f2': s*=1=e+delta, E=[(0, 1)]; Lambda(2)=2; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 23 (p = 23, e = 1), zero (0, 1): lambda = 0, nu(J) = 0, delta = 0, bound = 0: recomputed equal: True; hypotheses hold: True; strict: e+delta = 1 < Lambda(2) = 2 (= 2e-iota: True) and e+lambda = 1 < 2: True
+   printed instance q = 23 (p = 23, e = 1), zero (2, 1): lambda = 0, nu(J) = 0, delta = 0, bound = 0: recomputed equal: True; hypotheses hold: True; strict: e+delta = 1 < Lambda(2) = 2 (= 2e-iota: True) and e+lambda = 1 < 2: True
+   sieve after q =   4: 2 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =   7: 4 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 4 left
+   sieve after q =  23: 2 candidate classes mod the new lattice, 2 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (0, 1): Prop. 17 at q = 23": rep == exponent (0, 0) mod the step lattice (264, 88, 44): True
+   printed "class (2, 0) contains (2, 1): Prop. 17 at q = 23": rep == exponent (2, 0) mod the step lattice (264, 88, 44): True
+   final lattice (264, 88, 44), index 11616 (printed 11616); recomputed from scratch as Lambda_644 (lcm of the moduli; BFS |G| = 11616): True; live classes left: 0
+   direct check over all 11616 classes mod the final lattice: 11614 excluded by a candidate test, 2 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [23, 7, 4]: steps [(23, 7, 2, 0, 5), (7, 1, 0, 0, 1), (4, 0, 0, 0, 0)]; terminates with no live class: True; certified at q = [23, 23]; sibling-empty classes: []
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,1)  c = 4  seed w = (4, -1, 0, 0)
+   known solution (m,n) = (1, 4): eps1^0 eps2^0 w = +(4 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 4
+   q =   4 = 2^2: |G_q| = 4 (printed 4); Lambda_q = Hermite (4, 3, 1) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 4, h2 = 4; candidate classes = 2 (printed 2): [(0, 0), (2, 0)]
+   q =   8 = 2^3: |G_q| = 16 (printed 16); Lambda_q = Hermite (8, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 8, h2 = 8; candidate classes = 4 (printed 4): [(0, 0), (3, 1), (4, 0), (7, 1)]
+   q =   7 = 7^1: |G_q| = 24 (printed 24); Lambda_q = Hermite (24, 20, 1) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 24, h2 = 6; candidate classes = 2 (printed 2): [(0, 0), (22, 0)]
+   q =  23 = 23^1: |G_q| = 2904 (printed 2904); Lambda_q = Hermite (264, 22, 11) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 264, h2 = 132; candidate classes = 7 (printed 7): [(0, 0), (22, 4), (49, 7), (143, 5), (145, 5), (156, 2), (203, 2)]
+   Prop. 17 at (1, 4), q = 4 (p = 2, e = 2, iota = 1, bound e-1-iota = 0): hermite: lam=1 nuJ=3; 02: lam=1 nuJ=3; unimod: lam=1 nuJ=3; reduced: lam=1 nuJ=3 -> fails
+   Prop. 17 at (1, 4), q = 8 (p = 2, e = 3, iota = 1, bound e-1-iota = 1): hermite: lam=1 nuJ=3; 02: lam=1 nuJ=3; unimod: lam=1 nuJ=3; reduced: lam=1 nuJ=3 -> fails
+   Prop. 17 at (1, 4), q = 7 (p = 7, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=1 nuJ=5; 02: lam=1 nuJ=3; unimod: lam=1 nuJ=3; reduced: lam=1 nuJ=3 -> fails  [basis-dependent values, all >= e: never certify]
+   Prop. 17 at (1, 4), q = 23 (p = 23, e = 1, iota = 0, bound e-1-iota = 0): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=1=e+lam, E=[(0, 1), (1, 0)]; f2': s*=1=e+delta, E=[(0, 1)]; Lambda(2)=2; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 23 (p = 23, e = 1), zero (1, 4): lambda = 0, nu(J) = 0, delta = 0, bound = 0: recomputed equal: True; hypotheses hold: True; strict: e+delta = 1 < Lambda(2) = 2 (= 2e-iota: True) and e+lambda = 1 < 2: True
+   sieve after q =   4: 2 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =   8: 4 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 4 left
+   sieve after q =   7: 4 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 4 left
+   sieve after q =  23: 2 candidate classes mod the new lattice, 1 certified, 1 sibling-empty, 0 left
+      sibling-empty class (88, 44) at step q = 23: inside the Lambda_qq-class of a zero with Prop. 17 at the same qq, (qq, zero) in [(23, (1, 4))]
+   printed "class (0, 0) contains (1, 4): Prop. 17 at q = 23": rep == exponent (0, 0) mod the step lattice (264, 176, 88): True
+   final lattice (264, 176, 88), index 23232 (printed 23232); recomputed from scratch as Lambda_1288 (lcm of the moduli; BFS |G| = 23232): True; live classes left: 0
+   direct check over all 23232 classes mod the final lattice: 23230 excluded by a candidate test, 2 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   reversed order [23, 7, 8, 4]: steps [(23, 7, 1, 0, 6), (7, 0, 0, 0, 0), (8, 0, 0, 0, 0), (4, 0, 0, 0, 0)]; terminates with no live class: True; certified at q = [23]; sibling-empty classes: []
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,1)  c = 9  seed w = (0, 2, -3, 0)
+   no known solution in this orbit
+   q =   8 = 2^3: |G_q| = 16 (printed 16); Lambda_q = Hermite (8, 6, 2) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 8, h2 = 8; candidate classes = 0 (printed 0): []
+   sieve after q =   8: 0 candidate classes mod the new lattice, 0 certified, 0 sibling-empty, 0 left
+   final lattice (8, 6, 2), index 16 (printed 16); recomputed from scratch as Lambda_8 (lcm of the moduli; BFS |G| = 16): True; live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+================================================================================================================
+CLASS (1,1)  c = 36  seed w = (0, -1, 0, 0)
+   known solution (m,n) = (1, 0): eps1^0 eps2^0 w = +(0 - (1) beta) exactly; the only exponent in |a|,|b| <= 12; N = 36
+   q =  49 = 7^2: |G_q| = 168 (printed 168); Lambda_q = Hermite (168, 140, 1) [certified: basis -> 1 mod q, index = BFS |G_q|]; h1 = 168, h2 = 6; candidate classes = 1 (printed 1): [(0, 0)]
+   Prop. 17 at (1, 0), q = 49 (p = 7, e = 2, iota = 0, bound e-1-iota = 1): hermite: lam=0 nuJ=0; 02: lam=0 nuJ=0; unimod: lam=0 nuJ=0; reduced: lam=0 nuJ=0 -> HOLDS
+      proof mechanism (02 basis): relabel(idx=0,mk=0); f1: s*=2=e+lam, E=[(1, 0)]; f2': s*=2=e+delta, E=[(0, 1)]; Lambda(2)=4; val>=Lambda(i+j) for 1<=i+j<=4: True
+   printed instance q = 49 (p = 7, e = 2), zero (1, 0): lambda = 0, nu(J) = 0, delta = 0, bound = 1: recomputed equal: True; hypotheses hold: True; strict: e+delta = 2 < Lambda(2) = 4 (= 2e-iota: True) and e+lambda = 2 < 4: True
+   sieve after q =  49: 1 candidate classes mod the new lattice, 1 certified, 0 sibling-empty, 0 left
+   printed "class (0, 0) contains (1, 0): Prop. 17 at q = 49": rep == exponent (0, 0) mod the step lattice (168, 140, 1): True
+   final lattice (168, 140, 1), index 168 (printed 168); recomputed from scratch as Lambda_49 (lcm of the moduli; BFS |G| = 168): True; live classes left: 0
+   direct check over all 168 classes mod the final lattice: 167 excluded by a candidate test, 1 inside the Lambda_q-class of a zero with Prop. 17 at that q, 0 unaccounted
+   ORBIT CONFIRMED: the zeros of the markers are exactly the exponents of the known solutions
+
+================================================================================================================
+OTHER MODULUS SETS: greedy sieve (fewest uncertified live classes, then smallest index), at most 10 moduli,
+over (i) the odd moduli of 02's list and (ii) the powers of 2 (4..64), each with |G_q| <= 5000; Prop. 17 in the
+Hermite basis; certified and same-q sibling rules
+   class (1,0) c =  1, odd : moduli [5, 7]; final index 6200; live left 0; TERMINATES: True; certified at {(0, 1): 5}; Prop. 17 holds (Hermite basis) at {(0, 1): [9, 27, 5, 25, 7, 13, 17]}
+   class (1,0) c =  1, pow2: moduli [8, 16]; final index 224; live left 0; TERMINATES: True; certified at {(0, 1): 8}; Prop. 17 holds (Hermite basis) at {(0, 1): [8, 16, 32, 64]}
+   class (1,0) c =  4, odd : moduli [9, 3, 27, 7, 25, 5, 13, 11, 17]; final index 585632173392000; live left 12; TERMINATES: False; certified at {(1, 0): 9}; Prop. 17 holds (Hermite basis) at {(1, 0): [9, 27, 5, 25, 7, 11, 13, 17]}
+   class (1,0) c =  4, pow2: moduli [8]; final index 56; live left 0; TERMINATES: True; certified at {(1, 0): 8}; Prop. 17 holds (Hermite basis) at {(1, 0): [8, 16, 32, 64]}
+   class (1,0) c =  9, odd : moduli [7, 25, 5, 11, 13, 9, 27, 3, 17]; final index 585632173392000; live left 18; TERMINATES: False; certified at {(2, 1): 7, (1, -1): 25}; Prop. 17 holds (Hermite basis) at {(1, -1): [9, 27, 5, 25, 11, 13, 17], (2, 1): [9, 27, 5, 25, 7, 11, 13, 17]}
+   class (1,0) c =  9, pow2: moduli [8, 16]; final index 224; live left 0; TERMINATES: True; certified at {(2, 1): 8, (1, -1): 8}; Prop. 17 holds (Hermite basis) at {(1, -1): [8, 16, 32, 64], (2, 1): [8, 16, 32, 64]}
+   class (1,0) c = 36, odd : moduli [9]; final index 216; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (1,0) c = 36, pow2: moduli [4]; final index 28; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (0,1) c =  1, odd : moduli [9, 19]; final index 1620; live left 0; TERMINATES: True; certified at {(0, 1): 9}; Prop. 17 holds (Hermite basis) at {(0, 1): [9, 27, 5, 25, 11, 13, 17, 19, 43]}
+   class (0,1) c =  1, pow2: moduli [8, 16]; final index 128; live left 0; TERMINATES: True; certified at {(0, 1): 8}; Prop. 17 holds (Hermite basis) at {(0, 1): [8, 16, 32, 64]}
+   class (0,1) c =  4, odd : moduli [13]; final index 336; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (0,1) c =  4, pow2: moduli [4]; final index 8; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (0,1) c =  9, odd : moduli [43, 13]; final index 77616; live left 0; TERMINATES: True; certified at {(1, 0): 43}; Prop. 17 holds (Hermite basis) at {(1, 0): [9, 27, 5, 25, 7, 11, 13, 17, 19, 43]}
+   class (0,1) c =  9, pow2: moduli [8, 16]; final index 128; live left 0; TERMINATES: True; certified at {(1, 0): 8}; Prop. 17 holds (Hermite basis) at {(1, 0): [8, 16, 32, 64]}
+   class (0,1) c = 36, odd : moduli [43, 13]; final index 77616; live left 0; TERMINATES: True; certified at {(1, 3): 43}; Prop. 17 holds (Hermite basis) at {(1, 3): [9, 27, 5, 25, 7, 13, 17, 19, 43]}
+   class (0,1) c = 36, pow2: moduli [4, 8, 16, 64, 32]; final index 2048; live left 8; TERMINATES: False; certified at {(1, 3): 16}; Prop. 17 holds (Hermite basis) at {(1, 3): [16, 32, 64]}
+   class (1,1) c =  1, odd : moduli [7, 23, 49]; final index 81312; live left 0; TERMINATES: True; certified at {(0, 1): 23, (2, 1): 23}; Prop. 17 holds (Hermite basis) at {(0, 1): [3, 9, 27, 5, 25, 49, 11, 13, 17, 19, 23, 31], (2, 1): [3, 9, 27, 5, 25, 11, 13, 17, 19, 23, 31]}
+   class (1,1) c =  1, pow2: moduli [4, 8, 16]; final index 64; live left 0; TERMINATES: True; certified at {(0, 1): 8, (2, 1): 8}; Prop. 17 holds (Hermite basis) at {(0, 1): [8, 16, 32, 64], (2, 1): [8, 16, 32, 64]}
+   class (1,1) c =  4, odd : moduli [7, 23]; final index 11616; live left 0; TERMINATES: True; certified at {(1, 4): 23}; Prop. 17 holds (Hermite basis) at {(1, 4): [3, 9, 27, 5, 25, 11, 13, 17, 19, 23, 31]}
+   class (1,1) c =  4, pow2: moduli [4, 8, 16, 64]; final index 1024; live left 0; TERMINATES: True; certified at {(1, 4): 16}; Prop. 17 holds (Hermite basis) at {(1, 4): [16, 32, 64]}
+   class (1,1) c =  9, odd : moduli [7, 49, 23, 5, 25, 19]; final index 11406040800; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (1,1) c =  9, pow2: moduli [8]; final index 16; live left 0; TERMINATES: True; certified at {}; Prop. 17 holds (Hermite basis) at {}
+   class (1,1) c = 36, odd : moduli [49]; final index 168; live left 0; TERMINATES: True; certified at {(1, 0): 49}; Prop. 17 holds (Hermite basis) at {(1, 0): [9, 27, 49, 11, 13, 17, 19, 23, 31]}
+   class (1,1) c = 36, pow2: moduli [4, 8, 16, 64]; final index 1024; live left 0; TERMINATES: True; certified at {(1, 0): 16}; Prop. 17 holds (Hermite basis) at {(1, 0): [16, 32, 64]}
+
+   The non-terminating runs, examined:
+   class (1,0) c = 4, odd: stalls inside 02's pool (|G_q| <= 5000); appending odd moduli outside the pool in order of |G_q| ([19, 43, 49, 59, 23, 41, 29, 31]), it terminates once q = 19 (|G_q| = 7240) is added; steps after the pool: [(19, 0, 0, 0, 0)].  A pool-size effect, not a p-adic obstruction.
+   class (1,0) c = 9, odd: stalls inside 02's pool (|G_q| <= 5000); appending odd moduli outside the pool in order of |G_q| ([19, 43, 49, 59, 23, 41, 29, 31]), it terminates once q = 19 (|G_q| = 7240) is added; steps after the pool: [(19, 0, 0, 0, 0)].  A pool-size effect, not a p-adic obstruction.
+   class (0,1) c = 36, pow2: candidate classes mod Lambda_(2^k) (Hermite form; all; outside the Lambda_16-class of a known zero): [(4, (4, 0, 2), 4, 4), (8, (8, 0, 4), 8, 8), (16, (16, 0, 8), 16, 15), (32, (32, 0, 16), 16, 12), (64, (64, 0, 32), 16, 8), (128, (128, 0, 64), 16, 8), (256, (256, 0, 128), 16, 8), (512, (512, 0, 256), 16, 8)]
+      Lambda_(2^k) = 2^k Z x 2^(k-1) Z for k = 2..9: True.  Lifting the 16 candidates mod Lambda_64 level by level to 2^48: 16 candidates remain, in 2 clusters (exponents mod (64,32)): [((0, 0), 8), ((46, 6), 8)]
+      cluster (0, 0): exponent == (0, 0) mod 2^24; the element is n - m beta with n/m == 3 mod 2^24; shortest (m, n) with n == (n/m) m mod 2^48: (1, 3); known zero here: [(1, 3)]
+      cluster (46, 6): exponent == (8144558, 12701350) mod 2^24; the element is n - m beta with n/m == 15846295 mod 2^24; shortest (m, n) with n == (n/m) m mod 2^48: (4793854, 6542034); known zero here: none
+      eps1^(2^k) == eps2^(2^(k-1)) == 1 mod 2^k for k = 2..48: True, so each class mod 2^k Z x 2^(k-1) Z above
+      lies in one class mod Lambda_(2^k).  The candidates without a known zero lie outside the Lambda_4-class of
+      the known zero: True.
+      => no sieve with moduli 2^k, k <= 48, finishes this orbit; odd moduli do (02 uses 43 and 13).  The
+         candidates converge to a 2-adic zero of the markers that is not an integer zero (n/m has no small
+         rational reconstruction): check_2adic_zero.py gives the Hensel certificate (round 2).
+
+================================================================================================================
+NEGATIVE CONTROL (c): -1 and the phantom classes
+   class (1,0): -1 is a residue of <eps1,eps2> exactly at the moduli [4, 3, 9, 27, 5, 25, 7, 13, 17]; not at [8, 16, 32, 64, 11]
+   class (0,1): -1 is a residue of <eps1,eps2> exactly at the moduli [3, 9, 27, 5, 25, 7, 11, 13, 17]; not at [4, 8, 16, 32, 64, 19, 43]
+   class (1,1): -1 is a residue of <eps1,eps2> exactly at the moduli [3, 9, 27, 5, 25, 11, 13, 17, 19]; not at [4, 8, 16, 32, 64, 7, 49, 23, 31]
+   orbit class (1,0) c = 36: moduli used at which -1 IS a residue: [4]
+      q = 4: -1 == eps^(3, 1) mod 4, but the orbit has no known zero, so there is no phantom class (candidate classes mod Lambda_4: 0)
+   orbit class (0,1) c = 36: moduli used at which -1 IS a residue: [13]
+      q = 13: -1 == eps^(38, 2) mod 13; phantom of (1, 3) = class (38, 2) mod Lambda_13 (the class of -z), a candidate: True; it contains a known zero: no
+         its 231 subclasses mod the final lattice (924, 168, 84): {'not a candidate mod 43': 230, 'inside the Lambda_43-class of (1, 3) (Prop. 17 at 43)': 1}
+         02's order [43, 13]: after 43: (q = 13 not applied yet); after 13: 0 candidate class(es) above the phantom, 0 certified, 0 sibling-empty, 0 live
+         reversed order [13, 43]: after 13: 1 candidate class(es) above the phantom, 0 certified, 0 sibling-empty, 1 live; after 43: 1 candidate class(es) above the phantom, 0 certified, 1 sibling-empty, 0 live
+         -1 is a residue modulo lcm = 559 of the moduli used: False
+   the other 10 orbits use no modulus at which -1 is a residue, so no phantom class arises: (1,0) c=1 [8, 16]; (1,0) c=4 [8]; (1,0) c=9 [8, 16]; (0,1) c=1 [8, 16]; (0,1) c=4 [4]; (0,1) c=9 [8, 16]; (1,1) c=1 [4, 7, 23]; (1,1) c=4 [4, 8, 7, 23]; (1,1) c=9 [8]; (1,1) c=36 [49]
+
+================================================================================================================
+NEGATIVE CONTROL (b): h1 Z x h2 Z (h_i = order of eps_i mod q) in place of Lambda_q
+   class (1,0) c =  1, q =   8: h1 = 28, h2 = 28, h1*h2 = 784 vs |G_q| = 56 (index [Lambda_q : h1 Z x h2 Z] = 14); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 8) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 28 = 14 x 2 classes mod Lambda_q; each known zero counted [14] times
+   class (1,0) c =  1, q =  16: h1 = 56, h2 = 56, h1*h2 = 3136 vs |G_q| = 224 (index [Lambda_q : h1 Z x h2 Z] = 14); witness (12, 4) in Lambda_q (eps^(12, 4) == 1 mod 16) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 28 = 14 x 2 classes mod Lambda_q; each known zero counted [14] times
+   class (1,0) c =  4, q =   8: h1 = 28, h2 = 28, h1*h2 = 784 vs |G_q| = 56 (index [Lambda_q : h1 Z x h2 Z] = 14); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 8) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 14 = 14 x 1 classes mod Lambda_q; each known zero counted [14] times
+   class (1,0) c =  9, q =   8: h1 = 28, h2 = 28, h1*h2 = 784 vs |G_q| = 56 (index [Lambda_q : h1 Z x h2 Z] = 14); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 8) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 42 = 14 x 3 classes mod Lambda_q; each known zero counted [14, 14] times
+   class (1,0) c =  9, q =  16: h1 = 56, h2 = 56, h1*h2 = 3136 vs |G_q| = 224 (index [Lambda_q : h1 Z x h2 Z] = 14); witness (12, 4) in Lambda_q (eps^(12, 4) == 1 mod 16) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 42 = 14 x 3 classes mod Lambda_q; each known zero counted [14, 14] times
+   class (1,0) c = 36, q =   4: h1 = 14, h2 = 14, h1*h2 = 196 vs |G_q| = 28 (index [Lambda_q : h1 Z x h2 Z] = 7); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 4) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 0 = 7 x 0 classes mod Lambda_q; each known zero counted [] times
+   class (0,1) c =  1, q =   8: h1 = 8, h2 = 4, h1*h2 = 32 vs |G_q| = 32 (index [Lambda_q : h1 Z x h2 Z] = 1); witness (0, 4) in Lambda_q (eps^(0, 4) == 1 mod 8) inside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 2 = 1 x 2 classes mod Lambda_q; each known zero counted [1] times
+   class (0,1) c =  1, q =  16: h1 = 16, h2 = 8, h1*h2 = 128 vs |G_q| = 128 (index [Lambda_q : h1 Z x h2 Z] = 1); witness (0, 8) in Lambda_q (eps^(0, 8) == 1 mod 16) inside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 2 = 1 x 2 classes mod Lambda_q; each known zero counted [1] times
+   class (0,1) c =  4, q =   4: h1 = 4, h2 = 2, h1*h2 = 8 vs |G_q| = 8 (index [Lambda_q : h1 Z x h2 Z] = 1); witness (0, 2) in Lambda_q (eps^(0, 2) == 1 mod 4) inside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 0 = 1 x 0 classes mod Lambda_q; each known zero counted [] times
+   class (0,1) c =  9, q =   8: h1 = 8, h2 = 4, h1*h2 = 32 vs |G_q| = 32 (index [Lambda_q : h1 Z x h2 Z] = 1); witness (0, 4) in Lambda_q (eps^(0, 4) == 1 mod 8) inside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 2 = 1 x 2 classes mod Lambda_q; each known zero counted [1] times
+   class (0,1) c =  9, q =  16: h1 = 16, h2 = 8, h1*h2 = 128 vs |G_q| = 128 (index [Lambda_q : h1 Z x h2 Z] = 1); witness (0, 8) in Lambda_q (eps^(0, 8) == 1 mod 16) inside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 2 = 1 x 2 classes mod Lambda_q; each known zero counted [1] times
+   class (0,1) c = 36, q =  43: h1 = 462, h2 = 154, h1*h2 = 71148 vs |G_q| = 3234 (index [Lambda_q : h1 Z x h2 Z] = 22); witness (399, 7) in Lambda_q (eps^(399, 7) == 1 mod 43) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 66 = 22 x 3 classes mod Lambda_q; each known zero counted [22] times
+   class (0,1) c = 36, q =  13: h1 = 84, h2 = 84, h1*h2 = 7056 vs |G_q| = 336 (index [Lambda_q : h1 Z x h2 Z] = 21); witness (76, 4) in Lambda_q (eps^(76, 4) == 1 mod 13) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 84 = 21 x 4 classes mod Lambda_q; each known zero counted [21] times
+   class (1,1) c =  1, q =   4: h1 = 4, h2 = 4, h1*h2 = 16 vs |G_q| = 4 (index [Lambda_q : h1 Z x h2 Z] = 4); witness (3, 1) in Lambda_q (eps^(3, 1) == 1 mod 4) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 8 = 4 x 2 classes mod Lambda_q; each known zero counted [4, 4] times
+   class (1,1) c =  1, q =   7: h1 = 24, h2 = 6, h1*h2 = 144 vs |G_q| = 24 (index [Lambda_q : h1 Z x h2 Z] = 6); witness (20, 1) in Lambda_q (eps^(20, 1) == 1 mod 7) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 12 = 6 x 2 classes mod Lambda_q; each known zero counted [6, 6] times
+   class (1,1) c =  1, q =  23: h1 = 264, h2 = 132, h1*h2 = 34848 vs |G_q| = 2904 (index [Lambda_q : h1 Z x h2 Z] = 12); witness (22, 11) in Lambda_q (eps^(22, 11) == 1 mod 23) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 84 = 12 x 7 classes mod Lambda_q; each known zero counted [12, 12] times
+   class (1,1) c =  4, q =   4: h1 = 4, h2 = 4, h1*h2 = 16 vs |G_q| = 4 (index [Lambda_q : h1 Z x h2 Z] = 4); witness (3, 1) in Lambda_q (eps^(3, 1) == 1 mod 4) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 8 = 4 x 2 classes mod Lambda_q; each known zero counted [4] times
+   class (1,1) c =  4, q =   8: h1 = 8, h2 = 8, h1*h2 = 64 vs |G_q| = 16 (index [Lambda_q : h1 Z x h2 Z] = 4); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 8) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 16 = 4 x 4 classes mod Lambda_q; each known zero counted [4] times
+   class (1,1) c =  4, q =   7: h1 = 24, h2 = 6, h1*h2 = 144 vs |G_q| = 24 (index [Lambda_q : h1 Z x h2 Z] = 6); witness (20, 1) in Lambda_q (eps^(20, 1) == 1 mod 7) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 12 = 6 x 2 classes mod Lambda_q; each known zero counted [6] times
+   class (1,1) c =  4, q =  23: h1 = 264, h2 = 132, h1*h2 = 34848 vs |G_q| = 2904 (index [Lambda_q : h1 Z x h2 Z] = 12); witness (22, 11) in Lambda_q (eps^(22, 11) == 1 mod 23) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 84 = 12 x 7 classes mod Lambda_q; each known zero counted [12] times
+   class (1,1) c =  9, q =   8: h1 = 8, h2 = 8, h1*h2 = 64 vs |G_q| = 16 (index [Lambda_q : h1 Z x h2 Z] = 4); witness (6, 2) in Lambda_q (eps^(6, 2) == 1 mod 8) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 0 = 4 x 0 classes mod Lambda_q; each known zero counted [] times
+   class (1,1) c = 36, q =  49: h1 = 168, h2 = 6, h1*h2 = 1008 vs |G_q| = 168 (index [Lambda_q : h1 Z x h2 Z] = 6); witness (140, 1) in Lambda_q (eps^(140, 1) == 1 mod 49) outside h1 Z x h2 Z; candidate pairs in [0,h1)x[0,h2): 6 = 6 x 1 classes mod Lambda_q; each known zero counted [6] times
+   With h1 Z x h2 Z, |G_q| would be overcounted by the index above, every candidate class (and every known
+   zero) would be counted index-many times, and a Prop. 17 coset system on eta_1 = eps1^h1, eta_2 = eps2^h2
+   would cover only one of the index-many subclasses of a Lambda_q-class, so its conclusion could not be used
+   for the whole Lambda_q-class (the certified and sibling rules of 4.4 would then be unsound).
+
+================================================================================================================
+NEGATIVE CONTROL (a): planted false certificates must be caught
+   (a1) class (1,0) c = 1: plant exponent (14, 0) (a candidate mod 8: markers == 0 mod 8) as a "known zero": exact markers = (-141568, -111432) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a1) class (1,0) c = 9: plant exponent (16, 0) (a candidate mod 8: markers == 0 mod 8) as a "known zero": exact markers = (784440, 617432) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a1) class (0,1) c = 1: plant exponent (4, 0) (a candidate mod 8: markers == 0 mod 8) as a "known zero": exact markers = (328, -200) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a1) class (0,1) c = 9: plant exponent (4, 0) (a candidate mod 8: markers == 0 mod 8) as a "known zero": exact markers = (1704, 456) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a1) class (0,1) c = 36: plant exponent (221, 0) (a candidate mod 43: markers == 0 mod 43) as a "known zero": exact markers = (<190-digit integer, == 0 mod 43>, <189-digit integer, == 0 mod 43>) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a1) class (1,1) c = 4: plant exponent (2, 0) (a candidate mod 4: markers == 0 mod 4) as a "known zero": exact markers = (-12, 0) != 0 -> rejected: True; Prop. 17 refuses this seed: True
+   (a2) class (1,0) c = 1: drop the known zero (0, 1): sieve ends with 2 live class(es) (the dropped zero's class among them: True); direct check: 2 unaccounted -> caught: True
+   (a2) class (1,0) c = 4: drop the known zero (1, 0): sieve ends with 1 live class(es) (the dropped zero's class among them: True); direct check: 1 unaccounted -> caught: True
+   (a2) class (1,0) c = 9: drop the known zero (1, -1): sieve ends with 1 live class(es) (the dropped zero's class among them: True); direct check: 1 unaccounted -> caught: True
+   (a2) class (1,0) c = 9: drop the known zero (2, 1): sieve ends with 2 live class(es) (the dropped zero's class among them: True); direct check: 2 unaccounted -> caught: True
+   (a2) class (0,1) c = 1: drop the known zero (0, 1): sieve ends with 2 live class(es) (the dropped zero's class among them: True); direct check: 2 unaccounted -> caught: True
+   (a2) class (0,1) c = 9: drop the known zero (1, 0): sieve ends with 2 live class(es) (the dropped zero's class among them: True); direct check: 2 unaccounted -> caught: True
+   (a2) class (0,1) c = 36: drop the known zero (1, 3): sieve ends with 4 live class(es) (the dropped zero's class among them: True); direct check: 4 unaccounted -> caught: True
+   (a2) class (1,1) c = 1: drop the known zero (0, 1): sieve ends with 1 live class(es) (the dropped zero's class among them: True); direct check: 1 unaccounted -> caught: True
+   (a2) class (1,1) c = 1: drop the known zero (2, 1): sieve ends with 1 live class(es) (the dropped zero's class among them: True); direct check: 1 unaccounted -> caught: True
+   (a2) class (1,1) c = 4: drop the known zero (1, 4): sieve ends with 2 live class(es) (the dropped zero's class among them: True); direct check: 2 unaccounted -> caught: True
+   (a2) class (1,1) c = 36: drop the known zero (1, 0): sieve ends with 1 live class(es) (the dropped zero's class among them: True); direct check: 1 unaccounted -> caught: True
+   (a3) class (1,1) c = 1, q = 4, zero (0, 1): lambda = 1, nu(J) = 2, delta = 1, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+   (a3) class (1,1) c = 1, q = 4, zero (2, 1): lambda = 1, nu(J) = 2, delta = 1, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+   (a3) class (1,1) c = 1, q = 7, zero (0, 1): lambda = 0, nu(J) = 1, delta = 1, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+   (a3) class (1,1) c = 1, q = 7, zero (2, 1): lambda = 1, nu(J) = 3, delta = 2, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+      with every instance forged, the prefix [4] of 02's order would already "certify" the orbit (its conclusion happens to be true, the certificate is not): caught by the hypothesis check above
+   (a3) class (1,1) c = 4, q = 4, zero (1, 4): lambda = 1, nu(J) = 3, delta = 2, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+   (a3) class (1,1) c = 4, q = 8, zero (1, 4): lambda = 1, nu(J) = 3, delta = 2, bound 1: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+   (a3) class (1,1) c = 4, q = 7, zero (1, 4): lambda = 1, nu(J) = 3, delta = 2, bound 0: a forged "Prop. 17 holds" is rejected by the hypothesis check: True, and by the mechanism check: True
+      with every instance forged, the prefix [4, 8] of 02's order would already "certify" the orbit (its conclusion happens to be true, the certificate is not): caught by the hypothesis check above
+   (a4) class (1,1) c = 1: the zeros (0, 1) (exponent (0, 0)) and (2, 1) (exponent (2, 0)) differ by (2, 0), and eps^(2, 0) - 1 = (-2, 2, 0, 0) has content 2: they share one Lambda_2-class (Lambda_2 = (2, 1, 1)).
+        Drop (2, 1); moduli [2, 4, 7, 23].  WRONG sibling rule (Lambda_q-class for one q, Prop. 17 at another): live left 0 -> would falsely certify "zeros = {(0, 1)}"; correct same-q rule: live left 1 -> caught.  The control bites: True
+   (a5) same orbit, (2,1) dropped, same-q sibling rule, but Prop. 17 FORGED at q = 2 for (0, 1) (recomputed: lambda = 2, nu(J) = inf, bound e-1-iota = -1, setting e >= 2 for p = 2: False): live left 0 -> a false certificate with a FALSE conclusion (the genuine solution (2,1) is declared absent); the hypothesis check rejects the instance: True.  Bites: True
+   all planted false certificates caught: True
+
+================================================================================================================
+NEGATIVE CONTROL (d): lambda and nu(J) in the four bases at every (q, zero) with q among the moduli used
+   class (1,1) c = 1, q = 7 (e = 1), zero (2, 1): lambda in [1], nu(J) in [3, 4] -- all >= e, and Prop. 17 fails there in every basis
+   class (1,1) c = 4, q = 7 (e = 1), zero (1, 4): lambda in [1], nu(J) in [3, 5] -- all >= e, and Prop. 17 fails there in every basis
+
+================================================================================================================
+BOX SCAN (sanity only, not part of the proof): |a|,|b| <= 300, both markers == 0 mod 1000000007 and mod 998244353, then exact
+   class (1,0) c =  1: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+   class (1,0) c =  4: common zeros mod both primes in the box: [(1, 0)]; exact: [(1, 0)]; known exponents: [(1, 0)]
+   class (1,0) c =  9: common zeros mod both primes in the box: [(1, -1), (2, 0)]; exact: [(1, -1), (2, 0)]; known exponents: [(1, -1), (2, 0)]
+   class (1,0) c = 36: common zeros mod both primes in the box: []; exact: []; known exponents: []
+   class (0,1) c =  1: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+   class (0,1) c =  4: common zeros mod both primes in the box: []; exact: []; known exponents: []
+   class (0,1) c =  9: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+   class (0,1) c = 36: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+   class (1,1) c =  1: common zeros mod both primes in the box: [(0, 0), (2, 0)]; exact: [(0, 0), (2, 0)]; known exponents: [(0, 0), (2, 0)]
+   class (1,1) c =  4: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+   class (1,1) c =  9: common zeros mod both primes in the box: []; exact: []; known exponents: []
+   class (1,1) c = 36: common zeros mod both primes in the box: [(0, 0)]; exact: [(0, 0)]; known exponents: [(0, 0)]
+
+================================================================================================================
+CLASS SCAN (sanity only): for every Prop. 17 instance used by 02, the coset system T1^i T2^j z covering the Lambda_q-class of the zero (02 basis), |i|,|j| <= 40; both markers == 0 mod 1000000007 and mod 998244353
+   class (1,0) c =  1, q =  8, zero (0, 1): 6561 points of the class (|a| up to 2000); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,0) c =  4, q =  8, zero (1, 0): 6561 points of the class (|a| up to 2000); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,0) c =  9, q =  8, zero (1, -1): 6561 points of the class (|a| up to 2000); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,0) c =  9, q =  8, zero (2, 1): 6561 points of the class (|a| up to 2000); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (0,1) c =  1, q =  8, zero (0, 1): 6561 points of the class (|a| up to 320); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (0,1) c =  9, q =  8, zero (1, 0): 6561 points of the class (|a| up to 320); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (0,1) c = 36, q = 43, zero (1, 3): 6561 points of the class (|a| up to 21000); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,1) c =  1, q = 23, zero (0, 1): 6561 points of the class (|a| up to 20240); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,1) c =  1, q = 23, zero (2, 1): 6561 points of the class (|a| up to 20240); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,1) c =  4, q = 23, zero (1, 4): 6561 points of the class (|a| up to 20240); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+   class (1,1) c = 36, q = 49, zero (1, 0): 6561 points of the class (|a| up to 7840); common zeros mod both primes at (i,j) = [(0, 0)] only: True
+
+================================================================================================================
+PROPOSITION 17 INSTANCES USED BY 02 (all recomputed exactly; values in the 02 basis, equal in all four bases)
+   class  c   q   p  e  zero      lambda nu(J) delta bound(e-1-iota)  Lambda(2)  e+delta  e+lambda  margin(delta)
+   (1,0)  1   8   2  3  (0, 1)        0     1     1        1            5         4        3         0
+   (1,0)  4   8   2  3  (1, 0)        0     0     0        1            5         3        3         1
+   (1,0)  9   8   2  3  (1, -1)       0     0     0        1            5         3        3         1
+   (1,0)  9   8   2  3  (2, 1)        0     1     1        1            5         4        3         0
+   (0,1)  1   8   2  3  (0, 1)        0     1     1        1            5         4        3         0
+   (0,1)  9   8   2  3  (1, 0)        0     1     1        1            5         4        3         0
+   (0,1) 36  43  43  1  (1, 3)        0     0     0        0            2         1        1         0
+   (1,1)  1  23  23  1  (0, 1)        0     0     0        0            2         1        1         0
+   (1,1)  1  23  23  1  (2, 1)        0     0     0        0            2         1        1         0
+   (1,1)  4  23  23  1  (1, 4)        0     0     0        0            2         1        1         0
+   (1,1) 36  49   7  2  (1, 0)        0     0     0        1            4         2        2         1
+   11 instances; lambda takes the values [0] (an instance with lambda = 1 is used: False); delta = e-1-iota exactly in 8 of them, slack in 3; strict inequalities e+delta < Lambda(2) and e+lambda < Lambda(2) hold in all: True
+   four bases (Hermite, 02, unimodular, reduced) at all 24 (q, zero) pairs of the moduli used: lambda and nu(J) identical in 22; Prop. 17 holds at 17 pairs (verdict basis-independent at every pair); values differ only where they are >= e (control (d))
+
+SUMMARY
+   class (1,0) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,0) c =  4 seed (1, 0, 2, -1): 1 known solution pair(s); independently confirmed: True
+   class (1,0) c =  9 seed (1, -2, 3, -1): 2 known solution pair(s); independently confirmed: True
+   class (1,0) c = 36 seed (-2, -2, 3, -1): 0 known solution pair(s); independently confirmed: True
+   class (0,1) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (0,1) c =  4 seed (1, 1, -2, 0): 0 known solution pair(s); independently confirmed: True
+   class (0,1) c =  9 seed (0, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (0,1) c = 36 seed (3, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,1) c =  1 seed (-1, 0, 0, 0): 2 known solution pair(s); independently confirmed: True
+   class (1,1) c =  4 seed (4, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,1) c =  9 seed (0, 2, -3, 0): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c = 36 seed (0, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   reversed order of 02's moduli: terminates for every orbit with more than one modulus
+   greedy over other sets (pool of 02, |G_q| <= 5000): 21 of 24 runs terminate; not: [('(1,0)', 4, 'odd'), ('(1,0)', 9, 'odd'), ('(0,1)', 36, 'pow2')] (examined above)
+checks run: 1467
+ALL 12 ORBITS INDEPENDENTLY CONFIRMED; no discrepancy with 02_exclusion.out.txt or 01_coverage.out.txt
+[done in 30.9 s]
