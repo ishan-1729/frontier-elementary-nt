@@ -1,0 +1,211 @@
+5.1 the two factors of X^3 - 144X + 1296
+PASS  theta = 6l = (0,6,0) satisfies theta^3 - 144 theta + 1296 = 0
+PASS  X - theta = (X, -6, 0)
+PASS  beta = X^2 + theta X + theta^2 - 144 = (X^2 - 144, 6X, 36)
+PASS  alpha*beta = (X^3 - 144X + 1296, 0, 0)
+PASS  N(alpha) = X^3 - 144X + 1296
+PASS  X + 2 theta = (X, 12, 0) and beta - (X + 2 theta)*alpha = (-144, 0, 108) = 36(3l^2 - 4) for every X
+    so for an integral point (X, Y): alpha*beta = Y^2 (as triples), N(alpha) = Y^2, and every common divisor
+    of alpha and beta divides 36(3l^2 - 4).
+    Y = 0 is impossible: by Section 1, N(alpha) = 0 only for alpha = 0, and alpha has l-coordinate -6.
+    Directly, X^3 - 144X + 1296 is never 0 for an integer X:
+PASS  X = 2k+1: X^3 - 144X + 1296 - 1 has even coefficients in k, so the value is odd
+PASS  X = 2X1: X^3 - 144X + 1296 = 8(X1^3 - 36X1 + 162)
+PASS  X1 = 2k+1: X1^3 - 36X1 + 162 - 1 has even coefficients in k, so it is odd
+PASS  X1 = 2X2: X1^3 - 36X1 + 162 = 2(4X2^3 - 36X2 + 81), and 4X2^3 - 36X2 + 81 - 1 has even coefficients
+    So Y != 0, and alpha, beta and the triple (Y, 0, 0) are nonzero.
+PASS  alpha is never a unit: N(alpha) = Y^2 >= 0, and N(alpha) = 1 needs an integer root of X^3 - 144X + 1295, which would divide 1295 = 5*7*37; none of the 16 divisors +-d is a root
+    (Not needed: if alpha were a unit, 5.3 would hold with all exponents 0 and R0 = 1.)
+5.2 the common divisor 36(3l^2 - 4) and the five S-primes
+PASS  EPS*EPS_INV = 1 and N(EPS) = 1
+PASS  PI2^3 = -2 EPS, so 2 = -PI2^3 EPS^-1
+PASS  P3A*P3B*P3C = 3
+PASS  PI2^2*P179 = (-4, 0, 3) = 3l^2 - 4
+PASS  36 = EPS^-2 PI2^6 (P3A P3B P3C)^2
+PASS  36(3l^2 - 4) = EPS^-2 PI2^8 (P3A P3B P3C)^2 P179
+PASS  N(36(3l^2 - 4)) = 36^3 * 716 = 2^8 * 3^6 * 179 = (-2)^8 ((-3)(-3)3)^2 179
+PASS  N(PI2) = N(-4, 1, 1) = -2, and |N| = 2 is prime, so PI2 is a prime element (3.3)
+PASS  N(P3A) = N(-1, 1, 0) = -3, and |N| = 3 is prime, so P3A is a prime element (3.3)
+PASS  N(P3B) = N(5, 2, 0) = -3, and |N| = 3 is prime, so P3B is a prime element (3.3)
+PASS  N(P3C) = N(3, -3, 1) = 3, and |N| = 3 is prime, so P3C is a prime element (3.3)
+PASS  N(P179) = N(107, -114, 45) = 179, and |N| = 179 is prime, so P179 is a prime element (3.3)
+PASS  PI2, P3A are not associates: |N| = 2 and 3 differ
+PASS  PI2, P3B are not associates: |N| = 2 and 3 differ
+PASS  PI2, P3C are not associates: |N| = 2 and 3 differ
+PASS  PI2, P179 are not associates: |N| = 2 and 179 differ
+PASS  P3A, P3B are not associates: P3A/P3B and P3B/P3A are not integral triples
+PASS  P3A, P3C are not associates: P3A/P3C and P3C/P3A are not integral triples
+PASS  P3A, P179 are not associates: |N| = 3 and 179 differ
+PASS  P3B, P3C are not associates: P3B/P3C and P3C/P3B are not integral triples
+PASS  P3B, P179 are not associates: |N| = 3 and 179 differ
+PASS  P3C, P179 are not associates: |N| = 3 and 179 differ
+PASS  second view: l^3 - 4l + 6 = l(l-1)(l+1) mod 3, and P3A, P3B, P3C vanish mod 3 at the single roots l = 1, 2, 0 respectively (values at l = 0,1,2: {'P3A': [2, 0, 1], 'P3B': [2, 1, 0], 'P3C': [0, 1, 1]}); a unit vanishes at no root
+PASS  by the way: l = PI2*P3C (so theta = 6l = -EPS^-1 PI2^4 P3A P3B P3C^2)
+5.3 alpha = u PI2^e2 P3A^a P3B^b P3C^c P179^g R0^2 on the 28 known integral points
+    For each X: exact powers (e, f, w) of each S-prime in alpha, beta, Y (by exact division); the S-free parts
+    alpha1, beta1, Y1; an explicit Bezout identity for alpha1, beta1; alpha1 = u R0^2 with u in {+-1, +-EPS}.
+    X =   -15, Y =      9: (e,f,w) = PI2 (0, 0, 0), P3A (1, 3, 2), P3B (2, 2, 2), P3C (1, 3, 2), P179 (0, 0, 0)
+        N(alpha1) = -1, N(beta1) = -1, gcd of the norms 1; u = -1, R0 = (1, 0, 0) = EPS^0
+PASS  X = -15: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^0 P3A^1 P3B^2 P3C^1 P179^0 R0^2 (exact)
+PASS  X = -15: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -P3A P3C (in T)
+    X =   -12, Y =     36: (e,f,w) = PI2 (4, 8, 6), P3A (2, 2, 2), P3B (1, 3, 2), P3C (1, 3, 2), P179 (0, 0, 0)
+        N(alpha1) = -1, N(beta1) = -1, gcd of the norms 1; u = -EPS, R0 = (95, -101, 40) = EPS^-1
+PASS  X = -12: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^2 P3B^1 P3C^1 P179^0 R0^2 (exact)
+PASS  X = -12: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -EPS P3B P3C (in T)
+    X =    -8, Y =     44: (e,f,w) = PI2 (4, 8, 6), P3A (0, 0, 0), P3B (0, 0, 0), P3C (0, 0, 0), P179 (0, 0, 0)
+        N(alpha1) = 121, N(beta1) = 14641, gcd of the norms 121; u = 1, R0 = (19, -20, 8)
+PASS  X = -8: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^0 P3B^0 P3C^0 P179^0 R0^2 (exact)
+PASS  X = -8: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = 1 (in T)
+    X =     0, Y =     36: (e,f,w) = PI2 (4, 8, 6), P3A (1, 3, 2), P3B (1, 3, 2), P3C (2, 2, 2), P179 (0, 0, 0)
+        N(alpha1) = 1, N(beta1) = 1, gcd of the norms 1; u = EPS, R0 = (95, -101, 40) = EPS^-1
+PASS  X = 0: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^1 P3B^1 P3C^2 P179^0 R0^2 (exact)
+PASS  X = 0: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = EPS P3A P3B (in T)
+    X =     4, Y =     28: (e,f,w) = PI2 (4, 8, 6), P3A (0, 0, 0), P3B (0, 0, 0), P3C (0, 0, 0), P179 (0, 0, 0)
+        N(alpha1) = 49, N(beta1) = 2401, gcd of the norms 49; u = 1, R0 = (31, -33, 13)
+PASS  X = 4: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^0 P3B^0 P3C^0 P179^0 R0^2 (exact)
+PASS  X = 4: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = 1 (in T)
+    X =     9, Y =     27: (e,f,w) = PI2 (0, 0, 0), P3A (1, 5, 3), P3B (1, 5, 3), P3C (4, 2, 3), P179 (0, 0, 0)
+        N(alpha1) = 1, N(beta1) = 1, gcd of the norms 1; u = EPS, R0 = (1, 0, 0) = EPS^0
+PASS  X = 9: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^0 P3A^1 P3B^1 P3C^4 P179^0 R0^2 (exact)
+PASS  X = 9: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = EPS P3A P3B (in T)
+    X =    12, Y =     36: (e,f,w) = PI2 (4, 8, 6), P3A (1, 3, 2), P3B (2, 2, 2), P3C (1, 3, 2), P179 (0, 0, 0)
+        N(alpha1) = -1, N(beta1) = -1, gcd of the norms 1; u = -1, R0 = (95, -101, 40) = EPS^-1
+PASS  X = 12: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^1 P3B^2 P3C^1 P179^0 R0^2 (exact)
+PASS  X = 12: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -P3A P3C (in T)
+    X =    24, Y =    108: (e,f,w) = PI2 (4, 8, 6), P3A (4, 2, 3), P3B (1, 5, 3), P3C (1, 5, 3), P179 (0, 0, 0)
+        N(alpha1) = -1, N(beta1) = -1, gcd of the norms 1; u = -EPS, R0 = (95, -101, 40) = EPS^-1
+PASS  X = 24: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^4 P3B^1 P3C^1 P179^0 R0^2 (exact)
+PASS  X = 24: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -EPS P3B P3C (in T)
+    X =    40, Y =    244: (e,f,w) = PI2 (4, 8, 6), P3A (0, 0, 0), P3B (0, 0, 0), P3C (0, 0, 0), P179 (0, 0, 0)
+        N(alpha1) = 3721, N(beta1) = 13845841, gcd of the norms 3721; u = 1, R0 = (53, -56, 22)
+PASS  X = 40: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^0 P3B^0 P3C^0 P179^0 R0^2 (exact)
+PASS  X = 40: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = 1 (in T)
+    X =    48, Y =    324: (e,f,w) = PI2 (4, 8, 6), P3A (1, 7, 4), P3B (6, 2, 4), P3C (1, 7, 4), P179 (0, 0, 0)
+        N(alpha1) = -1, N(beta1) = -1, gcd of the norms 1; u = -1, R0 = (57505, -61110, 24201) = EPS^-2
+PASS  X = 48: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^1 P3B^6 P3C^1 P179^0 R0^2 (exact)
+PASS  X = 48: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -P3A P3C (in T)
+    X =   108, Y =   1116: (e,f,w) = PI2 (4, 8, 6), P3A (1, 3, 2), P3B (1, 3, 2), P3C (2, 2, 2), P179 (0, 0, 0)
+        N(alpha1) = 961, N(beta1) = 923521, gcd of the norms 961; u = EPS, R0 = (271, -288, 114)
+PASS  X = 108: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^1 P3B^1 P3C^2 P179^0 R0^2 (exact)
+PASS  X = 108: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = EPS P3A P3B (in T)
+    X =   252, Y =   3996: (e,f,w) = PI2 (4, 8, 6), P3A (1, 5, 3), P3B (1, 5, 3), P3C (4, 2, 3), P179 (0, 0, 0)
+        N(alpha1) = 1369, N(beta1) = 1874161, gcd of the norms 1369; u = EPS, R0 = (23, -25, 10)
+PASS  X = 252: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^1 P3B^1 P3C^4 P179^0 R0^2 (exact)
+PASS  X = 252: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = EPS P3A P3B (in T)
+    X =   420, Y =   8604: (e,f,w) = PI2 (4, 8, 6), P3A (2, 2, 2), P3B (1, 3, 2), P3C (1, 3, 2), P179 (0, 0, 0)
+        N(alpha1) = -57121, N(beta1) = -3262808641, gcd of the norms 57121; u = -EPS, R0 = (1117, -1187, 470)
+PASS  X = 420: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^4 P3A^2 P3B^1 P3C^1 P179^0 R0^2 (exact)
+PASS  X = 420: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -EPS P3B P3C (in T)
+    X =  4953, Y = 348579: (e,f,w) = PI2 (0, 0, 0), P3A (1, 3, 2), P3B (2, 2, 2), P3C (1, 3, 2), P179 (0, 0, 0)
+        N(alpha1) = -1500090361, N(beta1) = -2250271091165110321, gcd of the norms 1500090361; u = -1, R0 = (19, -24, 16)
+PASS  X = 4953: e + f = 2w for every S-prime, alpha1*beta1 = Y1^2, lambda*alpha1 + mu*beta1 = 1 (exact), alpha = u PI2^0 P3A^1 P3B^2 P3C^1 P179^0 R0^2 (exact)
+PASS  X = 4953: e2, g, a+b+c even and N(u)(-1)^(a+b) = 1, so mu0 = -P3A P3C (in T)
+    remark (not used): the exact power of PI2 in alpha
+    X odd: N(alpha) is odd (5.1), so PI2 does not divide alpha (N(PI2) = -2 would divide N(alpha)).
+PASS  X = 2X1: alpha = PI2^3 * (-95*X1 - 720, 101*X1 + 765, -40*X1 - 303) with N((-95*X1 - 720, 101*X1 + 765, -40*X1 - 303)) = -(X1^3 - 36X1 + 162), odd for X1 odd (5.1): exact power 3
+    X = 2X1 with X1 odd: N(alpha) = 8(X1^3 - 36X1 + 162) has 2-adic valuation 3, so it is not a square:
+    no integral point has X = 2 (mod 4) (the parity argument of 5.4 in this case).
+PASS  X = 4X2: alpha = PI2^4 * (1276*X2 + 4833, -1356*X2 - 5136, 537*X2 + 2034) with N((1276*X2 + 4833, -1356*X2 - 5136, 537*X2 + 2034)) = 4X2^3 - 36X2 + 81 odd: exact power 4
+    So on E the exact power of PI2 in alpha is 0 (X odd) or 4 (4 | X); in the examples above PI2^8 exactly
+    divides beta and PI2^6 exactly divides Y when 4 | X. The argument needs no bound on these exponents.
+5.4 the norm condition and the eight admissible mu0
+PASS  for all 128 vectors, N(sigma EPS^k PI2^e2 P3A^a P3B^b P3C^c P179^g) = sigma (-2)^e2 (-3)^a (-3)^b 3^c 179^g
+PASS  the norm is a positive square exactly when e2 = g = 0, a+b+c is even and sigma = (-1)^(a+b)
+PASS  exactly 8 of the 128 vectors are admissible
+    {'sign': 0, 'EPS': 0, 'PI2': 0, 'P3A': 0, 'P3B': 0, 'P3C': 0, 'P179': 0}  mu0 = 1             = (1, 0, 0)          N = 1  (T)
+    {'sign': 0, 'EPS': 0, 'PI2': 0, 'P3A': 1, 'P3B': 1, 'P3C': 0, 'P179': 0}  mu0 = P3A P3B       = (-5, 3, 2)         N = 9  (EPS*T)
+    {'sign': 0, 'EPS': 1, 'PI2': 0, 'P3A': 0, 'P3B': 0, 'P3C': 0, 'P179': 0}  mu0 = EPS           = (-19, -5, 1)       N = 1  (EPS*T)
+    {'sign': 0, 'EPS': 1, 'PI2': 0, 'P3A': 1, 'P3B': 1, 'P3C': 0, 'P179': 0}  mu0 = EPS P3A P3B   = (137, -72, -50)    N = 9  (T)
+    {'sign': 1, 'EPS': 0, 'PI2': 0, 'P3A': 0, 'P3B': 1, 'P3C': 1, 'P179': 0}  mu0 = -P3B P3C      = (-3, 1, 1)         N = 9  (EPS*T)
+    {'sign': 1, 'EPS': 0, 'PI2': 0, 'P3A': 1, 'P3B': 0, 'P3C': 1, 'P179': 0}  mu0 = -P3A P3C      = (9, -10, 4)        N = 9  (T)
+    {'sign': 1, 'EPS': 1, 'PI2': 0, 'P3A': 0, 'P3B': 1, 'P3C': 1, 'P179': 0}  mu0 = -EPS P3B P3C  = (81, -26, -23)     N = 9  (T)
+    {'sign': 1, 'EPS': 1, 'PI2': 0, 'P3A': 1, 'P3B': 0, 'P3C': 1, 'P179': 0}  mu0 = -EPS P3A P3C  = (9, 1, -1)         N = 9  (EPS*T)
+PASS  the 8 admissible mu0 are exactly 1, EPS P3A P3B, -P3A P3C, -EPS P3B P3C, EPS, P3A P3B, -EPS P3A P3C, -P3B P3C
+PASS  EPS*T = {EPS, P3A P3B, -EPS P3A P3C, -P3B P3C} modulo squares: EPS*mu0 for mu0 in T is the listed element times 1 or EPS^2
+    Reduction used in the text: with u = sigma EPS^k (Section 4) and the exponents of 5.3,
+    alpha = mu0 S^2, mu0 = sigma EPS^(k mod 2) P3A^(a mod 2) P3B^(b mod 2) P3C^(c mod 2), S in R
+    (S = EPS^floor(k/2) PI2^(e2/2) P3A^floor(a/2) P3B^floor(b/2) P3C^floor(c/2) P179^(g/2) R0; EPS^-1 is in R).
+5.5 the congruence modulo 8
+PASS  mu*(S + 8T)^2 - mu*S^2 has all coefficients divisible by 8 (indeed 16), for generic integer triples mu, S, T: mu0*S^2 mod 8 depends only on S mod 8
+    S^2 = (s0**2 - 12*s1*s2, 2*s0*s1 + 8*s1*s2 - 6*s2**2, 2*s0*s2 + s1**2 + 4*s2**2)
+    mu0 = EPS           = (-19, -5, 1)       l-coordinate of mu0*S^2: -5*s0**2 - 30*s0*s1 - 52*s0*s2 - 26*s1**2 - 60*s1*s2 - 14*s2**2
+                                          l^2-coordinate: s0**2 - 10*s0*s1 - 30*s0*s2 - 15*s1**2 - 52*s1*s2 - 30*s2**2
+PASS  mu0 = EPS: 0 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 0)
+    mu0 = P3A P3B       = (-5, 3, 2)         l-coordinate of mu0*S^2: 3*s0**2 + 6*s0*s1 - 12*s1*s2 - 18*s2**2
+                                          l^2-coordinate: 2*s0**2 + 6*s0*s1 + 6*s0*s2 + 3*s1**2 - 6*s2**2
+PASS  mu0 = P3A P3B: 0 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 0)
+    mu0 = -EPS P3A P3C  = (9, 1, -1)         l-coordinate of mu0*S^2: s0**2 + 10*s0*s1 + 20*s0*s2 + 10*s1**2 + 28*s1*s2 + 10*s2**2
+                                          l^2-coordinate: -s0**2 + 2*s0*s1 + 10*s0*s2 + 5*s1**2 + 20*s1*s2 + 14*s2**2
+PASS  mu0 = -EPS P3A P3C: 0 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 0)
+    mu0 = -P3B P3C      = (-3, 1, 1)         l-coordinate of mu0*S^2: s0**2 + 2*s0*s1 - 4*s0*s2 - 2*s1**2 - 4*s1*s2 - 14*s2**2
+                                          l^2-coordinate: s0**2 + 2*s0*s1 + 2*s0*s2 + s1**2 - 4*s1*s2 - 2*s2**2
+PASS  mu0 = -P3B P3C: 0 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 0)
+    mu0 = 1             = (1, 0, 0)          l-coordinate of mu0*S^2: 2*s0*s1 + 8*s1*s2 - 6*s2**2
+                                          l^2-coordinate: 2*s0*s2 + s1**2 + 4*s2**2
+PASS  mu0 = 1: 32 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 32)
+    mu0 = EPS P3A P3B   = (137, -72, -50)    l-coordinate of mu0*S^2: -72*s0**2 - 126*s0*s1 + 24*s0*s2 + 12*s1**2 + 360*s1*s2 + 426*s2**2
+                                          l^2-coordinate: -50*s0**2 - 144*s0*s1 - 126*s0*s2 - 63*s1**2 + 24*s1*s2 + 180*s2**2
+PASS  mu0 = EPS P3A P3B: 48 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 48)
+    mu0 = -P3A P3C      = (9, -10, 4)        l-coordinate of mu0*S^2: -10*s0**2 + 50*s0*s1 - 128*s0*s2 - 64*s1**2 + 320*s1*s2 - 406*s2**2
+                                          l^2-coordinate: 4*s0**2 - 20*s0*s1 + 50*s0*s2 + 25*s1**2 - 128*s1*s2 + 160*s2**2
+PASS  mu0 = -P3A P3C: 48 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 48)
+    mu0 = -EPS P3B P3C  = (81, -26, -23)     l-coordinate of mu0*S^2: -26*s0**2 - 22*s0*s1 + 68*s0*s2 + 34*s1**2 + 224*s1*s2 + 202*s2**2
+                                          l^2-coordinate: -23*s0**2 - 52*s0*s1 - 22*s0*s2 - 11*s1**2 + 68*s1*s2 + 112*s2**2
+PASS  mu0 = -EPS P3B P3C: 32 residues S mod 8 give l^2-coordinate = 0 and l-coordinate = -6 (mod 8) (expected 32)
+    So alpha = (X, -6, 0) = mu0 S^2 with S in R is impossible for the four mu0 of EPS*T, for every X;
+    the four mu0 of T survive.
+    remark: the same counts modulo 4 and modulo 2
+PASS  modulo 4: {'EPS': 0, 'P3A P3B': 0, '-EPS P3A P3C': 0, '-P3B P3C': 0, '1': 8, 'EPS P3A P3B': 16, '-P3A P3C': 16, '-EPS P3B P3C': 8}; the four of EPS*T already have no solution modulo 4
+PASS  modulo 2: {'EPS': 2, 'P3A P3B': 2, '-EPS P3A P3C': 2, '-P3B P3C': 2, '1': 4, 'EPS P3A P3B': 4, '-P3A P3C': 4, '-EPS P3B P3C': 4}; modulo 2 does not exclude them
+PASS  likewise mu*(S + 4T)^2 - mu*S^2 has all coefficients divisible by 8: mu0*S^2 mod 4 depends only on S mod 4
+    remark: a hand proof modulo 4 for the four mu0 of EPS*T, with S = (x, y, z) (target: (l, l^2) = (2, 0) mod 4)
+PASS  mu0 = EPS: l-coordinate = (-5)x^2 (mod 2) with -5 odd, so x is even; for x even the (l, l^2)-coordinates mod 4 depend only on (y, z) mod 2: {(0, 0): (0, 0), (0, 1): (2, 2), (1, 0): (2, 1), (1, 1): (0, 3)}; never (2, 0)
+PASS  mu0 = P3A P3B: l-coordinate = (3)x^2 (mod 2) with 3 odd, so x is even; for x even the (l, l^2)-coordinates mod 4 depend only on (y, z) mod 2: {(0, 0): (0, 0), (0, 1): (2, 2), (1, 0): (0, 3), (1, 1): (2, 1)}; never (2, 0)
+PASS  mu0 = -EPS P3A P3C: l-coordinate = (1)x^2 (mod 2) with 1 odd, so x is even; for x even the (l, l^2)-coordinates mod 4 depend only on (y, z) mod 2: {(0, 0): (0, 0), (0, 1): (2, 2), (1, 0): (2, 1), (1, 1): (0, 3)}; never (2, 0)
+PASS  mu0 = -P3B P3C: l-coordinate = (1)x^2 (mod 2) with 1 odd, so x is even; for x even the (l, l^2)-coordinates mod 4 depend only on (y, z) mod 2: {(0, 0): (0, 0), (0, 1): (2, 2), (1, 0): (2, 1), (1, 1): (0, 3)}; never (2, 0)
+5.6 identification with the classes of (H), and their distinctness
+PASS  9-theta = (EPS P3A P3B) * (-45, 48, -19)^2, N(-45, 48, -19) = -9
+PASS  -15-theta = (-P3A P3C) * (5, 2, 0)^2, N(5, 2, 0) = -3
+PASS  -12-theta = (-EPS P3B P3C) * (-8, 8, -3)^2, N(-8, 8, -3) = -12
+    So X - theta = mu0 S^2 with mu0 in T gives X - theta = mu (S/T)^2 with mu = 1, 9-theta, -15-theta, -12-theta: this is (H).
+PASS  (9-theta)(-15-theta)(-12-theta) = (3 EPS T1 T2 T3)^2, a square in R
+PASS  T is closed modulo squares: (EPS P3A P3B)(-P3A P3C) = (-EPS P3B P3C) P3A^2
+    quadratic characters
+PASS  u(r)v(r) - (uv)(r) = (r^3 - 4r + 6)(bf + ce + cf r) for triples u = (a,b,c), v = (d,e,f): evaluation at a root r of l^3 - 4l + 6 mod q is a ring homomorphism R -> F_q
+PASS  every triple u is a root of t^3 - s1 t^2 + s2 t - N(u) with s1 = 3*a + 8*c, s2 = 3*a**2 + 16*a*c - 4*b**2 + 18*b*c + 16*c**2 (integer polynomials): so eta^2 = u in R makes eta a root of the monic t^6 - s1 t^4 + s2 t^2 - N(u)
+PASS  Legendre symbol mod 7 is multiplicative: leg(xy) = leg(x)leg(y) for all x, y in 1..6
+PASS  Legendre symbol mod 23 is multiplicative: leg(xy) = leg(x)leg(y) for all x, y in 1..22
+PASS  Legendre symbol mod 31 is multiplicative: leg(xy) = leg(x)leg(y) for all x, y in 1..30
+PASS  Legendre symbol mod 61 is multiplicative: leg(xy) = leg(x)leg(y) for all x, y in 1..60
+PASS  roots: l^3 - 4l + 6 = 0 at l = 3 mod 7 (its only root) and l = 10 mod 23 (its only root)
+PASS  version A: (chi_(7,3), chi_(23,10)) on 1, 9-theta, -15-theta, -12-theta = [(1, 1), (-1, 1), (1, -1), (-1, -1)]: four distinct values, all nonzero
+    version A: if mu = mu' xi^2 with xi in K*, then eta = mu' xi has eta^2 = mu mu' in R, so eta is integral
+    and lies in R (Section 3); then chi(mu)chi(mu') = leg(eta(r)^2) = +1. Distinct values: distinct classes.
+PASS  completely split primes: l^3 - 4l + 6 has the three distinct roots 18, 19, 25 mod 31 and 27, 45, 50 mod 61
+PASS  each of the four mu is nonzero at all three roots mod 31 and mod 61
+PASS  version B: (chi_(61,45), chi_(31,19)) on 1, 9-theta, -15-theta, -12-theta = [(1, 1), (-1, 1), (1, -1), (-1, -1)]: four distinct values
+    version B (no integral closedness): if mu = mu' (rho/n)^2 with n >= 1 least, and q | n, then
+    mu' rho^2 = 0 mod q gives rho(r_i) = 0 at the three distinct roots, so rho = 0 mod q (a polynomial of degree
+    <= 2 over F_q with three roots is 0), against the choice of n; so q does not divide n, and
+    n^2 mu(r) = mu'(r) rho(r)^2 gives chi(mu) = chi(mu').
+PASS  remark: the 8 admissible mu0 are nonzero at all roots mod 31, 61 and (chi_(31,18), chi_(31,25), chi_(61,45)) separates them: {'1': (1, 1, 1), 'EPS P3A P3B': (1, 1, -1), '-P3A P3C': (1, -1, 1), '-EPS P3B P3C': (1, -1, -1), 'EPS': (-1, 1, 1), 'P3A P3B': (-1, 1, -1), '-EPS P3A P3C': (-1, -1, 1), '-P3B P3C': (-1, -1, -1)}
+5.7 confirmation (not used): X - theta = mu0 S^2 at the 14 values of X
+PASS  X =   -15: X - theta = (-P3A P3C) * (5, 2, 0)^2; (X - theta) T^2 = (-15-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =   -12: X - theta = (-EPS P3B P3C) * (8, -8, 3)^2; (X - theta) T^2 = (-12-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =    -8: X - theta = (1) * (4, -2, -1)^2; (X - theta) T^2 = (1) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =     0: X - theta = (EPS P3A P3B) * (36, -38, 15)^2; (X - theta) T^2 = (9-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =     4: X - theta = (1) * (-2, 0, 1)^2; (X - theta) T^2 = (1) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =     9: X - theta = (EPS P3A P3B) * (45, -48, 19)^2; (X - theta) T^2 = (9-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =    12: X - theta = (-P3A P3C) * (-2, 2, 1)^2; (X - theta) T^2 = (-15-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =    24: X - theta = (-EPS P3B P3C) * (26, -28, 11)^2; (X - theta) T^2 = (-12-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =    40: X - theta = (1) * (-4, -2, 1)^2; (X - theta) T^2 = (1) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =    48: X - theta = (-P3A P3C) * (8, -4, -3)^2; (X - theta) T^2 = (-15-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =   108: X - theta = (EPS P3A P3B) * (102, -108, 43)^2; (X - theta) T^2 = (9-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =   252: X - theta = (EPS P3A P3B) * (150, -160, 63)^2; (X - theta) T^2 = (9-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =   420: X - theta = (-EPS P3B P3C) * (88, -92, 37)^2; (X - theta) T^2 = (-12-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+PASS  X =  4953: X - theta = (-P3A P3C) * (97, -46, -32)^2; (X - theta) T^2 = (-15-theta) S^2; agrees with the descent class and with 5.3; the other 7 mu0 excluded by a character
+    (A character witness (q, r) with alpha(r), mu0(r) != 0 mod q and leg(alpha(r)) != leg(mu0(r)) shows that
+    alpha is not mu0 S^2 with S in R, since S(r) != 0 would give leg(alpha(r)) = leg(mu0(r)).)
+5.8 confirmation (not used): a direct search
+PASS  the integers X with |X| <= 10^5 and X^3 - 144X + 1296 a square are exactly [-15, -12, -8, 0, 4, 9, 12, 24, 40, 48, 108, 252, 420, 4953]
+all checks of 07_classes.py passed

@@ -1,0 +1,181 @@
+02_exclusion.py -- zeros of the two markers on every unit orbit (exact)
+moduli tried, in order: [4, 8, 16, 32, 64, 3, 9, 27, 81, 5, 25, 7, 49, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53] (skipped when |G_q| > 5000)
+
+==============================================================================================================
+CLASS (1,0)  F = (36, 0, 0, -6, 1)  eps1 = (0, 1, -1, 0)  eps2 = (-86, -41, -117, 30)
+   checked: omega_0 = 1, omega_1 = alpha, invertible (alpha^2, alpha^3)-block (markers x2 = x3 = 0 <=> element in Z + Z alpha); N(eps1) = N(eps2) = 1
+   moduli available (|G_q|): 4(8), 8(32), 16(128), 32(512), 64(2048), 3(36), 9(108), 27(972), 5(124), 25(3100), 7(200), 49(1400), 11(732), 13(2196), 17(4912), 19(3429), 31(450)
+   checked: -1 is not a residue of <eps1,eps2> mod 4, so -1 is not in <eps1,eps2>; each pair +-z meets the family <eps1,eps2> w at most once
+   --- orbit c = 1, seed w = (-1, 0, 0, 0); known solutions in it: [(0, 1)] (exponents [(0, 0)])
+      moduli used: [4];  final lattice index 8
+         after q =   4: 1 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (0, 1): Proposition 17 at q = 4 (lambda = 0, nu(J) = 0, e = 2) -> exactly one zero
+      Prop. 17 instance used: q = 4 (p = 2, e = 2), zero (0, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 1
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 4, seed w = (2, -1, 0, 0); known solutions in it: [(1, 2)] (exponents [(0, 0)])
+      moduli used: [4, 31, 7];  final lattice index 36000
+         after q =   4: 2 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 2 left
+         after q =  31: 4 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 1 empty (siblings of a certified zero), 2 left
+         after q =   7: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (1, 2): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (1, 2): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 2
+      q = 31: |G_q| = 450, candidate classes mod Lambda_q: 4
+      q = 7: |G_q| = 200, candidate classes mod Lambda_q: 8
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 9, seed w = (-3, 0, 6, -1); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 8
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 36, seed w = (0, 0, 6, -1); known solutions in it: [(1, 0), (1, 6)] (exponents [(-1, 0), (1, 0)])
+      moduli used: [4, 31];  final lattice index 1800
+         after q =   4: 2 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 2 left
+         after q =  31: 4 candidate classes mod the new lattice; 2 certified (contain a known zero, Prop. 17), 2 empty (siblings of a certified zero), 0 left
+      class (1, 0) contains the solution (1, 6): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      class (119, 0) contains the solution (1, 0): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (1, 0): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (1, 6): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 2
+      q = 31: |G_q| = 450, candidate classes mod Lambda_q: 4
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+==============================================================================================================
+CLASS (0,1)  F = (-5, 14, 24, 2, 1)  eps1 = (0, -1, 1, 0)  eps2 = (-21, 36, 16, 14)
+   checked: omega_0 = 1, omega_1 = alpha, invertible (alpha^2, alpha^3)-block (markers x2 = x3 = 0 <=> element in Z + Z alpha); N(eps1) = N(eps2) = 1
+   moduli available (|G_q|): 4(8), 8(32), 16(128), 32(512), 64(2048), 3(36), 9(108), 27(972), 5(124), 25(3100), 7(144), 11(300), 13(2196), 17(4912), 19(3429), 31(3840)
+   checked: -1 is not a residue of <eps1,eps2> mod 4, so -1 is not in <eps1,eps2>; each pair +-z meets the family <eps1,eps2> w at most once
+   --- orbit c = 1, seed w = (-1, 0, 0, 0); known solutions in it: [(0, 1)] (exponents [(0, 0)])
+      moduli used: [4, 7, 3];  final lattice index 576
+         after q =   4: 1 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   7: 2 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   3: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (0, 1): Proposition 17 at q = 7 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 7 (p = 7, e = 1), zero (0, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 1
+      q = 7: |G_q| = 144, candidate classes mod Lambda_q: 4
+      q = 3: |G_q| = 36, candidate classes mod Lambda_q: 6
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 4, seed w = (-1, -1, 0, 0); known solutions in it: [(-1, 1)] (exponents [(0, 0)])
+      moduli used: [4, 31, 8];  final lattice index 3840
+         after q =   4: 2 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 2 left
+         after q =  31: 2 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   8: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (-1, 1): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (-1, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 2
+      q = 31: |G_q| = 3840, candidate classes mod Lambda_q: 4
+      q = 8: |G_q| = 32, candidate classes mod Lambda_q: 4
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 9, seed w = (-3, -2, -3, -1); known solutions in it: [(4, 1)] (exponents [(2, 1)])
+      moduli used: [4, 8, 31, 3];  final lattice index 11520
+         after q =   4: 1 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   8: 2 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 2 left
+         after q =  31: 2 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   3: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (2, 1) contains the solution (4, 1): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (4, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 1
+      q = 8: |G_q| = 32, candidate classes mod Lambda_q: 2
+      q = 31: |G_q| = 3840, candidate classes mod Lambda_q: 6
+      q = 3: |G_q| = 36, candidate classes mod Lambda_q: 18
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 36, seed w = (1, -1, 0, 0); known solutions in it: [(1, 1)] (exponents [(0, 0)])
+      moduli used: [4, 31, 8];  final lattice index 3840
+         after q =   4: 2 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 2 left
+         after q =  31: 2 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   8: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (1, 1): Proposition 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 31 (p = 31, e = 1), zero (1, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 8, candidate classes mod Lambda_q: 2
+      q = 31: |G_q| = 3840, candidate classes mod Lambda_q: 6
+      q = 8: |G_q| = 32, candidate classes mod Lambda_q: 4
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+==============================================================================================================
+CLASS (1,1)  F = (-8, 4, 24, 4, 1)  eps1 = (-1, 0, 1, 0)  eps2 = (1, -3, -5, -2)
+   checked: omega_0 = 1, omega_1 = alpha, invertible (alpha^2, alpha^3)-block (markers x2 = x3 = 0 <=> element in Z + Z alpha); N(eps1) = N(eps2) = 1
+   moduli available (|G_q|): 4(16), 8(32), 16(128), 32(512), 64(2048), 3(72), 9(216), 27(1944), 5(124), 25(3100), 7(200), 11(1464), 13(2196), 17(4912), 41(4200)
+   checked: -1 is not a residue of <eps1,eps2> mod 8, so -1 is not in <eps1,eps2>; each pair +-z meets the family <eps1,eps2> w at most once
+   --- orbit c = 1, seed w = (-1, 0, 0, 0); known solutions in it: [(0, 1)] (exponents [(0, 0)])
+      moduli used: [9, 3, 27, 13];  final lattice index 118584
+         after q =   9: 2 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =   3: 1 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =  27: 1 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 1 left
+         after q =  13: 1 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 1 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (0, 1): Proposition 17 at q = 9 (lambda = 0, nu(J) = 0, e = 2) -> exactly one zero
+      Prop. 17 instance used: q = 9 (p = 3, e = 2), zero (0, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 1: True
+      Prop. 17 instance used: q = 13 (p = 13, e = 1), zero (0, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 9: |G_q| = 216, candidate classes mod Lambda_q: 2
+      q = 3: |G_q| = 72, candidate classes mod Lambda_q: 6
+      q = 27: |G_q| = 1944, candidate classes mod Lambda_q: 2
+      q = 13: |G_q| = 2196, candidate classes mod Lambda_q: 20
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 4, seed w = (3, -1, -2, -1); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 4, seed w = (2, -1, -1, -1); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 4, seed w = (0, 0, -1, 0); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 9, seed w = (-1, -1, 0, 0); known solutions in it: [(-1, 1), (2, 1)] (exponents [(0, 0), (1, -1)])
+      moduli used: [4, 8, 16, 41, 25];  final lattice index 4166400
+         after q =   4: 4 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 4 left
+         after q =   8: 4 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 4 left
+         after q =  16: 8 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 7 left
+         after q =  41: 10 candidate classes mod the new lattice; 1 certified (contain a known zero, Prop. 17), 1 empty (siblings of a certified zero), 8 left
+         after q =  25: 4 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 4 empty (siblings of a certified zero), 0 left
+      class (0, 0) contains the solution (-1, 1): Proposition 17 at q = 16 (lambda = 0, nu(J) = 2, e = 4) -> exactly one zero
+      class (2281, 39) contains the solution (2, 1): Proposition 17 at q = 41 (lambda = 0, nu(J) = 0, e = 1) -> exactly one zero
+      Prop. 17 instance used: q = 16 (p = 2, e = 4), zero (-1, 1): lambda = 0, nu(J) = 2, delta = 2 <= e-1-iota = 2: True
+      Prop. 17 instance used: q = 25 (p = 5, e = 2), zero (-1, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 1: True
+      Prop. 17 instance used: q = 25 (p = 5, e = 2), zero (2, 1): lambda = 0, nu(J) = 1, delta = 1 <= e-1-iota = 1: True
+      Prop. 17 instance used: q = 41 (p = 41, e = 1), zero (2, 1): lambda = 0, nu(J) = 0, delta = 0 <= e-1-iota = 0: True
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 4
+      q = 8: |G_q| = 32, candidate classes mod Lambda_q: 4
+      q = 16: |G_q| = 128, candidate classes mod Lambda_q: 8
+      q = 41: |G_q| = 4200, candidate classes mod Lambda_q: 6
+      q = 25: |G_q| = 3100, candidate classes mod Lambda_q: 28
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 36, seed w = (6, -2, -3, -2); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 36, seed w = (-1, -2, -3, -1); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+   --- orbit c = 36, seed w = (0, -1, -3, -1); known solutions in it: [] (exponents [])
+      moduli used: [4];  final lattice index 16
+         after q =   4: 0 candidate classes mod the new lattice; 0 certified (contain a known zero, Prop. 17), 0 empty (siblings of a certified zero), 0 left
+      q = 4: |G_q| = 16, candidate classes mod Lambda_q: 0
+      uncertified live classes left: 0  ->  ORBIT DONE: zeros = the known solutions
+
+SUMMARY
+   class (1,0) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); certified: True
+   class (1,0) c =  4 seed (2, -1, 0, 0): 1 known solution pair(s); certified: True
+   class (1,0) c =  9 seed (-3, 0, 6, -1): 0 known solution pair(s); certified: True
+   class (1,0) c = 36 seed (0, 0, 6, -1): 2 known solution pair(s); certified: True
+   class (0,1) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); certified: True
+   class (0,1) c =  4 seed (-1, -1, 0, 0): 1 known solution pair(s); certified: True
+   class (0,1) c =  9 seed (-3, -2, -3, -1): 1 known solution pair(s); certified: True
+   class (0,1) c = 36 seed (1, -1, 0, 0): 1 known solution pair(s); certified: True
+   class (1,1) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); certified: True
+   class (1,1) c =  4 seed (3, -1, -2, -1): 0 known solution pair(s); certified: True
+   class (1,1) c =  4 seed (2, -1, -1, -1): 0 known solution pair(s); certified: True
+   class (1,1) c =  4 seed (0, 0, -1, 0): 0 known solution pair(s); certified: True
+   class (1,1) c =  9 seed (-1, -1, 0, 0): 2 known solution pair(s); certified: True
+   class (1,1) c = 36 seed (6, -2, -3, -2): 0 known solution pair(s); certified: True
+   class (1,1) c = 36 seed (-1, -2, -3, -1): 0 known solution pair(s); certified: True
+   class (1,1) c = 36 seed (0, -1, -3, -1): 0 known solution pair(s); certified: True
+ALL ORBITS CERTIFIED
+[done in 8.1 s]

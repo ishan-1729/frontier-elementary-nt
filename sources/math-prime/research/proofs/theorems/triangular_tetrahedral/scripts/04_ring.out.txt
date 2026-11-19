@@ -1,0 +1,114 @@
+1.1 multiplication rule and ring laws
+PASS  mul(u,v) equals u(t) v(t) reduced modulo f(t) = t^3 - 4t + 6
+PASS  u(t) v(t) - (uv)(t) = (bf + ce + cf t) f(t) exactly (so u -> u(r) respects products at any root r of f)
+PASS  l^3 = 4l - 6 and l^4 = 4l^2 - 6l
+PASS  commutative
+PASS  associative
+PASS  distributive
+PASS  (1,0,0) is the unit
+1.2 multiplication matrix and the norm
+PASS  the columns of matrix(u) are u*1, u*l, u*l^2
+    matrix(a,b,c) = [[a, -6*c, -6*b], [b, a + 4*c, 4*b - 6*c], [c, b, a + 4*c]]
+PASS  matrix(uv) = matrix(u) matrix(v)
+PASS  N(u) = det matrix(u) = a^3 + 8a^2c - 4ab^2 + 18abc + 16ac^2 - 6b^3 + 24bc^2 + 36c^3
+PASS  N(uv) = N(u) N(v)
+PASS  N(r u) = r^3 N(u)
+PASS  N(-u) = -N(u)
+PASS  Tr(u) = trace of matrix(u) = 3a + 8c; s2(u) = sum of the principal 2x2 minors = 3a^2 + 16ac - 4b^2 + 18bc + 16c^2
+PASS  every triple u is a root of t^3 - Tr(u) t^2 + s2(u) t - N(u), a monic cubic with integer coefficients
+1.3 adjugate triple
+PASS  u * adj(u) = (N(u), 0, 0)
+PASS  adj(u) is the first column of the adjugate matrix of matrix(u)
+    adj(a,b,c) = (a**2 + 8*a*c - 4*b**2 + 6*b*c + 16*c**2, -a*b - 6*c**2, -a*c + b**2 - 4*c**2)
+PASS  adj(uv) = adj(u) adj(v) (polynomial identity)
+PASS  N(adj u) = N(u)^2
+PASS  adj has integer polynomial coefficients, so for N(u) = +-1 the inverse N(u) adj(u) is an integer triple
+PASS  rational inverse: u * (adj(u)/N(u)) = 1 whenever N(u) != 0 (example u = (1/2, -3, 2/7))
+1.4 the norm vanishes only at 0 (2-adic descent)
+PASS  f(t) = t^3 - 4t + 6 is Eisenstein at 2: -4 and 6 are even, 6 is not divisible by 4
+PASS  N(a,b,c) - a^3 has even coefficients
+PASS  N(2a1,b,c) = 2P with P an integer polynomial
+    P = 4*a1**3 + 16*a1**2*c - 4*a1*b**2 + 18*a1*b*c + 16*a1*c**2 - 3*b**3 + 12*b*c**2 + 18*c**3
+PASS  P - b^3 has even coefficients (P's b^3 coefficient is -3)
+PASS  N(2a1,2b1,c) = 4P' with P' an integer polynomial
+    P' = 2*a1**3 + 8*a1**2*c - 8*a1*b1**2 + 18*a1*b1*c + 8*a1*c**2 - 12*b1**3 + 12*b1*c**2 + 9*c**3
+PASS  P' - c^3 has even coefficients (the c^3 coefficient of P' is 9)
+    so a primitive integer triple with N = 0 would have a, then b, then c even: impossible.
+1.5 special elements
+PASS  N(EPS) = N(-19, -5, 1) = 1
+PASS  N(EPS_INV) = N(95, -101, 40) = 1
+PASS  N(PI2) = N(-4, 1, 1) = -2
+PASS  N(P3A) = N(-1, 1, 0) = -3
+PASS  N(P3B) = N(5, 2, 0) = -3
+PASS  N(P3C) = N(3, -3, 1) = 3
+PASS  N(P179) = N(107, -114, 45) = 179
+PASS  EPS * EPS_INV = 1, and EPS_INV = adj(EPS) = inverse_unit(EPS)
+PASS  PI2^2 = (4,-6,-3) and PI2^3 = (38,10,-2) = -2*EPS
+PASS  2 = -PI2^3 EPS^-1
+PASS  P3A * P3B * P3C = 3
+PASS  PI2^2 * P179 = 3l^2 - 4 = (-4,0,3), and N(3l^2 - 4) = 716 = 2^2 * 179
+PASS  3l^2 - 4 = f'(l), and disc(f) = -716 = -2^2 * 179
+PASS  36(3l^2 - 4) = (-144,0,108) = EPS^-2 PI2^8 (P3A P3B P3C)^2 P179
+PASS  f = t(t - 1)(t + 1) mod 3, so the roots of f mod 3 are 0, 1, 2
+PASS  f = t^3 mod 2, so the only root of f mod 2 is 0
+PASS  f = (t - 47)^2 (t - 85) mod 179 (47 is the double root, 85 the simple one)
+    By 1.1, (a,b,c) -> a + b r + c r^2 mod q is a ring homomorphism R -> F_q for each such root r.
+    values mod 3 at r = 0, 1, 2: {'P3A': [2, 0, 1], 'P3B': [2, 1, 0], 'P3C': [0, 1, 1]}
+PASS  P3A = l - 1 vanishes mod 3 exactly at r = 1
+PASS  P3B = 2l + 5 vanishes mod 3 exactly at r = 2 = -1
+PASS  P3C = l^2 - 3l + 3 vanishes mod 3 exactly at r = 0
+PASS  PI2 = l^2 + l - 4 vanishes mod 2 at r = 0
+PASS  P179 = 45l^2 - 114l + 107 vanishes mod 179 at the double root 47 and not at 85 (value 144)
+PASS  theta = 6l = (0,6,0) satisfies theta^3 - 144 theta + 1296 = 0
+PASS  X - theta = (X,-6,0) and N(X - theta) = X^3 - 144X + 1296 (polynomial identity in X)
+1.6 real values
+PASS  f(-3) = -9 < 0 < 6 = f(-2)
+PASS  f(-13/5) = -147/125 < 0 < 3/8 = f(-5/2), so f has a root l1 in (-13/5, -5/2)
+PASS  bisection (197 steps): l1 in [lo, hi] with f(lo) < 0 < f(hi), width < 2^-200, l1 = -2.525102254814321
+PASS  f(t) - (t - L)(t^2 + L t + L^2 - 4) = f(L) (polynomial identity), so f(t) = (t - l1)(t^2 + l1 t + l1^2 - 4)
+PASS  t^2 + L t + L^2 - 4 = (t + L/2)^2 + (3L^2 - 16)/4 (polynomial identity)
+PASS  3 l1^2 - 16 > 3(5/2)^2 - 16 = 11/4 > 0, so the quadratic factor has no real root: l1 is the only real root of f
+PASS  cross-check (critical values): f(2/sqrt3) = 6 - 16/(3 sqrt3), f(-2/sqrt3) = 6 + 16/(3 sqrt3), and (16/(3 sqrt3))^2 = 256/27 < 36
+    Sturm sequence: [t**3 - 4*t + 6, 3*t**2 - 4, 8*t/3 - 6, -179/16]
+PASS  cross-check (Sturm): sign changes at -infinity minus at +infinity = 1 real root
+PASS  f has no rational root (rational root test: f(r) != 0 for r = +-1, +-2, +-3, +-6), so l1 is irrational
+PASS  s = -l1 and p = l1^2 - 4: (t - L)(t^2 - s t + p) = f(t) - f(L), i.e. e1 = l1 + s = 0, e2 = l1 s + p = -4, e3 = l1 p = -6 mod f(L)
+PASS  p = -6/l1: L p + 6 = f(L)
+PASS  (a + b z1 + c z1^2)(a + b z2 + c z2^2) = a^2 + s ab + (s^2-2p) ac + p b^2 + sp bc + p^2 c^2 with s = z1 + z2, p = z1 z2
+PASS  with s = -L, p = L^2 - 4 the form reduces mod f(L) to Q = a^2 - L ab + (8-L^2) ac + (L^2-4) b^2 + 6bc + (16-6L-4L^2) c^2
+PASS  Q(u) = sigma1(adj(u)) exactly (polynomial identity in a, b, c, L)
+PASS  mod f(L): sigma1(uv) = sigma1(u) sigma1(v)
+PASS  mod f(L): sigma1(u) Q(u) = N(u)
+PASS  mod f(L): Q(uv) = Q(u) Q(v)
+PASS  derivation: the product of the three values a + b r_i + c r_i^2 is symmetric and equals N when e1 = 0, e2 = -4, e3 = -6
+    coefficients of N from e1 = 0, e2 = -4, e3 = -6: {'a^3': 1, 'a^2 b: e1': 0, 'a^2 c: e1^2 - 2e2': 8, 'a b^2: e2': -4, 'abc: e1 e2 - 3e3': 18, 'a c^2: e2^2 - 2e1e3': 16, 'b^3: e3': -6, 'b^2 c: e3 e1': 0, 'b c^2: e3 e2': 24, 'c^3: e3^2': 36}
+PASS  these are the coefficients of N
+PASS  mod f(L): Q = (a - (L/2) b + ((8 - L^2)/2) c)^2 + ((3L^2 - 16)/4) (b - L c)^2
+PASS  Q is the quadratic form of [[1, -L/2, (8-L^2)/2], [-L/2, L^2-4, 3], [(8-L^2)/2, 3, 16-6L-4L^2]]
+PASS  its leading minors are 1, (3L^2 - 16)/4 and det = 0 mod f(L): Q is positive SEMIdefinite of rank 2, not definite
+PASS  the kernel: Q(l1^2 - 4, l1, 1) = 0 mod f(L) (an irrational direction, (p, -s, 1))
+    So Q(u) >= 0 for all real triples, and Q(u) = 0 only for u in R(l1^2-4, l1, 1). A nonzero rational triple
+    is not on that line (l1 is irrational), and also N(u) = sigma1(u) Q(u) != 0 by 1.4: Q(u) > 0 for u in R_Q, u != 0.
+PASS  mod f(L): T2 := sigma1^2 + 2Q = 3a^2 + 16ac + (3L^2-8) b^2 + 8L bc + (32-18L-4L^2) c^2
+PASS  T2 is the quadratic form of [[3,0,8],[0,3L^2-8,4L],[8,4L,32-18L-4L^2]]
+PASS  leading minors of T2: 3, 9L^2 - 24, and det = 716 mod f(L) (= |disc f|)
+PASS  9 l1^2 - 24 > 9(5/2)^2 - 24 = 129/4 > 0: T2 is positive definite (Sylvester)
+PASS  completed squares, mod f(L): (3L^2-8) T2 = 3(3L^2-8)(a + 8c/3)^2 + ((3L^2-8) b + 4L c)^2 + (716/3) c^2, i.e. T2 = 3(a + 8c/3)^2 + d2 (b + (4L/d2) c)^2 + (716/(3 d2)) c^2 with d2 = 3L^2 - 8
+    interval values (l1 in [lo, hi]):
+    element  triple              N  sigma1 in                          Q = sigma1(adj) in                 T2 in
+    EPS      (-19, -5, 1)        1  [0.00165267133997, 0.00165267133997] [605.080983627, 605.080983627]     [1210.16196999, 1210.16196999]
+PASS  EPS: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = 1
+    EPS_INV  (95, -101, 40)      1  [605.080983627, 605.080983627]     [0.00165267133997, 0.00165267133997] [366123.000052, 366123.000052]
+PASS  EPS_INV: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = 1
+    PI2      (-4, 1, 1)         -2  [-0.148960857546, -0.148960857546] [13.4263459069, 13.4263459069]     [26.8748811509, 26.8748811509]
+PASS  PI2: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = -2
+    P3A      (-1, 1, 0)         -3  [-3.52510225481, -3.52510225481]   [0.851039142454, 0.851039142454]   [14.1284241918, 14.1284241918]
+PASS  P3A: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = -3
+    P3B      (5, 2, 0)          -3  [-0.0502045096286, -0.0502045096286] [59.7555881372, 59.7555881372]     [119.513696767, 119.513696767]
+PASS  P3B: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = -3
+    P3C      (3, -3, 1)          3  [16.9514481617, 16.9514481617]     [0.176976030094, 0.176976030094]   [287.705546839, 287.705546839]
+PASS  P3C: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = 3
+    P179     (107, -114, 45)   179  [681.788019926, 681.788019926]     [0.26254494765, 0.26254494765]     [464835.429204, 464835.429204]
+PASS  P179: sigma1 and Q have determined signs, Q > 0, and the product interval of sigma1 * Q contains N = 179
+PASS  sigma1(EPS) in (1/606, 1/605), so Q(EPS) = 1/sigma1(EPS) in (605, 606)
+all checks of 04_ring.py passed

@@ -1,0 +1,428 @@
+00_fields.py -- the quartic Thue fields of 1611.a1 (C(n,2) = C(m,3)) and Avanesov's fields; exact checks
+conventions: F(m,n) = a0 m^4 + a1 m^3 n + a2 m^2 n^2 + a3 m n^3 + n^4, f(t) = F(1,t), alpha a root of f;
+             an element is given by its coordinates in the integral basis omega_0..omega_3 of core.CLASSES.
+
+====================================================================================================================
+1. f irreducible; F(m,n) = m^4 f(n/m) = N(n - m alpha); disc(f); two real roots; Galois group S4
+====================================================================================================================
+   [ok] resolvent formula: prod over the 3 pairings of (y - (x_i x_j + x_k x_l)) = y^3 - b y^2 + (ac - 4d) y - (a^2 d - 4bd + c^2) for f = prod (t - x_i) = t^4 + a t^3 + b t^2 + c t + d (symbolic identity)
+
+CLASS (1,0)  (mu = 9 - theta)   F(m,n) = 36*m**4 - 6*m*n**3 + n**4
+   f(t) = F(1,t) = t**4 - 6*t**3 + 36
+   [ok] f irreducible over Q (elementary: no integer root among the divisors of f(0); no quadratic factorization over Z)
+   [ok] f irreducible over Q (sympy)
+   [ok] m^4 f(n/m) = F(m,n)
+   [ok] Res_t(f(t), n - m t) = F(m,n)   [= prod_i (n - m alpha_i) = N(n - m alpha), f monic]
+   [ok] det(matrix of multiplication by n - m alpha = (n,-m,0,0) in the basis of core.Field) = F(m,n)
+   disc(f) = -33405696 = {-1: 1, 2: 8, 3: 6, 179: 1}
+   [ok] Sturm chain of length 5 ends in a nonzero constant (f squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real 2.09721305436463, 5.81711431862203; complex (-0.957163686493328 + 1.42643721151648j) and its conjugate
+   resolvent cubic R(y) = y**3 - 144*y - 1296
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -1296: none of the 50 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(f)
+   [ok] disc(f) < 0, so disc(f) is not a square in Q
+   => Galois group of f is S4 (f irreducible, R irreducible, disc(f) not a square)
+
+CLASS (0,1)  (mu = -15 - theta)   F(m,n) = -5*m**4 + 14*m**3*n + 24*m**2*n**2 + 2*m*n**3 + n**4
+   f(t) = F(1,t) = t**4 + 2*t**3 + 24*t**2 + 14*t - 5
+   [ok] f irreducible over Q (elementary: no integer root among the divisors of f(0); no quadratic factorization over Z)
+   [ok] f irreducible over Q (sympy)
+   [ok] m^4 f(n/m) = F(m,n)
+   [ok] Res_t(f(t), n - m t) = F(m,n)   [= prod_i (n - m alpha_i) = N(n - m alpha), f monic]
+   [ok] det(matrix of multiplication by n - m alpha = (n,-m,0,0) in the basis of core.Field) = F(m,n)
+   disc(f) = -33405696 = {-1: 1, 2: 8, 3: 6, 179: 1}
+   [ok] Sturm chain of length 5 ends in a nonzero constant (f squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real -0.860578889067903, 0.248668477804735; complex (-0.694044794368416 + 4.78360890904257j) and its conjugate
+   resolvent cubic R(y) = y**3 - 24*y**2 + 48*y - 656
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -656: none of the 20 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(f)
+   [ok] disc(f) < 0, so disc(f) is not a square in Q
+   => Galois group of f is S4 (f irreducible, R irreducible, disc(f) not a square)
+
+CLASS (1,1)  (mu = -12 - theta)   F(m,n) = -8*m**4 + 4*m**3*n + 24*m**2*n**2 + 4*m*n**3 + n**4
+   f(t) = F(1,t) = t**4 + 4*t**3 + 24*t**2 + 4*t - 8
+   [ok] f irreducible over Q (elementary: no integer root among the divisors of f(0); no quadratic factorization over Z)
+   [ok] f irreducible over Q (sympy)
+   [ok] m^4 f(n/m) = F(m,n)
+   [ok] Res_t(f(t), n - m t) = F(m,n)   [= prod_i (n - m alpha_i) = N(n - m alpha), f monic]
+   [ok] det(matrix of multiplication by n - m alpha = (n,-m,0,0) in the basis of core.Field) = F(m,n)
+   disc(f) = -33405696 = {-1: 1, 2: 8, 3: 6, 179: 1}
+   [ok] Sturm chain of length 5 ends in a nonzero constant (f squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real -0.706816472573604, 0.481813241270922; complex (-1.88749838434866 + 4.46413674898087j) and its conjugate
+   resolvent cubic R(y) = y**3 - 24*y**2 + 48*y - 656
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -656: none of the 20 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(f)
+   [ok] disc(f) < 0, so disc(f) is not a square in Q
+   => Galois group of f is S4 (f irreducible, R irreducible, disc(f) not a square)
+
+====================================================================================================================
+2. The integral basis: an order containing Z[alpha]; index; discriminant; maximality
+====================================================================================================================
+
+CLASS (1,0)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = alpha
+      omega_2 = alpha**2/6
+      omega_3 = alpha**3/6
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (0, 0, 6, 0)   w1w2 = (0, 0, 0, 1)   w1w3 = (-6, 0, 0, 6)
+      w2w2 = (-1, 0, 0, 1)   w2w3 = (-6, -1, 0, 6)
+      w3w3 = (-36, -6, -6, 36)
+   [ok] the inverse basis matrix is integral: 1, alpha, alpha^2, alpha^3 lie in O, so Z[alpha] <= O
+   [ok] [O : Z[alpha]] = 1/|det B| = 36
+   [ok] disc(O) = disc(f) det(B)^2 = -25776 equals det(Tr(omega_i omega_j)) = -25776
+   disc(O) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+   [ok] p = 2: none of the 15 elements (sum c_i omega_i)/2, 0 <= c_i < 2, not all 0, is integral (characteristic polynomial test) -> O is 2-maximal
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {179: 1}
+   => O is the maximal order; disc(O_K) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+      from Z[alpha]: p=2: 3 integral classes; adjoin t**3/2
+      from Z[alpha]: p=2: 1 integral classes; adjoin t**2/2
+      from Z[alpha]: p=2: none of the 15 classes is integral -> 2-maximal
+      from Z[alpha]: p=3: 8 integral classes; adjoin t**3/6
+      from Z[alpha]: p=3: 2 integral classes; adjoin t**2/6
+      from Z[alpha]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[alpha] (enlargement) has the same HNF as the basis of core.CLASSES
+
+CLASS (0,1)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = alpha
+      omega_2 = alpha**2/6 + 2*alpha/3 + 1/6
+      omega_3 = alpha**3/6 + alpha/2 + 1/3
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (-1, -4, 6, 0)   w1w2 = (-1, -3, 4, 1)   w1w3 = (5, 13, -21, -2)
+      w2w2 = (0, 0, -1, 1)   w2w3 = (3, 7, -8, -4)
+      w3w3 = (-16, -42, 63, 11)
+   [ok] the inverse basis matrix is integral: 1, alpha, alpha^2, alpha^3 lie in O, so Z[alpha] <= O
+   [ok] [O : Z[alpha]] = 1/|det B| = 36
+   [ok] disc(O) = disc(f) det(B)^2 = -25776 equals det(Tr(omega_i omega_j)) = -25776
+   disc(O) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+   [ok] p = 2: none of the 15 elements (sum c_i omega_i)/2, 0 <= c_i < 2, not all 0, is integral (characteristic polynomial test) -> O is 2-maximal
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {179: 1}
+   => O is the maximal order; disc(O_K) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+      from Z[alpha]: p=2: 3 integral classes; adjoin t**3/2 + t/2
+      from Z[alpha]: p=2: none of the 15 classes is integral -> 2-maximal
+      from Z[alpha]: p=3: 8 integral classes; adjoin t**2/3 + t/3 + 1/3
+      from Z[alpha]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[alpha] (enlargement) has the same HNF as the basis of core.CLASSES
+
+CLASS (1,1)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = alpha
+      omega_2 = alpha**2/6 + alpha/3 + 2/3
+      omega_3 = alpha**3/12 + 1/3
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (-4, -2, 6, 0)   w1w2 = (-2, 0, 2, 2)   w1w3 = (10, 4, -12, -4)
+      w2w2 = (2, 1, -2, 0)   w2w3 = (-2, -1, 4, -2)
+      w3w3 = (-10, -3, 9, 11)
+   [ok] the inverse basis matrix is integral: 1, alpha, alpha^2, alpha^3 lie in O, so Z[alpha] <= O
+   [ok] [O : Z[alpha]] = 1/|det B| = 72
+   [ok] disc(O) = disc(f) det(B)^2 = -6444 equals det(Tr(omega_i omega_j)) = -6444
+   disc(O) = -6444 = {-1: 1, 2: 2, 3: 2, 179: 1}
+   [ok] p = 2: none of the 15 elements (sum c_i omega_i)/2, 0 <= c_i < 2, not all 0, is integral (characteristic polynomial test) -> O is 2-maximal
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {179: 1}
+   => O is the maximal order; disc(O_K) = -6444 = {-1: 1, 2: 2, 3: 2, 179: 1}
+      from Z[alpha]: p=2: 3 integral classes; adjoin t**3/2
+      from Z[alpha]: p=2: 3 integral classes; adjoin t**3/4
+      from Z[alpha]: p=2: none of the 15 classes is integral -> 2-maximal
+      from Z[alpha]: p=3: 8 integral classes; adjoin t**3/12 + t**2/6 + t/3
+      from Z[alpha]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[alpha] (enlargement) has the same HNF as the basis of core.CLASSES
+
+====================================================================================================================
+3. Marker lemma: x in O lies in Z + Z alpha iff x2 = x3 = 0; n - m alpha = (n, -m, 0, 0)
+====================================================================================================================
+CLASS (1,0)
+   [ok] omega_0 = 1, omega_1 = alpha
+   [ok] only omega_2, omega_3 involve alpha^2, alpha^3: the (alpha^2, alpha^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/6, 0], [0, 1/6]] has det 1/36 != 0, so the alpha^2, alpha^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 alpha, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m alpha has coordinates (n,-m,0,0)
+   [ok] from_power(n - m alpha) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+CLASS (0,1)
+   [ok] omega_0 = 1, omega_1 = alpha
+   [ok] only omega_2, omega_3 involve alpha^2, alpha^3: the (alpha^2, alpha^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/6, 0], [0, 1/6]] has det 1/36 != 0, so the alpha^2, alpha^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 alpha, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m alpha has coordinates (n,-m,0,0)
+   [ok] from_power(n - m alpha) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+CLASS (1,1)
+   [ok] omega_0 = 1, omega_1 = alpha
+   [ok] only omega_2, omega_3 involve alpha^2, alpha^3: the (alpha^2, alpha^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/6, 0], [0, 1/12]] has det 1/72 != 0, so the alpha^2, alpha^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 alpha, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m alpha has coordinates (n,-m,0,0)
+   [ok] from_power(n - m alpha) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+
+====================================================================================================================
+4. Units: N(eps1) = N(eps2) = 1 for core.UNITS
+====================================================================================================================
+CLASS (1,0)
+   [ok] N(eps1) = 1   eps1 = (0, 1, -1, 0) = -alpha**2/6 + alpha   power coordinates ['0', '1', '-1/6', '0']   charpoly t**4 + 2*t**2 - 6*t + 1
+   [ok] N(eps2) = 1   eps2 = (-86, -41, -117, 30) = 5*alpha**3 - 39*alpha**2/2 - 41*alpha - 86   power coordinates ['-86', '-41', '-39/2', '5']   charpoly t**4 + 212*t**3 + 78*t**2 + 14*t + 1
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: 0.3105407765, -1.729849165; of eps2: 5.354847725, -1.985842266; |det| = 8.64639386843
+CLASS (0,1)
+   [ok] N(eps1) = 1   eps1 = (0, -1, 1, 0) = alpha**2/6 - alpha/3 + 1/6   power coordinates ['1/6', '-1/3', '1/6', '0']   charpoly t**4 + 6*t**3 + 14*t**2 - 12*t + 1
+   [ok] N(eps2) = 1   eps2 = (-21, 36, 16, 14) = 7*alpha**3/3 + 8*alpha**2/3 + 161*alpha/3 - 41/3   power coordinates ['-41/3', '161/3', '8/3', '7/3']   charpoly t**4 + 60*t**3 + 38*t**2 + 12*t + 1
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: -0.5499841293, -2.363576036; of eps2: 4.083675753, -2.114584388; |det| = 10.815066003
+CLASS (1,1)
+   [ok] N(eps1) = 1   eps1 = (-1, 0, 1, 0) = alpha**2/6 + alpha/3 - 1/3   power coordinates ['-1/3', '1/3', '1/6', '0']   charpoly t**4 + 8*t**3 + 20*t**2 + 10*t + 1
+   [ok] N(eps2) = 1   eps2 = (1, -3, -5, -2) = -alpha**3/6 - 5*alpha**2/6 - 14*alpha/3 - 3   power coordinates ['-3', '-14/3', '-5/6', '-1/6']   charpoly t**4 + 2*t**3 - 16*t**2 + 16*t + 1
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: -0.7222178613, -2.00963005; of eps2: -2.830307412, 1.697550763; |det| = 6.91387230724
+
+====================================================================================================================
+5. Known solutions; their integral points; confirmation box search |m|,|n| <= 1000
+====================================================================================================================
+integral point of (m,n): (u,v,w) = conic map, g = gcd(u,v,w), X = X4(m,n)/g^2, Y = |Y6(m,n)|/g^3 on
+Y^2 = X^3 - 144X + 1296 (core.descent_maps); Avanesov's model 6Y'^2 = X'^3 - 4X' + 6 is X = 6X', Y = 36Y', and X' = 2x + 2, Y' = 2y + 1 with 3y(y+1) = x(x+1)(x+2), common value C(x+2,3) = C(y+1,2).
+CLASS (1,0)
+   [ok] (m,n) = (0, 1): coprime, F = 1
+   [ok] (m,n) = (0, 1): g = 1, F = g^2, (X,Y) = (9, 27) on the monic model; not on Avanesov's model (6 does not divide X or 36 does not divide Y)
+   [ok] (m,n) = (1, 0): coprime, F = 36
+   [ok] (m,n) = (1, 0): g = 6, F = g^2, (X,Y) = (0, 36) on the monic model; Avanesov X' = 0, Y' = 1; x = -1, y = 0, value 0
+   [ok] (m,n) = (1, 2): coprime, F = 4
+   [ok] (m,n) = (1, 2): g = 2, F = g^2, (X,Y) = (108, 1116) on the monic model; Avanesov X' = 18, Y' = 31; x = 8, y = 15, value 120
+   [ok] (m,n) = (1, 6): coprime, F = 36
+   [ok] (m,n) = (1, 6): g = 6, F = g^2, (X,Y) = (252, 3996) on the monic model; Avanesov X' = 42, Y' = 111; x = 20, y = 55, value 1540
+   grouped by c: c = 1: [(0, 1)]; c = 4: [(1, 2)]; c = 9: []; c = 36: [(1, 0), (1, 6)]
+CLASS (0,1)
+   [ok] (m,n) = (-1, 1): coprime, F = 4
+   [ok] (m,n) = (-1, 1): g = 2, F = g^2, (X,Y) = (48, 324) on the monic model; Avanesov X' = 8, Y' = 9; x = 3, y = 4, value 10
+   [ok] (m,n) = (0, 1): coprime, F = 1
+   [ok] (m,n) = (0, 1): g = 1, F = g^2, (X,Y) = (-15, 9) on the monic model; not on Avanesov's model (6 does not divide X or 36 does not divide Y)
+   [ok] (m,n) = (1, 1): coprime, F = 36
+   [ok] (m,n) = (1, 1): g = 6, F = g^2, (X,Y) = (12, 36) on the monic model; Avanesov X' = 2, Y' = 1; x = 0, y = 0, value 0
+   [ok] (m,n) = (4, 1): coprime, F = 9
+   [ok] (m,n) = (4, 1): g = 3, F = g^2, (X,Y) = (4953, 348579) on the monic model; not on Avanesov's model (6 does not divide X or 36 does not divide Y)
+   grouped by c: c = 1: [(0, 1)]; c = 4: [(-1, 1)]; c = 9: [(4, 1)]; c = 36: [(1, 1)]
+CLASS (1,1)
+   [ok] (m,n) = (-1, 1): coprime, F = 9
+   [ok] (m,n) = (-1, 1): g = 3, F = g^2, (X,Y) = (24, 108) on the monic model; Avanesov X' = 4, Y' = 3; x = 1, y = 1, value 1
+   [ok] (m,n) = (0, 1): coprime, F = 1
+   [ok] (m,n) = (0, 1): g = 1, F = g^2, (X,Y) = (-12, 36) on the monic model; Avanesov X' = -2, Y' = 1; x = -2, y = 0, value 0
+   [ok] (m,n) = (2, 1): coprime, F = 9
+   [ok] (m,n) = (2, 1): g = 3, F = g^2, (X,Y) = (420, 8604) on the monic model; Avanesov X' = 70, Y' = 239; x = 34, y = 119, value 7140
+   grouped by c: c = 1: [(0, 1)]; c = 4: []; c = 9: [(-1, 1), (2, 1)]; c = 36: []
+box search: every coprime (m,n), |m|,|n| <= 1000, with F(m,n) in (1, 4, 9, 36) (numpy int64, then exact recheck)
+   [ok] class (1,0): |F| <= 43 * 1000^4 = 43000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,0): 8 solutions = 4 pairs +-(m,n); equal to core.KNOWN up to sign: True
+   [ok] class (0,1): |F| <= 46 * 1000^4 = 46000000000000 < 2^62 (no int64 overflow)
+   [ok] class (0,1): 8 solutions = 4 pairs +-(m,n); equal to core.KNOWN up to sign: True
+   [ok] class (1,1): |F| <= 41 * 1000^4 = 41000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,1): 6 solutions = 3 pairs +-(m,n); equal to core.KNOWN up to sign: True
+
+====================================================================================================================
+6. Avanesov, Acta Arith. 12 (1966/67) 409-420: fields, discriminants, forms, units
+====================================================================================================================
+His quartic fields, labelled H1, H2, H3 here (in the paper H1 is K1(eta), and K2(lambda) is the CUBIC field):
+H1: eta^4 - 36 eta + 36 = 0 (his (3)); H2: eta^4 - 12 eta^3 + 18 eta^2 + 9 = 0, H3: eta^4 - 18 eta^2 - 36 eta + 9 = 0 (his Remark, p. 413).
+His forms (his variables (n, m) written here (N, M)); his lemmas 2-7 state that L_i(N,M) = 1 has exactly the
+listed solutions, up to sign:
+   L2(N,M) = 36*M**4 + 36*M**3*N + N**4 = 1;  solutions [(1, 0), (1, -1)]
+   [ok] L2 = 1 at each listed solution (substitution)
+   L3(N,M) = 4*M**4 + 12*M**3*N + 9*N**4 = 1;  solutions [(1, -1)]
+   [ok] L3 = 1 at each listed solution (substitution)
+   L4(N,M) = 9*M**4 + 18*M**2*N**2 - 12*M*N**3 + N**4 = 1;  solutions [(1, 0), (2, 1)]
+   [ok] L4 = 1 at each listed solution (substitution)
+   L5(N,M) = 9*M**4 + 36*M**3*N + 18*M**2*N**2 + N**4 = 1;  solutions [(1, 0)]
+   [ok] L5 = 1 at each listed solution (substitution)
+   L6(N,M) = 9*M**4 - 18*M**2*N**2 - 12*M*N**3 + N**4 = 1;  solutions [(1, 0)]
+   [ok] L6 = 1 at each listed solution (substitution)
+   L7(N,M) = 9*M**4 - 36*M**3*N - 18*M**2*N**2 + N**4 = 1;  solutions [(1, 0)]
+   [ok] L7 = 1 at each listed solution (substitution)
+
+(a) which of our fields each of his polynomials defines
+   H1: h(t) = t**4 - 36*t + 36; irreducible True; real roots 2; disc(h) = {-1: 1, 2: 8, 3: 6, 179: 1}
+   H2: h(t) = t**4 - 12*t**3 + 18*t**2 + 9; irreducible True; real roots 2; disc(h) = {-1: 1, 2: 8, 3: 6, 179: 1}
+   H3: h(t) = t**4 - 18*t**2 - 36*t + 9; irreducible True; real roots 2; disc(h) = {-1: 1, 2: 8, 3: 6, 179: 1}
+   AVANESOV p. 410: (3) has two real roots and a pair of complex conjugate roots: TRUE
+   [ok] H1 -> class (1,0): exactly one root of h in Q(alpha) found
+   [ok] H1 = class (1,0): h(P(alpha)) = 0 exactly modulo f, with P(alpha) = -alpha**3/6 + alpha**2  (coordinates [0, 0, 6, -1])
+   [ok] inverse: alpha = Q(eta) with Q(eta) = 6 - eta**3/6; f(Q(eta)) = 0 exactly modulo h
+   [ok] H1 is not class (0,1): at p = 7 (not dividing either discriminant) h and f factor with degrees (4,) and (1, 1, 2)
+   [ok] H1 is not class (1,1): at p = 23 (not dividing either discriminant) h and f factor with degrees (1, 1, 2) and (4,)
+   [ok] H2 is not class (1,0): at p = 23 (not dividing either discriminant) h and f factor with degrees (4,) and (1, 1, 2)
+   [ok] H2 is not class (0,1): at p = 7 (not dividing either discriminant) h and f factor with degrees (4,) and (1, 1, 2)
+   [ok] H2 -> class (1,1): exactly one root of h in Q(alpha) found
+   [ok] H2 = class (1,1): h(P(alpha)) = 0 exactly modulo f, with P(alpha) = -alpha**3/3 - alpha**2 - 7*alpha + 17/3  (coordinates [11, -5, -6, -4])
+   [ok] inverse: alpha = Q(eta) with Q(eta) = -eta**3/3 + 4*eta**2 - 6*eta - 1; f(Q(eta)) = 0 exactly modulo h
+   [ok] H3 is not class (1,0): at p = 7 (not dividing either discriminant) h and f factor with degrees (1, 1, 2) and (4,)
+   [ok] H3 -> class (0,1): exactly one root of h in Q(alpha) found
+   [ok] H3 = class (0,1): h(P(alpha)) = 0 exactly modulo f, with P(alpha) = alpha**3/6 + alpha**2/2 + 9*alpha/2 + 23/6  (coordinates [3, 2, 3, 1])
+   [ok] inverse: alpha = Q(eta) with Q(eta) = eta**3/6 - eta**2/2 - 3*eta/2 - 1/2; f(Q(eta)) = 0 exactly modulo h
+   [ok] H3 is not class (1,1): at p = 7 (not dividing either discriminant) h and f factor with degrees (1, 1, 2) and (4,)
+   [ok] his three fields are our three fields, one each: H1 = class (1,0), H2 = class (1,1), H3 = class (0,1)
+   [ok] H1 = class (1,0): equivalently eta = 6/alpha (exact, modulo f)
+   [ok] H2 = class (1,1): equivalently eta = 3/(alpha + 1) (exact, modulo f)
+   [ok] H3 = class (0,1): equivalently eta = 3(1 + alpha)/(1 - alpha) (exact, modulo f)
+   our three fields are pairwise non-isomorphic:
+   [ok] class (1,0) vs (0,1): at p = 7 the factorization degrees are (4,) and (1, 1, 2)
+   [ok] class (1,0) vs (1,1): at p = 23 the factorization degrees are (1, 1, 2) and (4,)
+   [ok] class (0,1) vs (1,1): at p = 7 the factorization degrees are (1, 1, 2) and (4,)
+      H1 vs H2: p = 23, degrees (1, 1, 2) vs (4,)
+      H1 vs H3: p = 7, degrees (4,) vs (1, 1, 2)
+      H2 vs H3: p = 7, degrees (4,) vs (1, 1, 2)
+   AVANESOV Remark (p. 413), first half: the three fields are distinct: TRUE
+
+(b) maximal orders of his fields (p-maximality test with enlargement, from Z[eta])
+   H1: p=2: 3 integral classes; adjoin t**3/2
+   H1: p=2: 1 integral classes; adjoin t**2/2
+   H1: p=2: none of the 15 classes is integral -> 2-maximal
+   H1: p=3: 8 integral classes; adjoin t**3/6
+   H1: p=3: 2 integral classes; adjoin t**2/6
+   H1: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] H1: disc = disc(h) det(B)^2 = det(trace form) = -25776
+   H1: maximal order basis 1, eta, eta**2/6, eta**3/6;  [O : Z[eta]] = 36;  disc = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+   [ok] H1: equals disc(O) of the isomorphic class (1,0) (-25776)
+   H2: p=2: 3 integral classes; adjoin t**3/2 + t/2
+   H2: p=2: 1 integral classes; adjoin t**3/4 + t**2/4 + 3*t/4 + 3/4
+   H2: p=2: none of the 15 classes is integral -> 2-maximal
+   H2: p=3: 8 integral classes; adjoin t**3/12 + t**2/12 + t/4 + 1/4
+   H2: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] H2: disc = disc(h) det(B)^2 = det(trace form) = -6444
+   H2: maximal order basis 1, eta, eta**2/6 + 1/2, eta**3/12 + eta**2/12 + eta/4 + 1/4;  [O : Z[eta]] = 72;  disc = -6444 = {-1: 1, 2: 2, 3: 2, 179: 1}
+   [ok] H2: equals disc(O) of the isomorphic class (1,1) (-6444)
+   H3: p=2: 3 integral classes; adjoin t**3/2 + t/2
+   H3: p=2: none of the 15 classes is integral -> 2-maximal
+   H3: p=3: 8 integral classes; adjoin t**3/6 + t/2
+   H3: p=3: 2 integral classes; adjoin t**2/6 + 1/2
+   H3: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] H3: disc = disc(h) det(B)^2 = det(trace form) = -25776
+   H3: maximal order basis 1, eta, eta**2/6 + 1/2, eta**3/6 + eta/2;  [O : Z[eta]] = 36;  disc = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+   [ok] H3: equals disc(O) of the isomorphic class (0,1) (-25776)
+   AVANESOV p. 410: [1, eta, eta^2/6, eta^3/6] is an integral basis of K1(eta) = H1: TRUE
+   AVANESOV p. 410: D(eta) = -2^4 3^2 179 for K1(eta) = H1: TRUE   [computed -25776]
+   AVANESOV Remark (p. 413), second half: all three fields have discriminant -2^4 3^2 179 = -25776: FALSE   [H1: -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}, H2: -6444 = {-1: 1, 2: 2, 3: 2, 179: 1}, H3: -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}]
+   [ok] certificate for H2: O = Z + Z eta + Z (eta^2 + 3)/6 + Z (eta^3 + eta^2 + 3 eta + 3)/12 is an order (integral multiplication table) with disc(O) = -6444; as disc(O) = [O_K : O]^2 disc(O_K), disc(H2) divides -6444, so it is not -25776; the last generator has characteristic polynomial t**4 - 103*t**3 + 221*t**2 - 77*t + 10
+   AVANESOV p. 410: the cubic resolvent of (3) is z^3 - 144 z - 1296: TRUE   [computed z**3 - 144*z - 1296]
+
+(c) his six forms as GL2(Q)-transforms of ours: F(T(N,M)) = lambda L_i(N,M), T primitive integral
+   [ok] L2: exactly one relation found (over the three classes, all 24 root bijections)
+   L2: class (1,0) (his field H1):  F_(1,0)(T(N,M)) = 36 * L2(N,M)   with (m,n) = (N, -6M), det T = -6   (identity of forms: sympy expand, exact);  inverse (N,M) = (m, -n/6)
+   [ok] his solution (N,M) = (1, 0) -> T(N,M) = 1 * (1, 0); F(1, 0) = 36 = lambda/g^4; in core.KNOWN (up to sign): True
+   [ok] his solution (N,M) = (1, -1) -> T(N,M) = 1 * (1, 6); F(1, 6) = 36 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (1,0) giving solutions of L2 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (1, 0) -> (-1, 0), (1, 6) -> (-1, 1)
+   [ok] L2: the known solutions of the class account for exactly his 2 solution(s)
+   [ok] L2: all his solutions give the same right side c and gcd g: [(36, 1)]
+   [ok] L2 = 1  <=>  F_(1,0)(m,n) = 36 with (m,n) coprime: every residue (m,n) mod 6 with F == 36, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 6)
+   [ok] L3: exactly one relation found (over the three classes, all 24 root bijections)
+   L3: class (1,0) (his field H1):  F_(1,0)(T(N,M)) = 4 * L3(N,M)   with (m,n) = (N, -2M), det T = -2   (identity of forms: sympy expand, exact);  inverse (N,M) = (m, -n/2)
+   [ok] his solution (N,M) = (1, -1) -> T(N,M) = 1 * (1, 2); F(1, 2) = 4 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (1,0) giving solutions of L3 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (1, 2) -> (-1, 1)
+   [ok] L3: the known solutions of the class account for exactly his 1 solution(s)
+   [ok] L3: all his solutions give the same right side c and gcd g: [(4, 1)]
+   [ok] L3 = 1  <=>  F_(1,0)(m,n) = 4 with (m,n) coprime: every residue (m,n) mod 2 with F == 4, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 2)
+   [ok] L4: exactly one relation found (over the three classes, all 24 root bijections)
+   L4: class (1,1) (his field H2):  F_(1,1)(T(N,M)) = 9 * L4(N,M)   with (m,n) = (N, -N + 3M), det T = 3   (identity of forms: sympy expand, exact);  inverse (N,M) = (m, m/3 + n/3)
+   [ok] his solution (N,M) = (1, 0) -> T(N,M) = 1 * (1, -1); F(1, -1) = 9 = lambda/g^4; in core.KNOWN (up to sign): True
+   [ok] his solution (N,M) = (2, 1) -> T(N,M) = 1 * (2, 1); F(2, 1) = 9 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (1,1) giving solutions of L4 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (-1, 1) -> (-1, 0), (2, 1) -> (2, 1)
+   [ok] L4: the known solutions of the class account for exactly his 2 solution(s)
+   [ok] L4: all his solutions give the same right side c and gcd g: [(9, 1)]
+   [ok] L4 = 1  <=>  F_(1,1)(m,n) = 9 with (m,n) coprime: every residue (m,n) mod 3 with F == 9, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 3)
+   [ok] L5: exactly one relation found (over the three classes, all 24 root bijections)
+   L5: class (1,1) (his field H2):  F_(1,1)(T(N,M)) = 1 * L5(N,M)   with (m,n) = (M, -N - M), det T = 1   (identity of forms: sympy expand, exact);  inverse (N,M) = (-m - n, m)
+   [ok] his solution (N,M) = (1, 0) -> T(N,M) = 1 * (0, -1); F(0, -1) = 1 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (1,1) giving solutions of L5 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (0, 1) -> (-1, 0)
+   [ok] L5: the known solutions of the class account for exactly his 1 solution(s)
+   [ok] L5: all his solutions give the same right side c and gcd g: [(1, 1)]
+   [ok] L5 = 1  <=>  F_(1,1)(m,n) = 1 with (m,n) coprime: every residue (m,n) mod 1 with F == 1, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 1)
+   [ok] L6: exactly one relation found (over the three classes, all 24 root bijections)
+   L6: class (0,1) (his field H3):  F_(0,1)(T(N,M)) = 4 * L6(N,M)   with (m,n) = (N + M, -N + M), det T = 2   (identity of forms: sympy expand, exact);  inverse (N,M) = (m/2 - n/2, m/2 + n/2)
+   [ok] his solution (N,M) = (1, 0) -> T(N,M) = 1 * (1, -1); F(1, -1) = 4 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (0,1) giving solutions of L6 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (-1, 1) -> (-1, 0)
+   [ok] L6: the known solutions of the class account for exactly his 1 solution(s)
+   [ok] L6: all his solutions give the same right side c and gcd g: [(4, 1)]
+   [ok] L6 = 1  <=>  F_(0,1)(m,n) = 4 with (m,n) coprime: every residue (m,n) mod 2 with F == 4, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 2)
+   [ok] L7: exactly one relation found (over the three classes, all 24 root bijections)
+   L7: class (0,1) (his field H3):  F_(0,1)(T(N,M)) = 36 * L7(N,M)   with (m,n) = (N + 3M, N - 3M), det T = -6   (identity of forms: sympy expand, exact);  inverse (N,M) = (m/2 + n/2, m/6 - n/6)
+   [ok] his solution (N,M) = (1, 0) -> T(N,M) = 1 * (1, 1); F(1, 1) = 36 = lambda/g^4; in core.KNOWN (up to sign): True
+      core.KNOWN of class (0,1) giving solutions of L7 = 1, (m,n) -> (N,M) = primitive part of adj(T)(m,n): (1, 1) -> (-1, 0)
+   [ok] L7: the known solutions of the class account for exactly his 1 solution(s)
+   [ok] L7: all his solutions give the same right side c and gcd g: [(36, 1)]
+   [ok] L7 = 1  <=>  F_(0,1)(m,n) = 36 with (m,n) coprime: every residue (m,n) mod 6 with F == 36, primitive, satisfies det T | 1 adj(T)(m,n); and L_i = 1 forces gcd(T(N,M)) = 1 (residues mod 6)
+   our equations F = c not among his six:
+      class (1,0), c = 1: known solutions [(0, 1)] (integral points (X,Y) = [(9, 27)])
+      class (1,0), c = 9: known solutions []
+      class (0,1), c = 1: known solutions [(0, 1)] (integral points (X,Y) = [(-15, 9)])
+      class (0,1), c = 9: known solutions [(4, 1)] (integral points (X,Y) = [(4953, 348579)])
+      class (1,1), c = 4: known solutions []
+      class (1,1), c = 36: known solutions []
+
+(d) his units of K1(eta) = H1 (proof of Lemma 2)
+   [ok] eps1, eps2 lie in O_H1: coordinates [-6, 0, 1, 1], [-33, 22, 46, 16] in [1, eta, eta^2/6, eta^3/6]
+   AVANESOV N(eps1) = N(eps2) = +-1 (p. 411): TRUE   [N(eps1) = 1, N(eps2) = 1]
+   exact inverses: eps1^(-1) = -eta**2/6;  eps2^(-1) = eta**2/3 - 2*eta + 3
+   AVANESOV (5): -eps1^(-2) = -(-(1/6)eta^2)^2 = 1 - eta: TRUE   [-eps1^(-2) = 1 - eta, -(-(1/6)eta^2)^2 = 1 - eta]
+   AVANESOV (5): -eps2^(-6) = -((1/3)eta^2 - 2eta + 3)^6 = -24156 eta^3 + 22494 eta^2 + 207144 eta - 211085: TRUE   [-eps2^(-6) = -24156*eta**3 + 22494*eta**2 + 207144*eta - 211085, -((1/3)eta^2 - 2eta + 3)^6 = -24156*eta**3 + 22494*eta**2 + 207144*eta - 211085]
+   [ok] his eps1 transported into class (1,0) (eta -> P(alpha)): coordinates [0, 0, -1, 0]
+   [ok] norm preserved: 1
+   [ok] his eps2 transported into class (1,0) (eta -> P(alpha)): coordinates [63, 30, 86, -22]
+   [ok] norm preserved: 1
+   [ok] his eps1 = -eps1^-1 eps2^0 in our units of class (1,0) (exact)
+   [ok] his eps2 = -eps1^-1 eps2^1 in our units of class (1,0) (exact)
+   [ok] our eps1 = -e1^-1 e2^0 in his transported units e1, e2 (exact)
+   [ok] our eps2 = e1^-1 e2^1 in his transported units e1, e2 (exact)
+   [ok] exponent matrices [(-1, 0), (-1, 1)] (his in ours) and [(-1, 0), (-1, 1)] (ours in his) are inverse, det = -1: his units and core.UNITS generate the same group modulo +-1 in class (1,0)
+
+(e) further statements of the paper, checked
+   AVANESOV (7): bar eps1^9 = 1 + 3A with A in Z[eta], A == 2 eta^3 (mod 3): TRUE   [A mod 3 = [0, 0, 0, 2]]
+   AVANESOV (7): bar eps2 = 1 + 3B with B in Z[eta], B == eta^2 (mod 3): TRUE   [B mod 3 = [0, 0, 1, 0]]
+   AVANESOV (8): the table of V(r, beta) = bar eps1^r bar eps2^beta mod 3, r = 0..8: TRUE
+   AVANESOV p. 412: only r = 0, 1 give eta^2-, eta^3-coefficients == 0 mod 3: TRUE   [r = [0, 1]]
+   AVANESOV Lemma 2: the solutions of L2 = 1 are [(1, 0), (1, -1)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-1, 0), (-1, 1)]]
+   AVANESOV Lemma 3: the solutions of L3 = 1 are [(1, -1)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-1, 1)]]
+   AVANESOV Lemma 4: the solutions of L4 = 1 are [(1, 0), (2, 1)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-2, -1), (-1, 0)]]
+   AVANESOV Lemma 5: the solutions of L5 = 1 are [(1, 0)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-1, 0)]]
+   AVANESOV Lemma 6: the solutions of L6 = 1 are [(1, 0)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-1, 0)]]
+   AVANESOV Lemma 7: the solutions of L7 = 1 are [(1, 0)] (box search |N|,|M| <= 300, confirmation only): TRUE   [found [(-1, 0)]]
+   [ok] theta = 6 lambda: theta^3 - 144 theta + 1296 = 216 (lambda^3 - 4 lambda + 6) (our cubic = his (17))
+   AVANESOV p. 413: D(lambda) = -2^2 179: TRUE   [disc = -716]
+   AVANESOV (18) norm formula: TRUE
+   AVANESOV (19) square formula: TRUE
+   AVANESOV p. 413-414: eps0 = 40 lambda^2 - 101 lambda + 95 is a unit and 1/eps0 = lambda^2 - 5 lambda - 19: TRUE   [N(eps0) = 1]
+   AVANESOV (21): 2 = -(lambda^2 + lambda - 4)^3 eps^(-1), eps = 1/eps0: TRUE
+   AVANESOV (22): 3 = (lambda - 1)(2 lambda + 5)(3 lambda^2 + 4 lambda - 9) eps^(-1) = (lambda-1)(2 lambda+5)(lambda^2 - 3 lambda + 3): TRUE
+   AVANESOV p. 414: 3 lambda^2 - 4 = (lambda^2 + lambda - 4)^2 (45 lambda^2 - 114 lambda + 107), N(45 lambda^2 - ...) = 179: TRUE
+   AVANESOV p. 419: the integral solutions of (16) are X' = -2, 0, 2, 4, 8, 18, 42, 70; the known solutions core.KNOWN give exactly these points of his model: TRUE   [from core.KNOWN: X' in [-2, 0, 2, 4, 8, 18, 42, 70]]
+
+(f) which equations F = c can contain points of Avanesov's model (6 | X), by residues mod 6c
+    an integral point needs F(m,n) = c = g^2 with g | u, v, w and X = X4(m,n)/g^2; 6 | X needs X4 == 0 mod 6c
+   class (1,0): c = 1: impossible, c = 4: possible, c = 9: impossible, c = 36: possible
+   class (0,1): c = 1: impossible, c = 4: possible, c = 9: impossible, c = 36: possible
+   class (1,1): c = 1: possible, c = 4: impossible, c = 9: possible, c = 36: impossible
+   [ok] consistency: the six (class, c) of his equations L2..L7 pass the residue test: ((0,1), 4), ((0,1), 36), ((1,0), 4), ((1,0), 36), ((1,1), 1), ((1,1), 9)
+   => exactly the six (class, c) of his equations L2..L7 can contain points of his model; the other six equations F = c contain none (residues mod 6c).
+
+====================================================================================================================
+SUMMARY
+====================================================================================================================
+class (1,0): f = t**4 - 6*t**3 + 36; disc(f) = {-1: 1, 2: 8, 3: 6, 179: 1}; disc(O_K) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+class (0,1): f = t**4 + 2*t**3 + 24*t**2 + 14*t - 5; disc(f) = {-1: 1, 2: 8, 3: 6, 179: 1}; disc(O_K) = -25776 = {-1: 1, 2: 4, 3: 2, 179: 1}
+class (1,1): f = t**4 + 4*t**3 + 24*t**2 + 4*t - 8; disc(f) = {-1: 1, 2: 8, 3: 6, 179: 1}; disc(O_K) = -6444 = {-1: 1, 2: 2, 3: 2, 179: 1}
+H1 (h = t**4 - 36*t + 36) = class (1,0) via eta = -alpha**3/6 + alpha**2; disc = -25776
+H2 (h = t**4 - 12*t**3 + 18*t**2 + 9) = class (1,1) via eta = -alpha**3/3 - alpha**2 - 7*alpha + 17/3; disc = -6444
+H3 (h = t**4 - 18*t**2 - 36*t + 9) = class (0,1) via eta = alpha**3/6 + alpha**2/2 + 9*alpha/2 + 23/6; disc = -25776
+L2: F_(1,0)(T(N,M)) = 36 L2(N,M), (m,n) = (N, -6M);  L2 = 1 <=> F_(1,0)(m,n) = 36 (m,n coprime)
+L3: F_(1,0)(T(N,M)) = 4 L3(N,M), (m,n) = (N, -2M);  L3 = 1 <=> F_(1,0)(m,n) = 4 (m,n coprime)
+L4: F_(1,1)(T(N,M)) = 9 L4(N,M), (m,n) = (N, -N + 3M);  L4 = 1 <=> F_(1,1)(m,n) = 9 (m,n coprime)
+L5: F_(1,1)(T(N,M)) = 1 L5(N,M), (m,n) = (M, -N - M);  L5 = 1 <=> F_(1,1)(m,n) = 1 (m,n coprime)
+L6: F_(0,1)(T(N,M)) = 4 L6(N,M), (m,n) = (N + M, -N + M);  L6 = 1 <=> F_(0,1)(m,n) = 4 (m,n coprime)
+L7: F_(0,1)(T(N,M)) = 36 L7(N,M), (m,n) = (N + 3M, N - 3M);  L7 = 1 <=> F_(0,1)(m,n) = 36 (m,n coprime)
+for points of Avanesov's model only these six (class, c) can occur (6(f)); a solution of one of the other six equations F = c gives no integral point with 6 | X.
+his units eps1, eps2 of K1(eta) = H1 and core.UNITS['10'] generate the same group modulo +-1 (exponent matrix [(-1, 0), (-1, 1)]); whether either pair is fundamental is not checked here.
+26 of 27 tested statements of Avanesov's paper are true.
+   FALSE: Remark (p. 413), second half: all three fields have discriminant -2^4 3^2 179 = -25776
+[done in 2.4 s]
+all checks passed
