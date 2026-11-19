@@ -1,0 +1,120 @@
+01_coverage.py (8604.a1) -- reduced representatives for the unit orbits (exact; intervals with dyadic endpoints)
+
+==============================================================================================================
+CLASS (1,0)  field form G = (4, -5, -3, -2, 1)  RHS (1, 4, 9, 36)  units eps1 = (0, 1, -1, 0), eps2 = (0, -2, 1, 0)
+   real roots of g (Sturm, exact): 2;  sigma_1 ~ 0.560661590302, sigma_2 ~ 3.270433541440, enclosed in rational intervals of widths 3.3e-61, 3.3e-61 (< 2^-200: True)
+   N(eps1) = N(eps2) = 1 (exact determinants)
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) as intervals:
+      (a,b)=(-1,-1)  f = (165.474, 0.594003, 0.100865)   [interval widths < 7.1e-59]
+      (a,b)=(-1, 0)  f = (15.8441, 0.126786, 0.705553)   [interval widths < 1.4e-59]
+      (a,b)=(-1, 1)  f = (1.51708, 0.0270617, 4.93536)   [interval widths < 2.3e-59]
+      (a,b)=( 0,-1)  f = (10.4439, 4.68508, 0.142959)   [interval widths < 2.3e-59]
+      (a,b)=( 0, 1)  f = (0.09575, 0.213444, 6.99502)   [interval widths < 1.0e-59]
+      (a,b)=( 1,-1)  f = (0.659162, 36.9526, 0.202619)   [interval widths < 1.1e-59]
+      (a,b)=( 1, 0)  f = (0.0631148, 7.8873, 1.41733)   [interval widths < 7.0e-60]
+      (a,b)=( 1, 1)  f = (0.00604324, 1.68349, 9.91423)   [interval widths < 7.9e-59]
+   relaxed polygon P+ has 6 vertices; all coordinates of all vertices > 0 (exact): True; least coordinate 1.6868e-02
+      vertex (4.880360e-02, 7.677886e-01, 1.834078e-01)   r1 r2 r3^2 = 1.260460e-03
+      vertex (2.453644e-02, 1.330422e-01, 8.424214e-01)   r1 r2 r3^2 = 2.316646e-03
+      vertex (2.562553e-01, 6.233132e-01, 1.204316e-01)   r1 r2 r3^2 = 2.316646e-03
+      vertex (7.403880e-02, 2.077764e-02, 9.051836e-01)   r1 r2 r3^2 = 1.260460e-03
+      vertex (7.732511e-01, 9.734491e-02, 1.294040e-01)   r1 r2 r3^2 = 1.260460e-03
+      vertex (3.887589e-01, 1.686790e-02, 5.943732e-01)   r1 r2 r3^2 = 2.316646e-03
+   b_min = min r1 r2 r3^2 over vertices = 1.260460e-03;  E(w) <= (c^2/b_min)^(1/4) = 5.3072 sqrt(c)
+   Gram matrix of E: max interval radius rho = 4.81e-59; lower form Gt = Gmid - 4 rho I
+   LDL^T pivots of Gt (exact rationals): 3.0000e+00, 1.0358e+01, 3.5139e+00, 4.9249e+00;  all > 0: True  => Gt is positive definite
+   c =  1: T = 6 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 4;  of norm c: 2;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 12 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (-1, 0, 0, 0)   E(w) ~ 3.0000   (2 listed members of this orbit)
+      unit group: the units of norm +1 with E <= T form one orbit containing +-1: True; elements of norm -1 with E <= T: 0
+      => O^x = {+-1} x <eps1> x <eps2>: eps1, eps2 are fundamental units of O (not needed below)
+   c =  4: T = 11 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 28;  of norm c: 2;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 28 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (1, 0, 2, -1)   E(w) ~ 7.8757   (2 listed members of this orbit)
+   c =  9: T = 16 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 56;  of norm c: 4;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 34 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (1, -2, 3, -1)   E(w) ~ 10.8533   (4 listed members of this orbit)
+   c = 36: T = 32 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 222;  of norm c: 4;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 88 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (-2, -2, 3, -1)   E(w) ~ 20.9790   (4 listed members of this orbit)
+==============================================================================================================
+CLASS (0,1)  field form G = (9, -72, 18, 0, 1)  RHS (1, 4, 9, 36)  units eps1 = (1, -1, 1, 0), eps2 = (1, 0, -2, 0)
+   real roots of g (Sturm, exact): 2;  sigma_1 ~ 0.129175440740, sigma_2 ~ 2.709908668597, enclosed in rational intervals of widths 3.3e-61, 3.3e-61 (< 2^-200: True)
+   N(eps1) = N(eps2) = 1 (exact determinants)
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) as intervals:
+      (a,b)=(-1,-1)  f = (17131.6, 848.374, 0.000262305)   [interval widths < 2.5e-57]
+      (a,b)=(-1, 0)  f = (0.53, 5083.51, 0.0192655)   [interval widths < 1.9e-57]
+      (a,b)=(-1, 1)  f = (1.63966e-05, 30460.7, 1.41499)   [interval widths < 1.2e-56]
+      (a,b)=( 0,-1)  f = (32323.8, 0.166888, 0.0136153)   [interval widths < 5.8e-57]
+      (a,b)=( 0, 1)  f = (3.09369e-05, 5.99206, 73.4469)   [interval widths < 5.3e-58]
+      (a,b)=( 1,-1)  f = (60988.3, 3.28292e-05, 0.706718)   [interval widths < 1.1e-56]
+      (a,b)=( 1, 0)  f = (1.88679, 0.000196715, 51.9063)   [interval widths < 2.7e-58]
+      (a,b)=( 1, 1)  f = (5.83716e-05, 0.00117873, 3812.35)   [interval widths < 3.0e-56]
+   relaxed polygon P+ has 6 vertices; all coordinates of all vertices > 0 (exact): True; least coordinate 2.5865e-05
+      vertex (4.880266e-05, 1.929206e-04, 9.997583e-01)   r1 r2 r3^2 = 9.410487e-09
+      vertex (3.051307e-05, 5.622512e-04, 9.994072e-01)   r1 r2 r3^2 = 1.713568e-08
+      vertex (9.862990e-01, 9.383272e-05, 1.360721e-02)   r1 r2 r3^2 = 1.713568e-08
+      vertex (2.586541e-05, 9.807133e-01, 1.926084e-02)   r1 r2 r3^2 = 9.410487e-09
+      vertex (8.360689e-01, 1.636688e-01, 2.622419e-04)   r1 r2 r3^2 = 9.410487e-09
+      vertex (5.227385e-01, 4.769994e-01, 2.621498e-04)   r1 r2 r3^2 = 1.713568e-08
+   b_min = min r1 r2 r3^2 over vertices = 9.410487e-09;  E(w) <= (c^2/b_min)^(1/4) = 101.5306 sqrt(c)
+   Gram matrix of E: max interval radius rho = 3.67e-58; lower form Gt = Gmid - 4 rho I
+   LDL^T pivots of Gt (exact rationals): 3.0000e+00, 3.2399e+01, 1.7878e+01, 1.9805e+01;  all > 0: True  => Gt is positive definite
+   c =  1: T = 102 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 278;  of norm c: 6;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 66 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (-1, 0, 0, 0)   E(w) ~ 3.0000   (6 listed members of this orbit)
+      unit group: the units of norm +1 with E <= T form one orbit containing +-1: True; elements of norm -1 with E <= T: 0
+      => O^x = {+-1} x <eps1> x <eps2>: eps1, eps2 are fundamental units of O (not needed below)
+   c =  4: T = 204 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 1108;  of norm c: 2;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 158 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (1, 1, -2, 0)   E(w) ~ 123.5724   (2 listed members of this orbit)
+   c =  9: T = 305 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 2452;  of norm c: 2;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 266 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (0, -1, 0, 0)   E(w) ~ 33.0706   (2 listed members of this orbit)
+   c = 36: T = 610 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 9930;  of norm c: 4;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 700 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (3, -1, 0, 0)   E(w) ~ 51.5534   (4 listed members of this orbit)
+==============================================================================================================
+CLASS (1,1)  field form G = (36, -72, 0, 0, 1)  RHS (1, 4, 9, 36)  units eps1 = (0, 0, -1, 0), eps2 = (8, -4, 3, 0)
+   real roots of g (Sturm, exact): 2;  sigma_1 ~ 0.500874141923, sigma_2 ~ 3.978009489059, enclosed in rational intervals of widths 3.3e-61, 3.3e-61 (< 2^-200: True)
+   N(eps1) = N(eps2) = 1 (exact determinants)
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) as intervals:
+      (a,b)=(-1,-1)  f = (15.2619, 2.459e+06, 0.000163236)   [interval widths < 8.4e-55]
+      (a,b)=(-1, 0)  f = (571.989, 0.14376, 0.110277)   [interval widths < 6.9e-59]
+      (a,b)=(-1, 1)  f = (21437.1, 8.40467e-09, 74.5001)   [interval widths < 8.9e-57]
+      (a,b)=( 0,-1)  f = (0.0266822, 1.71048e+07, 0.00148023)   [interval widths < 5.9e-54]
+      (a,b)=( 0, 1)  f = (37.4782, 5.8463e-08, 675.57)   [interval widths < 7.9e-58]
+      (a,b)=( 1,-1)  f = (4.66481e-05, 1.18982e+08, 0.0134228)   [interval widths < 4.1e-53]
+      (a,b)=( 1, 0)  f = (0.00174828, 6.95602, 9.06804)   [interval widths < 3.4e-59]
+      (a,b)=( 1, 1)  f = (0.0655225, 4.0667e-07, 6126.1)   [interval widths < 1.7e-56]
+   relaxed polygon P+ has 6 vertices; all coordinates of all vertices > 0 (exact): True; least coordinate 5.7065e-08
+      vertex (1.555788e-03, 3.969475e-07, 9.984438e-01)   r1 r2 r3^2 = 6.156455e-10
+      vertex (5.612010e-02, 5.829380e-08, 9.438798e-01)   r1 r2 r3^2 = 2.914568e-09
+      vertex (1.497408e-03, 9.971054e-01, 1.397161e-03)   r1 r2 r3^2 = 2.914568e-09
+      vertex (8.898942e-01, 5.706533e-08, 1.101057e-01)   r1 r2 r3^2 = 6.156455e-10
+      vertex (2.374434e-02, 9.760927e-01, 1.629820e-04)   r1 r2 r3^2 = 6.156455e-10
+      vertex (8.565017e-01, 1.433443e-01, 1.540752e-04)   r1 r2 r3^2 = 2.914568e-09
+   b_min = min r1 r2 r3^2 over vertices = 6.156455e-10;  E(w) <= (c^2/b_min)^(1/4) = 200.7554 sqrt(c)
+   Gram matrix of E: max interval radius rho = 1.07e-58; lower form Gt = Gmid - 4 rho I
+   LDL^T pivots of Gt (exact rationals): 3.0000e+00, 3.2472e+01, 1.5191e+01, 2.3256e+01;  all > 0: True  => Gt is positive definite
+   c =  1: T = 201 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 1078;  of norm c: 6;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 142 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (-1, 0, 0, 0)   E(w) ~ 3.0000   (6 listed members of this orbit)
+      unit group: the units of norm +1 with E <= T form one orbit containing +-1: True; elements of norm -1 with E <= T: 0
+      => O^x = {+-1} x <eps1> x <eps2>: eps1, eps2 are fundamental units of O (not needed below)
+   c =  4: T = 402 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 4218;  of norm c: 2;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 382 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (4, -1, 0, 0)   E(w) ~ 64.2278   (2 listed members of this orbit)
+   c =  9: T = 603 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 9610;  of norm c: 4;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 684 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (0, 2, -3, 0)   E(w) ~ 235.5780   (4 listed members of this orbit)
+   c = 36: T = 1205 (T^4 >= c^2/b_min);  lattice points with Gt <= T: 38486;  of norm c: 6;  orbits of <-1,eps1,eps2>: 1
+      (exact Fincke-Pohst: 1836 float-guided ranges, each certified exactly: both endpoints fail the test)
+      seed w = (0, -1, 0, 0)   E(w) ~ 34.1434   (6 listed members of this orbit)
+
+SEEDS = {
+    '10': {1: [(-1, 0, 0, 0)], 4: [(1, 0, 2, -1)], 9: [(1, -2, 3, -1)], 36: [(-2, -2, 3, -1)]},
+    '01': {1: [(-1, 0, 0, 0)], 4: [(1, 1, -2, 0)], 9: [(0, -1, 0, 0)], 36: [(3, -1, 0, 0)]},
+    '11': {1: [(-1, 0, 0, 0)], 4: [(4, -1, 0, 0)], 9: [(0, 2, -3, 0)], 36: [(0, -1, 0, 0)]},
+}
+[done in 8.6 s]

@@ -1,0 +1,382 @@
+00_fields.py -- the quartic Thue fields of 8604.a1 (y^2 = x^3 - 9x + 81; triangular = square-pyramidal); exact checks
+conventions: G(m,n) = a0 m^4 + a1 m^3 n + a2 m^2 n^2 + a3 m n^3 + n^4 is the FIELD FORM of a class, g(t) = G(1,t),
+             beta a root of g; F_cl is the CLASS FORM of the 2-descent, f_cl(t) = F_cl(1,t), alpha a root of f_cl;
+             an element is given by its coordinates in the integral basis omega_0..omega_3 of core.CLASSES.
+
+====================================================================================================================
+1. g irreducible; G(m,n) = m^4 g(n/m) = N(n - m beta); disc(g); two real roots; Galois group S4
+====================================================================================================================
+   [ok] resolvent formula: prod over the 3 pairings of (y - (x_i x_j + x_k x_l)) = y^3 - b y^2 + (ac - 4d) y - (a^2 d - 4bd + c^2) for g = prod (t - x_i) = t^4 + a t^3 + b t^2 + c t + d (symbolic identity)
+
+CLASS (1,0)  (mu = 3 - theta)   G(m,n) = 4*m**4 - 5*m**3*n - 3*m**2*n**2 - 2*m*n**3 + n**4
+   class form F_cl(m,n) = 9*m**4 - 72*m**3*n - 18*m**2*n**2 + n**4;  core: F_cl(m,n) = G(2m, n + m), beta = (1 + alpha)/2
+   g(t) = G(1,t) = t**4 - 2*t**3 - 3*t**2 - 5*t + 4
+   [ok] g irreducible over Q (elementary: no integer root among the divisors of g(0); no quadratic factorization over Z)
+   [ok] g irreducible over Q (sympy)
+   [ok] m^4 g(n/m) = G(m,n)
+   [ok] Res_t(g(t), n - m t) = G(m,n)   [= prod_i (n - m beta_i) = N(n - m beta), g monic]
+   [ok] det(matrix of multiplication by n - m beta = (n,-m,0,0) in the basis of core.Field) = G(m,n)
+   disc(g) = -174231 = {-1: 1, 3: 6, 239: 1}
+   [ok] Sturm chain of length 5 ends in a nonzero constant (g squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real 0.560661590301918, 3.27043354143977; complex (-0.915547565870844 + 1.15899345523566j) and its conjugate
+   resolvent cubic R(y) = y**3 + 3*y**2 - 6*y - 89
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -89: none of the 4 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(g)
+   [ok] disc(g) < 0, so disc(g) is not a square in Q
+   => Galois group of g is S4 (g irreducible, R irreducible, disc(g) not a square)
+
+CLASS (0,1)  (mu = -3 - theta)   G(m,n) = 9*m**4 - 72*m**3*n + 18*m**2*n**2 + n**4
+   class form F_cl(m,n) = 9*m**4 - 72*m**3*n + 18*m**2*n**2 + n**4;  core: G = F_cl, beta = alpha
+   g(t) = G(1,t) = t**4 + 18*t**2 - 72*t + 9
+   [ok] g irreducible over Q (elementary: no integer root among the divisors of g(0); no quadratic factorization over Z)
+   [ok] g irreducible over Q (sympy)
+   [ok] m^4 g(n/m) = G(m,n)
+   [ok] Res_t(g(t), n - m t) = G(m,n)   [= prod_i (n - m beta_i) = N(n - m beta), g monic]
+   [ok] det(matrix of multiplication by n - m beta = (n,-m,0,0) in the basis of core.Field) = G(m,n)
+   disc(g) = -713650176 = {-1: 1, 2: 12, 3: 6, 239: 1}
+   [ok] Sturm chain of length 5 ends in a nonzero constant (g squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real 0.129175440739562, 2.70990866859674; complex (-1.41954205466815 + 4.86777621592083j) and its conjugate
+   resolvent cubic R(y) = y**3 - 18*y**2 - 36*y - 4536
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -4536: none of the 80 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(g)
+   [ok] disc(g) < 0, so disc(g) is not a square in Q
+   => Galois group of g is S4 (g irreducible, R irreducible, disc(g) not a square)
+
+CLASS (1,1)  (mu = -theta)   G(m,n) = 36*m**4 - 72*m**3*n + n**4
+   class form F_cl(m,n) = 36*m**4 - 72*m**3*n + n**4;  core: G = F_cl, beta = alpha
+   g(t) = G(1,t) = t**4 - 72*t + 36
+   [ok] g irreducible over Q (elementary: no integer root among the divisors of g(0); no quadratic factorization over Z)
+   [ok] g irreducible over Q (sympy)
+   [ok] m^4 g(n/m) = G(m,n)
+   [ok] Res_t(g(t), n - m t) = G(m,n)   [= prod_i (n - m beta_i) = N(n - m beta), g monic]
+   [ok] det(matrix of multiplication by n - m beta = (n,-m,0,0) in the basis of core.Field) = G(m,n)
+   disc(g) = -713650176 = {-1: 1, 2: 12, 3: 6, 239: 1}
+   [ok] Sturm chain of length 4 ends in a nonzero constant (g squarefree)
+   [ok] exactly two real roots (exact Sturm count = 2)
+   [ok] exactly two real roots (sympy count_roots)
+   roots (floats, for information): real 0.500874141923394, 3.97800948905944; complex (-2.23944181549141 + 3.61286822974748j) and its conjugate
+   resolvent cubic R(y) = y**3 - 144*y - 5184
+   [ok] R has no rational root (a rational root is an integer dividing R(0) = -5184: none of the 70 divisors is a root) -> R irreducible over Q
+   [ok] disc(R) = disc(g)
+   [ok] disc(g) < 0, so disc(g) is not a square in Q
+   => Galois group of g is S4 (g irreducible, R irreducible, disc(g) not a square)
+
+====================================================================================================================
+2. The integral basis: an order containing Z[beta]; index; discriminant; maximality (not used by the proof)
+====================================================================================================================
+
+CLASS (1,0)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = beta
+      omega_2 = beta**2/3 + 2*beta/3 + 1/3
+      omega_3 = beta**3/3 + 1/3
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (-1, -2, 3, 0)   w1w2 = (-1, -1, 2, 1)   w1w3 = (-3, 0, 3, 2)
+      w2w2 = (-2, -1, 3, 2)   w2w3 = (-5, -2, 6, 4)
+      w3w3 = (-9, -3, 9, 9)
+   [ok] the inverse basis matrix is integral: 1, beta, beta^2, beta^3 lie in O, so Z[beta] <= O
+   [ok] [O : Z[beta]] = 1/|det B| = 9
+   [ok] disc(O) = disc(g) det(B)^2 = -2151 equals det(Tr(omega_i omega_j)) = -2151
+   disc(O) = -2151 = {-1: 1, 3: 2, 239: 1}
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {239: 1}
+   => O is the maximal order; disc(O_K) = -2151 = {-1: 1, 3: 2, 239: 1}
+      from Z[beta]: p=3: 8 integral classes; adjoin t**3/3 + 2*t**2/3 + t/3
+      from Z[beta]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[beta] (enlargement) has the same HNF as the basis of core.CLASSES
+   [ok] sympy round_two (another implementation): disc(O_K) = -2151 and an integral basis with the same HNF
+
+CLASS (0,1)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = beta
+      omega_2 = beta**2/6 + 1/2
+      omega_3 = beta**3/12 + beta**2/12 + 3*beta/4 + 3/4
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (-3, 0, 6, 0)   w1w2 = (-1, -1, -1, 2)   w1w3 = (1, 6, -5, 1)
+      w2w2 = (1, 2, -2, 0)   w2w3 = (-2, 2, 6, -1)
+      w3w3 = (-7, -3, 6, 6)
+   [ok] the inverse basis matrix is integral: 1, beta, beta^2, beta^3 lie in O, so Z[beta] <= O
+   [ok] [O : Z[beta]] = 1/|det B| = 72
+   [ok] disc(O) = disc(g) det(B)^2 = -137664 equals det(Tr(omega_i omega_j)) = -137664
+   disc(O) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}
+   [ok] p = 2: none of the 15 elements (sum c_i omega_i)/2, 0 <= c_i < 2, not all 0, is integral (characteristic polynomial test) -> O is 2-maximal
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {239: 1}
+   => O is the maximal order; disc(O_K) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}
+      from Z[beta]: p=2: 3 integral classes; adjoin t**3/2 + t/2
+      from Z[beta]: p=2: 1 integral classes; adjoin t**3/4 + t**2/4 + t/4 + 1/4
+      from Z[beta]: p=2: none of the 15 classes is integral -> 2-maximal
+      from Z[beta]: p=3: 8 integral classes; adjoin t**3/6 + t**2/2 + t/2 + 1/2
+      from Z[beta]: p=3: 2 integral classes; adjoin t**2/6 + 1/2
+      from Z[beta]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[beta] (enlargement) has the same HNF as the basis of core.CLASSES
+   [ok] sympy round_two (another implementation): disc(O_K) = -137664 and an integral basis with the same HNF
+
+CLASS (1,1)   basis (power coordinates of omega_i):
+      omega_0 = 1
+      omega_1 = beta
+      omega_2 = beta**2/6
+      omega_3 = beta**3/12 + beta/2
+   [ok] core.Field built: every omega_i omega_j has integral coordinates (core asserts it), so the Z-span O of the basis is a ring
+   multiplication table (coordinates of omega_i omega_j, i <= j):
+      w0w0 = (1, 0, 0, 0)   w0w1 = (0, 1, 0, 0)   w0w2 = (0, 0, 1, 0)   w0w3 = (0, 0, 0, 1)
+      w1w1 = (0, 0, 6, 0)   w1w2 = (0, -1, 0, 2)   w1w3 = (-3, 6, 3, 0)
+      w2w2 = (-1, 2, 0, 0)   w2w3 = (0, -1, 6, 1)
+      w3w3 = (-3, 3, 0, 6)
+   [ok] the inverse basis matrix is integral: 1, beta, beta^2, beta^3 lie in O, so Z[beta] <= O
+   [ok] [O : Z[beta]] = 1/|det B| = 72
+   [ok] disc(O) = disc(g) det(B)^2 = -137664 equals det(Tr(omega_i omega_j)) = -137664
+   disc(O) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}
+   [ok] p = 2: none of the 15 elements (sum c_i omega_i)/2, 0 <= c_i < 2, not all 0, is integral (characteristic polynomial test) -> O is 2-maximal
+   [ok] p = 3: none of the 80 elements (sum c_i omega_i)/3, 0 <= c_i < 3, not all 0, is integral (characteristic polynomial test) -> O is 3-maximal
+   [ok] every other prime divides disc(O) exactly once: {239: 1}
+   => O is the maximal order; disc(O_K) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}
+      from Z[beta]: p=2: 3 integral classes; adjoin t**3/2
+      from Z[beta]: p=2: 3 integral classes; adjoin t**2/2
+      from Z[beta]: p=2: 1 integral classes; adjoin t**3/4 + t/2
+      from Z[beta]: p=2: none of the 15 classes is integral -> 2-maximal
+      from Z[beta]: p=3: 8 integral classes; adjoin t**2/6
+      from Z[beta]: p=3: none of the 80 classes is integral -> 3-maximal
+   [ok] the maximal order computed from Z[beta] (enlargement) has the same HNF as the basis of core.CLASSES
+   [ok] sympy round_two (another implementation): disc(O_K) = -137664 and an integral basis with the same HNF
+
+Maximality is not used by the proof; it uses only that O is a ring containing Z[beta] (above) and the units of section 5.
+
+====================================================================================================================
+3. Marker lemma: x in O lies in Z + Z beta iff x2 = x3 = 0; n - m beta = (n, -m, 0, 0)
+====================================================================================================================
+CLASS (1,0)
+   [ok] omega_0 = 1, omega_1 = beta
+   [ok] only omega_2, omega_3 involve beta^2, beta^3: the (beta^2, beta^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/3, 0], [0, 1/3]] has det 1/9 != 0, so the beta^2, beta^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 beta, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m beta has coordinates (n,-m,0,0)
+   [ok] from_power(n - m beta) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+   => O cap (Q + Q beta) = Z + Z beta, and the solutions of G(m,n) = c are the elements z of O with N(z) = c and x2(z) = x3(z) = 0
+CLASS (0,1)
+   [ok] omega_0 = 1, omega_1 = beta
+   [ok] only omega_2, omega_3 involve beta^2, beta^3: the (beta^2, beta^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/6, 0], [1/12, 1/12]] has det 1/72 != 0, so the beta^2, beta^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 beta, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m beta has coordinates (n,-m,0,0)
+   [ok] from_power(n - m beta) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+   => O cap (Q + Q beta) = Z + Z beta, and the solutions of G(m,n) = c are the elements z of O with N(z) = c and x2(z) = x3(z) = 0
+CLASS (1,1)
+   [ok] omega_0 = 1, omega_1 = beta
+   [ok] only omega_2, omega_3 involve beta^2, beta^3: the (beta^2, beta^3) power coordinates of x = sum x_i omega_i are (x2, x3) D
+   [ok] D = [[1/6, 0], [0, 1/12]] has det 1/72 != 0, so the beta^2, beta^3 coordinates vanish iff x2 = x3 = 0; then x = x0 + x1 beta, x0, x1 in Z
+   [ok] rows 0, 1 of the inverse basis matrix are (1,0,0,0), (0,1,0,0): n - m beta has coordinates (n,-m,0,0)
+   [ok] from_power(n - m beta) = (n, -m, 0, 0) on the 49 pairs |m|,|n| <= 3 (spot check of the code)
+   => O cap (Q + Q beta) = Z + Z beta, and the solutions of G(m,n) = c are the elements z of O with N(z) = c and x2(z) = x3(z) = 0
+
+====================================================================================================================
+4. Substitution lemma: class form F_cl, field form G, and the bijection of their coprime solutions
+====================================================================================================================
+core.from_class(key, m, n) sends a solution (m,n) of F_cl to a solution (m',n') of G; core.to_class(key, m', n')
+sends it back, or gives None when (m',n') comes from no solution of F_cl.  Right sides: class (1,0): (1, 4, 9, 36); class (0,1): (1, 4, 9, 36); class (1,1): (1, 4, 9, 36) (core.RHS = (1, 4, 9, 36)).
+
+CLASS (1,0)   F_cl(m,n) = 9*m**4 - 72*m**3*n - 18*m**2*n**2 + n**4;   G(m,n) = 4*m**4 - 5*m**3*n - 3*m**2*n**2 - 2*m*n**3 + n**4
+   core: F_cl(m,n) = G(2m, n + m), beta = (1 + alpha)/2
+   [ok] F_cl has n^4-coefficient 1: f_cl(t) = F_cl(1,t) is monic
+   [ok] Res_t(f_cl(t), n - m t) = F_cl(m,n): F_cl(m,n) = N(n - m alpha) (sympy)
+   (a) the identity
+   [ok] (a) F_cl(m,n) = G(2m, n + m) (sympy expand: identity of forms)
+   [ok]     equivalently G(m,n) = F_cl(m/2, n - m/2) (identity over Q)
+   [ok]     f_cl(2t - 1) = 16 g(t): if g(beta) = 0 then alpha = 2 beta - 1 is a root of f_cl, i.e. beta = (1 + alpha)/2
+   [ok]     disc(f_cl) = -713650176 = {-1: 1, 2: 12, 3: 6, 239: 1} = 2^12 disc(g) (the roots are alpha_i = 2 beta_i - 1)
+   [ok]     n - m alpha = (n + m) - 2m beta has omega-coordinates (n + m, -2m, 0, 0), and the determinant of multiplication by it is F_cl(m,n): F_cl(m,n) = N((n + m) - 2m beta) = G(2m, n + m)
+   (b) why the substitution is needed
+   [ok] (b) the characteristic polynomial of (1 + alpha)/2 (exact, from its multiplication matrix in the basis 1, alpha, alpha^2, alpha^3) is t**4 - 2*t**3 - 3*t**2 - 5*t + 4 = g(t): monic with integer coefficients
+   [ok]     the same by sympy: Res_t(f_cl(t), x - (1 + t)/2) = prod_i (x - (1 + alpha_i)/2) = g(x)
+    => (1 + alpha)/2 is an algebraic integer (a root of the monic integer polynomial g) in Q + Q alpha that
+       is not in Z + Z alpha.  So O_K cap (Q + Q alpha) != Z + Z alpha, and the marker lemma does not hold
+       for alpha: an element of O_K with vanishing alpha^2-, alpha^3-coordinates need not have the form
+       n - m alpha with m, n integers, and no Z-basis of O_K has the shape 1, alpha, omega_2, omega_3 of
+       section 3 (that shape forces O_K cap (Q + Q alpha) = Z + Z alpha).  Since Q + Q alpha = Q + Q beta,
+       section 3 (omega_0 = 1, omega_1 = beta) gives O cap (Q + Q alpha) = Z + Z beta, which contains
+       Z + Z alpha = {x0 + x1 beta : x1 even} with index 2 (a + b alpha = (a - b) + 2b beta).  So the field
+       form G, with beta, is the one that is solved.
+   (c) the bijection of coprime solutions, in steps
+      Step 1. By (a), (m,n) -> (m',n') = (2m, n + m) [core.from_class] gives G(m',n') = F_cl(m,n), and for m'
+              even (m',n') -> (m,n) = (m'/2, n' - m'/2) [core.to_class] gives F_cl(m,n) = G(m',n').  The two
+              linear maps are inverse to each other ((2m)/2 = m, (n + m) - m = n; 2(m'/2) = m',
+              (n' - m'/2) + m'/2 = n') and commute with (m,n) -> (-m,-n).
+   [ok] step 1 on the code (|m|,|n| <= 40): to_class(from_class(m,n)) = (m,n); from_class(to_class(m',n')) = (m',n') for m' even; to_class(m',n') is None iff m' is odd; F_cl(m,n) = G(from_class(m,n)); from_class(-m,-n) = -from_class(m,n)
+      Step 2. If m and n are both odd, then F_cl(m,n) == 0 (mod 16): m + n = 2k and, by (a),
+              F_cl(m,n) = G(2m, 2k) = 16 G(m,k).
+   [ok] step 2: G(2m, 2k) = 16 G(m,k) (sympy)
+   [ok] step 2 by residues: F_cl(m,n) == 0 (mod 16) at all 64 residue pairs (m,n) mod 16 with m, n odd (F_cl has integer coefficients, so F_cl(m,n) mod 16 depends only on m, n mod 16)
+      Step 3. No c in RHS is divisible by 16.  So a coprime solution (m,n) of F_cl(m,n) = c, c in RHS, has m
+              and n of opposite parity: not both even (coprime), not both odd (step 2).
+   [ok] step 3: RHS = (1, 4, 9, 36) is [1, 4, 9, 4] mod 16; none is 0
+      Step 4. Then n + m is odd, and gcd(2m, n + m) = 1: an odd prime dividing 2m and n + m divides m and
+              n = (n + m) - m, which are coprime, and 2 does not divide n + m.  So (m',n') = (2m, n + m) is a
+              coprime solution of G(m',n') = c with m' even.
+   [ok] step 4 by residues: (m, n) == (0, 1) or (1, 0) mod 2 gives n + m == 1 mod 2
+   [ok] steps 2-4 on the code: for coprime (m,n), |m|,|n| <= 40, gcd(from_class(m,n)) is 1, or 2 exactly when m and n are both odd
+      Step 5. Conversely, let (m',n') be a coprime solution of G(m',n') = c with m' even.  Then (m,n) =
+              (m'/2, n' - m'/2) is integral; a common divisor of m and n divides m' = 2m and n' = n + m, so
+              gcd(m,n) = 1; and F_cl(m,n) = G(m',n') = c by step 1.
+   [ok] step 5 on the code: for coprime (m',n') with m' even, |m'|,|n'| <= 40, to_class(m',n') is coprime
+      Step 6. For every c in RHS, from_class is therefore a bijection from the coprime solutions of F_cl(m,n) = c
+              onto the coprime solutions of G(m',n') = c with m' even, with inverse to_class.  It maps -(m,n)
+              to -(m',n'), so it is one-to-one on pairs +-(m,n).  A coprime solution of G = c with m' odd
+              corresponds to no solution of F_cl = c (to_class gives None); it gives no integral point.
+              (Such a solution gives the coprime pair (m', 2n' - m') of odd numbers with F_cl(m', 2n' - m') =
+              G(2m', 2n') = 16 G(m',n') = 16c, by (a): a solution of F_cl = 16c, and 16c is not in RHS by step 3.)
+   [ok] step 6, remark, on |m'|,|n'| <= 40 with m' odd: F_cl(m', 2n' - m') = 16 G(m',n') and gcd(m', 2n' - m') = gcd(m',n')
+      In the language of section 3: the solutions of F_cl(m,n) = c are the elements z of O with N(z) = c,
+      markers x2 = x3 = 0 and x1 even (z = n - m alpha = (n + m) - 2m beta), with the coprimality of steps 3-5.
+
+CLASS (0,1)   F_cl(m,n) = 9*m**4 - 72*m**3*n + 18*m**2*n**2 + n**4;   G(m,n) = 9*m**4 - 72*m**3*n + 18*m**2*n**2 + n**4
+   core: G = F_cl, beta = alpha
+   [ok] F_cl has n^4-coefficient 1: f_cl(t) = F_cl(1,t) is monic
+   [ok] Res_t(f_cl(t), n - m t) = F_cl(m,n): F_cl(m,n) = N(n - m alpha) (sympy)
+   [ok] (a) G = F_cl (the same coefficients): the substitution is the identity, beta = alpha
+   (b) no substitution is needed: by section 3 (omega_0 = 1, omega_1 = alpha) and section 2 (O = O_K),
+       O_K cap (Q + Q alpha) = Z + Z alpha, so the marker lemma holds for the class form itself.
+   [ok] (c) core.from_class and core.to_class are the identity (checked on |m|,|n| <= 40): the coprime solutions of F_cl(m,n) = c are those of G(m,n) = c, for every c in RHS, with no condition
+
+CLASS (1,1)   F_cl(m,n) = 36*m**4 - 72*m**3*n + n**4;   G(m,n) = 36*m**4 - 72*m**3*n + n**4
+   core: G = F_cl, beta = alpha
+   [ok] F_cl has n^4-coefficient 1: f_cl(t) = F_cl(1,t) is monic
+   [ok] Res_t(f_cl(t), n - m t) = F_cl(m,n): F_cl(m,n) = N(n - m alpha) (sympy)
+   [ok] (a) G = F_cl (the same coefficients): the substitution is the identity, beta = alpha
+   (b) no substitution is needed: by section 3 (omega_0 = 1, omega_1 = alpha) and section 2 (O = O_K),
+       O_K cap (Q + Q alpha) = Z + Z alpha, so the marker lemma holds for the class form itself.
+   [ok] (c) core.from_class and core.to_class are the identity (checked on |m|,|n| <= 40): the coprime solutions of F_cl(m,n) = c are those of G(m,n) = c, for every c in RHS, with no condition
+
+====================================================================================================================
+5. Units: N(eps1) = N(eps2) = 1 for core.UNITS
+====================================================================================================================
+CLASS (1,0)
+   [ok] N(eps1) = 1   eps1 = (0, 1, -1, 0) = -beta**2/3 + beta/3 - 1/3   power coordinates ['-1/3', '1/3', '-1/3', '0']   charpoly t**4 + 4*t**3 + 5*t**2 + 5*t + 1
+   [ok] eps1^(-1) = (-3, -1, -1, 1) (the adjugate, integral coordinates) lies in O and eps1 eps1^(-1) = 1: eps1 is a unit of O
+   [ok] N(eps2) = 1   eps2 = (0, -2, 1, 0) = beta**2/3 - 4*beta/3 + 1/3   power coordinates ['1/3', '-4/3', '1/3', '0']   charpoly t**4 - 2*t**3 + 5*t**2 + 5*t + 1
+   [ok] eps2^(-1) = (-2, 0, -2, 1) (the adjugate, integral coordinates) lies in O and eps2 eps2^(-1) = 1: eps2 is a unit of O
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: -1.38139992, 1.032627034; of eps2: -1.173007287, -0.7721913859; |det| = 2.27798415424
+CLASS (0,1)
+   [ok] N(eps1) = 1   eps1 = (1, -1, 1, 0) = beta**2/6 - beta + 3/2   power coordinates ['3/2', '-1', '1/6', '0']   charpoly t**4 + 50*t**2 - 72*t + 1
+   [ok] eps1^(-1) = (-11, 11, 7, 8) (the adjugate, integral coordinates) lies in O and eps1 eps1^(-1) = 1: eps1 is a unit of O
+   [ok] N(eps2) = 1   eps2 = (1, 0, -2, 0) = -beta**2/3   power coordinates ['0', '0', '-1/3', '0']   charpoly t**4 - 12*t**3 + 38*t**2 + 180*t + 1
+   [ok] eps2^(-1) = (-203, 24, -14, 32) (the adjugate, integral coordinates) lies in O and eps2 eps2^(-1) = 1: eps2 is a unit of O
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: 0.3174391135, -4.266878409; of eps2: -5.191779874, 0.8952175767; |det| = 21.8685163745
+CLASS (1,1)
+   [ok] N(eps1) = 1   eps1 = (0, 0, -1, 0) = -beta**2/6   power coordinates ['0', '0', '-1/6', '0']   charpoly t**4 + 2*t**2 + 24*t + 1
+   [ok] eps1^(-1) = (-24, -2, 1, 4) (the adjugate, integral coordinates) lies in O and eps1 eps1^(-1) = 1: eps1 is a unit of O
+   [ok] N(eps2) = 1   eps2 = (8, -4, 3, 0) = beta**2/2 - 4*beta + 8   power coordinates ['8', '-4', '1/2', '0']   charpoly t**4 - 32*t**3 + 834*t**2 - 4136*t + 1
+   [ok] eps2^(-1) = (-208, 226, 549, 276) (the adjugate, integral coordinates) lies in O and eps2 eps2^(-1) = 1: eps2 is a unit of O
+   (information, floats) log|sigma_1|, log|sigma_2| of eps1: -3.174560316, 0.9698036624; of eps2: 1.811879184, -8.32743566; |det| = 24.678779707
+Independence of eps1, eps2 follows from the cone certificate of 01_coverage.py; fundamentality is not used.
+
+====================================================================================================================
+6. Known solutions: G-solutions, class-form images, integral points; confirmation box search |m|,|n| <= 1000
+====================================================================================================================
+A class-form solution (m,n) gives an integral point: (u,v,w) = conic map, g = gcd(u,v,w), F_cl(m,n) = g^2,
+X = X4(m,n)/g^2, Y = |Y6(m,n)|/g^3 on y^2 = x^3 - 9x + 81 (core.descent_maps).  If (X, Y) = (6a + 3, 18b + 9), then
+b(b+1)/2 = a(a+1)(2a+1)/6: a triangular number equal to a square-pyramidal number, by the identity below.
+   [ok] identity: (18b + 9)^2 - ((6a + 3)^3 - 9(6a + 3) + 81) = 648 (b(b+1)/2 - a(a+1)(2a+1)/6)
+CLASS (1,0)   G = (4, -5, -3, -2, 1), F_cl = (9, -72, -18, 0, 1)
+   [ok] G-solution (m',n') = (0, 1): coprime, G = 1
+   [ok]    class-form image (m,n) = to_class(m',n') = (0, 1): coprime, F_cl = 1, from_class(m,n) = (0, 1)
+   [ok]    (m,n) = (0, 1): (u,v,w) = (1, 0, 0), g = 1, F_cl = g^2, (X,Y) = (3, +-9) on the curve; X = 6a + 3, Y = 18b + 9 with a = 0, b = 0: b(b+1)/2 = a(a+1)(2a+1)/6 = 0
+   [ok] G-solution (m',n') = (1, -1): coprime, G = 9
+   [ok]    to_class gives None (m' = 1 odd): a solution of G = 9 that gives no solution of F_cl = 9 and no integral point (section 4(c), step 6)
+   [ok] G-solution (m',n') = (1, 0): coprime, G = 4
+   [ok]    to_class gives None (m' = 1 odd): a solution of G = 4 that gives no solution of F_cl = 4 and no integral point (section 4(c), step 6)
+   [ok] G-solution (m',n') = (2, 1): coprime, G = 9
+   [ok]    class-form image (m,n) = to_class(m',n') = (1, 0): coprime, F_cl = 9, from_class(m,n) = (2, 1)
+   [ok]    (m,n) = (1, 0): (u,v,w) = (3, 6, 0), g = 3, F_cl = g^2, (X,Y) = (39, +-243) on the curve; X = 6a + 3, Y = 18b + 9 with a = 6, b = 13: b(b+1)/2 = a(a+1)(2a+1)/6 = 91
+   G-solutions by c (Theorem A'):     c = 1: [(0, 1)]; c = 4: [(1, 0)]; c = 9: [(1, -1), (2, 1)]; c = 36: []
+   F_cl-solutions by c (Theorem A):   c = 1: [(0, 1)]; c = 4: []; c = 9: [(1, 0)]; c = 36: []
+   [ok] core.KNOWN grouped by c is the stated table of Theorem A' for this class
+   [ok] their class-form images grouped by c are the stated table of Theorem A for this class
+   [ok] the X of these points, [3, 39], are the integral points of class (1,0) listed in weierstrass_2descent.out.txt (CURVE 8604.a1)
+CLASS (0,1)   G = (9, -72, 18, 0, 1), F_cl = (9, -72, 18, 0, 1)
+   [ok] G-solution (m',n') = (0, 1): coprime, G = 1
+   [ok]    class-form image (m,n) = to_class(m',n') = (0, 1): coprime, F_cl = 1, from_class(m,n) = (0, 1)
+   [ok]    (m,n) = (0, 1): (u,v,w) = (1, 0, 0), g = 1, F_cl = g^2, (X,Y) = (-3, +-9) on the curve; X = 6a + 3, Y = 18b + 9 with a = -1, b = 0: b(b+1)/2 = a(a+1)(2a+1)/6 = 0
+   [ok] G-solution (m',n') = (1, 0): coprime, G = 9
+   [ok]    class-form image (m,n) = to_class(m',n') = (1, 0): coprime, F_cl = 9, from_class(m,n) = (1, 0)
+   [ok]    (m,n) = (1, 0): (u,v,w) = (-3, 6, 0), g = 3, F_cl = g^2, (X,Y) = (33, +-189) on the curve; X = 6a + 3, Y = 18b + 9 with a = 5, b = 10: b(b+1)/2 = a(a+1)(2a+1)/6 = 55
+   [ok] G-solution (m',n') = (1, 3): coprime, G = 36
+   [ok]    class-form image (m,n) = to_class(m',n') = (1, 3): coprime, F_cl = 36, from_class(m,n) = (1, 3)
+   [ok]    (m,n) = (1, 3): (u,v,w) = (6, -12, 18), g = 6, F_cl = g^2, (X,Y) = (24, +-117) on the curve; X == 0 (mod 6), not 3: no common value
+   G-solutions by c (Theorem A'):     c = 1: [(0, 1)]; c = 4: []; c = 9: [(1, 0)]; c = 36: [(1, 3)]
+   F_cl-solutions by c (Theorem A):   c = 1: [(0, 1)]; c = 4: []; c = 9: [(1, 0)]; c = 36: [(1, 3)]
+   [ok] core.KNOWN grouped by c is the stated table of Theorem A' for this class
+   [ok] their class-form images grouped by c are the stated table of Theorem A for this class
+   [ok] the X of these points, [-3, 24, 33], are the integral points of class (0,1) listed in weierstrass_2descent.out.txt (CURVE 8604.a1)
+CLASS (1,1)   G = (36, -72, 0, 0, 1), F_cl = (36, -72, 0, 0, 1)
+   [ok] G-solution (m',n') = (0, 1): coprime, G = 1
+   [ok]    class-form image (m,n) = to_class(m',n') = (0, 1): coprime, F_cl = 1, from_class(m,n) = (0, 1)
+   [ok]    (m,n) = (0, 1): (u,v,w) = (1, 0, 0), g = 1, F_cl = g^2, (X,Y) = (0, +-9) on the curve; X == 0 (mod 6), not 3: no common value
+   [ok] G-solution (m',n') = (1, 0): coprime, G = 36
+   [ok]    class-form image (m,n) = to_class(m',n') = (1, 0): coprime, F_cl = 36, from_class(m,n) = (1, 0)
+   [ok]    (m,n) = (1, 0): (u,v,w) = (0, 6, 0), g = 6, F_cl = g^2, (X,Y) = (9, +-27) on the curve; X = 6a + 3, Y = 18b + 9 with a = 1, b = 1: b(b+1)/2 = a(a+1)(2a+1)/6 = 1
+   [ok] G-solution (m',n') = (1, 4): coprime, G = 4
+   [ok]    class-form image (m,n) = to_class(m',n') = (1, 4): coprime, F_cl = 4, from_class(m,n) = (1, 4)
+   [ok]    (m,n) = (1, 4): (u,v,w) = (-8, 6, 24), g = 2, F_cl = g^2, (X,Y) = (513, +-11619) on the curve; X = 6a + 3, Y = 18b + 9 with a = 85, b = 645: b(b+1)/2 = a(a+1)(2a+1)/6 = 208335
+   [ok] G-solution (m',n') = (2, 1): coprime, G = 1
+   [ok]    class-form image (m,n) = to_class(m',n') = (2, 1): coprime, F_cl = 1, from_class(m,n) = (2, 1)
+   [ok]    (m,n) = (2, 1): (u,v,w) = (-11, 24, 12), g = 1, F_cl = g^2, (X,Y) = (5112, +-365499) on the curve; X == 0 (mod 6), not 3: no common value
+   G-solutions by c (Theorem A'):     c = 1: [(0, 1), (2, 1)]; c = 4: [(1, 4)]; c = 9: []; c = 36: [(1, 0)]
+   F_cl-solutions by c (Theorem A):   c = 1: [(0, 1), (2, 1)]; c = 4: [(1, 4)]; c = 9: []; c = 36: [(1, 0)]
+   [ok] core.KNOWN grouped by c is the stated table of Theorem A' for this class
+   [ok] their class-form images grouped by c are the stated table of Theorem A for this class
+   [ok] the X of these points, [0, 9, 513, 5112], are the integral points of class (1,1) listed in weierstrass_2descent.out.txt (CURVE 8604.a1)
+   [ok] no c in RHS = (1, 4, 9, 36) is divisible by d^4 for d >= 2 (16 and 81 divide none): every integer solution of G = c or F_cl = c, c in RHS, is coprime, so "all solutions" and "all coprime solutions" are the same lists
+box search: every coprime (m,n), |m|,|n| <= 1000, with G(m,n) in RHS, resp. F_cl(m,n) in RHS (numpy int64, then exact recheck)
+   [ok] class (1,0), G: |G| <= 15 * 1000^4 = 15000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,0), G: 8 solutions = 4 pairs +-(m,n); equal to core.KNOWN up to sign: True
+   [ok] class (1,0), F_cl: |F_cl| <= 100 * 1000^4 = 100000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,0), F_cl: 4 solutions = 2 pairs +-(m,n); equal to the images to_class(core.KNOWN) up to sign: True
+   [ok] class (0,1), G: |G| <= 100 * 1000^4 = 100000000000000 < 2^62 (no int64 overflow)
+   [ok] class (0,1), G: 6 solutions = 3 pairs +-(m,n); equal to core.KNOWN up to sign: True
+   [ok] class (0,1), F_cl: |F_cl| <= 100 * 1000^4 = 100000000000000 < 2^62 (no int64 overflow)
+   [ok] class (0,1), F_cl: 6 solutions = 3 pairs +-(m,n); equal to the images to_class(core.KNOWN) up to sign: True
+   [ok] class (1,1), G: |G| <= 109 * 1000^4 = 109000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,1), G: 8 solutions = 4 pairs +-(m,n); equal to core.KNOWN up to sign: True
+   [ok] class (1,1), F_cl: |F_cl| <= 109 * 1000^4 = 109000000000000 < 2^62 (no int64 overflow)
+   [ok] class (1,1), F_cl: 8 solutions = 4 pairs +-(m,n); equal to the images to_class(core.KNOWN) up to sign: True
+
+====================================================================================================================
+7. The three quartic fields are pairwise non-isomorphic (not used by any proof)
+====================================================================================================================
+Certificate: a prime p dividing neither disc(g_1) nor disc(g_2) at which g_1 and g_2 factor with different degree
+patterns.  For such p (which does not divide [O_K : Z[beta]]) the pattern is the splitting type of p in the field
+(Dedekind), an invariant of the field.  The field discriminants disc(O_K) of section 2 are a second invariant.
+   [ok] class (1,0) vs (0,1): at p = 13 (not dividing -174231 * -713650176) g factors with degrees (4,) and (1, 1, 2): not isomorphic
+      field discriminants -2151 and -137664: different (a second certificate of non-isomorphism)
+   [ok] class (1,0) vs (1,1): at p = 7 (not dividing -174231 * -713650176) g factors with degrees (4,) and (1, 1, 2): not isomorphic
+      field discriminants -2151 and -137664: different (a second certificate of non-isomorphism)
+   [ok] class (0,1) vs (1,1): at p = 7 (not dividing -713650176 * -713650176) g factors with degrees (4,) and (1, 1, 2): not isomorphic
+      field discriminants -137664 and -137664: equal
+
+====================================================================================================================
+SUMMARY
+====================================================================================================================
+class (1,0) (mu = 3 - theta): G = 4*m**4 - 5*m**3*n - 3*m**2*n**2 - 2*m*n**3 + n**4, g = t**4 - 2*t**3 - 3*t**2 - 5*t + 4; disc(g) = -174231 = {-1: 1, 3: 6, 239: 1}; [O : Z[beta]] = 9; disc(O_K) = -2151 = {-1: 1, 3: 2, 239: 1}; F_cl(m,n) = G(2m, n + m), beta = (1 + alpha)/2
+class (0,1) (mu = -3 - theta): G = 9*m**4 - 72*m**3*n + 18*m**2*n**2 + n**4, g = t**4 + 18*t**2 - 72*t + 9; disc(g) = -713650176 = {-1: 1, 2: 12, 3: 6, 239: 1}; [O : Z[beta]] = 72; disc(O_K) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}; G = F_cl, beta = alpha
+class (1,1) (mu = -theta): G = 36*m**4 - 72*m**3*n + n**4, g = t**4 - 72*t + 36; disc(g) = -713650176 = {-1: 1, 2: 12, 3: 6, 239: 1}; [O : Z[beta]] = 72; disc(O_K) = -137664 = {-1: 1, 2: 6, 3: 2, 239: 1}; G = F_cl, beta = alpha
+Theorem A' (field forms), one of each pair +-(m',n').  Completeness is proved by 01_coverage.py and 02_exclusion.py; this script checks the listed solutions and confirms them by the box search:
+   class (1,0): c = 1: [(0, 1)]; c = 4: [(1, 0)]; c = 9: [(1, -1), (2, 1)]; c = 36: none
+   class (0,1): c = 1: [(0, 1)]; c = 4: none; c = 9: [(1, 0)]; c = 36: [(1, 3)]
+   class (1,1): c = 1: [(0, 1), (2, 1)]; c = 4: [(1, 4)]; c = 9: none; c = 36: [(1, 0)]
+Theorem A (class forms; from Theorem A' by section 4(c)), one of each pair +-(m,n):
+   class (1,0): c = 1: [(0, 1)]; c = 4: none; c = 9: [(1, 0)]; c = 36: none
+   class (0,1): c = 1: [(0, 1)]; c = 4: none; c = 9: [(1, 0)]; c = 36: [(1, 3)]
+   class (1,1): c = 1: [(0, 1), (2, 1)]; c = 4: [(1, 4)]; c = 9: none; c = 36: [(1, 0)]
+integral points from the three non-trivial classes: X in [-3, 0, 3, 9, 24, 33, 39, 513, 5112] (18 points, both signs of Y)
+   [ok] the trivial class (weierstrass_2descent.out.txt) has X in [-5, 7, 1099]: each X^3 - 9X + 81 is a square, and no such X is 3 mod 6 (no common value from that class)
+   [ok] with the trivial class: X in [-5, -3, 0, 3, 7, 9, 24, 33, 39, 513, 1099, 5112] (24 points), the integral points found by the search -92 <= x <= 10^6 of weierstrass_2descent.out.txt (equal to the LMFDB list); under hypothesis (H) there are no others (Theorem B)
+   [ok] common values b(b+1)/2 = a(a+1)(2a+1)/6 from these points: [0, 1, 55, 91, 208335]
+fields: pairwise non-isomorphic: True
+[done in 2.5 s]
+all checks passed

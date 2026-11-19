@@ -1,0 +1,67 @@
+5.1 two factors
+PASS  alpha = X - theta = (X, -3, 0), beta = (X^2 - 9, 3X, 9); alpha beta = (X^3 - 9X + 81, 0, 0) and N(alpha) = X^3 - 9X + 81
+PASS  beta - (X + 2 theta) alpha = (-9, 0, 27) = 9 P239, and 9 = (P3A P3B P3C)^2 (P3A P3B P3C = -3)
+5.2 the prime elements
+PASS  N(P3A) = N(P3B) = N(P3C) = -3 and N(P239) = 239, all prime up to sign
+PASS  pairwise not associate: for two elements of the same norm, neither divides the other
+    (elements of different norms are not associate, since associates have equal |N|)
+5.3 the norm condition and the eight candidates
+    X - theta = u' P3A^ea P3B^eb P3C^ec P239^e239 R0^2 (hypothesis_H.md 5.4) gives, taking norms,
+    Y^2 = N(u') (-3)^(ea+eb+ec) 239^e239 N(R0)^2: so e239 is even, ea + eb + ec is even, and N(u') = 1.
+    By Section 4, u' = sigma EPS^k with N(u') = sigma; so sigma = 1. Reducing exponents mod 2:
+PASS  8 candidates mu0 = EPS^l P3A^na P3B^nb P3C^nc with na + nb + nc even, all of norm 1 or 9
+    (l, na, nb, nc) = (0, 0, 0, 0): mu0 = (1, 0, 0), N = 1
+    (l, na, nb, nc) = (0, 0, 1, 1): mu0 = (-1, 0, 1), N = 9
+    (l, na, nb, nc) = (0, 1, 0, 1): mu0 = (0, 1, 1), N = 9
+    (l, na, nb, nc) = (0, 1, 1, 0): mu0 = (0, -1, 1), N = 9
+    (l, na, nb, nc) = (1, 0, 0, 0): mu0 = (-1, 1, 1), N = 1
+    (l, na, nb, nc) = (1, 0, 1, 1): mu0 = (-2, -3, -1), N = 9
+    (l, na, nb, nc) = (1, 1, 0, 1): mu0 = (-6, -2, 1), N = 9
+    (l, na, nb, nc) = (1, 1, 1, 0): mu0 = (0, -2, -1), N = 9
+5.4 the step modulo 4
+    S has integer coordinates, so the coordinates of mu0 S^2 modulo 4 depend only on S modulo 4.
+    X - theta = (X, -3, 0) needs its l-coordinate == 1 and its l^2-coordinate == 0 (mod 4).
+PASS  for the four candidates with l = 1 (the coset EPS T) no residue S mod 4 works; for the four with l = 0 some do
+    (l, na, nb, nc) = (0, 0, 0, 0): residues S mod 4 with the right shape: 8
+    (l, na, nb, nc) = (0, 0, 1, 1): residues S mod 4 with the right shape: 16
+    (l, na, nb, nc) = (0, 1, 0, 1): residues S mod 4 with the right shape: 8
+    (l, na, nb, nc) = (0, 1, 1, 0): residues S mod 4 with the right shape: 16
+    (l, na, nb, nc) = (1, 0, 0, 0): residues S mod 4 with the right shape: 0
+    (l, na, nb, nc) = (1, 0, 1, 1): residues S mod 4 with the right shape: 0
+    (l, na, nb, nc) = (1, 1, 0, 1): residues S mod 4 with the right shape: 0
+    (l, na, nb, nc) = (1, 1, 1, 0): residues S mod 4 with the right shape: 0
+PASS  a reason readable by hand: (S + 2Z)^2 - S^2 = 4(SZ + Z^2) for every Z in R, so S^2 mod 4 depends only on S mod 2, and mu0 S^2 mod 4 (coordinatewise) takes at most 8 values, listed below
+    (0, 0, 0, 0): mu0 S^2 mod 4 in [(0, 0, 0), (0, 0, 1), (0, 1, 1), (1, 0, 0), (1, 1, 3), (1, 2, 1), (2, 3, 2), (3, 1, 0)]; of the shape (*, 1, 0): [(3, 1, 0)]
+    (0, 0, 1, 1): mu0 S^2 mod 4 in [(0, 0, 0), (0, 1, 0), (0, 3, 1), (1, 1, 0), (1, 1, 1), (1, 2, 2), (2, 0, 3), (3, 0, 1)]; of the shape (*, 1, 0): [(0, 1, 0), (1, 1, 0)]
+    (0, 1, 0, 1): mu0 S^2 mod 4 in [(0, 0, 0), (0, 0, 1), (0, 1, 1), (1, 0, 0), (1, 1, 3), (1, 2, 1), (2, 3, 2), (3, 1, 0)]; of the shape (*, 1, 0): [(3, 1, 0)]
+    (0, 1, 1, 0): mu0 S^2 mod 4 in [(0, 0, 0), (0, 1, 0), (0, 3, 1), (1, 1, 0), (1, 1, 1), (1, 2, 2), (2, 0, 3), (3, 0, 1)]; of the shape (*, 1, 0): [(0, 1, 0), (1, 1, 0)]
+    (1, 0, 0, 0): mu0 S^2 mod 4 in [(0, 0, 0), (1, 2, 0), (2, 2, 1), (2, 3, 0), (2, 3, 3), (3, 1, 1), (3, 2, 1), (3, 3, 2)]; of the shape (*, 1, 0): []
+    (1, 0, 1, 1): mu0 S^2 mod 4 in [(0, 0, 0), (0, 1, 2), (0, 2, 3), (1, 0, 1), (1, 0, 2), (1, 3, 2), (2, 1, 3), (3, 1, 3)]; of the shape (*, 1, 0): []
+    (1, 1, 0, 1): mu0 S^2 mod 4 in [(0, 0, 0), (1, 2, 0), (2, 2, 1), (2, 3, 0), (2, 3, 3), (3, 1, 1), (3, 2, 1), (3, 3, 2)]; of the shape (*, 1, 0): []
+    (1, 1, 1, 0): mu0 S^2 mod 4 in [(0, 0, 0), (0, 1, 2), (0, 2, 3), (1, 0, 1), (1, 0, 2), (1, 3, 2), (2, 1, 3), (3, 1, 3)]; of the shape (*, 1, 0): []
+    So the step also fixes X mod 4 in each surviving class: (0, 0, 0, 0): X = 3 mod 4; (0, 0, 1, 1): X = 0 or 1 mod 4; (0, 1, 0, 1): X = 3 mod 4; (0, 1, 1, 0): X = 0 or 1 mod 4
+5.5 identification with (H) and distinctness
+PASS  3 - theta = (3, -3, 0) = P3A P3C P3B^2; -3 - theta = (-3, -3, 0) = P3A P3B P3C^2; -theta = (0, -3, 0) = P3B P3C P3A^2
+    So mu0 in {1, P3A P3C, P3A P3B, P3B P3C} is mu tau^-2 for mu in {1, 3 - theta, -3 - theta, -theta}, with
+    tau = 1, P3B, P3C, P3A: X - theta = mu0 S^2 = mu (S/tau)^2, which is (H).
+    roots of f modulo 7 and 13: {7: [4], 13: [8]}
+    quadratic characters (one per root): {'1': (1, 1), '3-th': (-1, -1), '-3-th': (-1, 1), '-th': (1, -1)}
+PASS  the character values are all +-1 and the vectors of the four mu are pairwise different; a character that is nonzero on mu and mu' takes the same value on both when mu/mu' is a square in K (hypothesis_H.md 5.8), so the four classes are pairwise distinct
+5.6 confirmation (not used by the proof): the integral points
+PASS  these 12 X make X^3 - 9X + 81 a square (24 integral points)
+PASS  for every one of the 12 X exactly one mu0 of the four of (H) has X - theta = mu0 S^2 with S in R (S is unique up to sign)
+PASS  each X lies in the residue class mod 4 that the step modulo 4 (5.4 above) forces for its mu0
+PASS  each X is in the class that the 2-descent assigns (proof.md section 5: trivial, (1,0), (0,1), (1,1) <-> mu0 = 1, P3A P3C, P3A P3B, P3B P3C)
+    X =    -5: mu0 = P3A^0 P3B^0 P3C^0, S = (1, -1, -1)
+    X =    -3: mu0 = P3A^1 P3B^1 P3C^0, S = (1, 1, 0)
+    X =     0: mu0 = P3A^0 P3B^1 P3C^1, S = (0, -1, 0)
+    X =     3: mu0 = P3A^1 P3B^0 P3C^1, S = (1, -1, 0)
+    X =     7: mu0 = P3A^0 P3B^0 P3C^0, S = (-1, -1, 1)
+    X =     9: mu0 = P3A^0 P3B^1 P3C^1, S = (0, 0, 1)
+    X =    24: mu0 = P3A^1 P3B^1 P3C^0, S = (2, -2, -1)
+    X =    33: mu0 = P3A^1 P3B^1 P3C^0, S = (-1, 1, 2)
+    X =    39: mu0 = P3A^1 P3B^0 P3C^1, S = (-1, -1, 2)
+    X =   513: mu0 = P3A^0 P3B^1 P3C^1, S = (12, -8, -3)
+    X =  1099: mu0 = P3A^0 P3B^0 P3C^0, S = (-17, -15, 9)
+    X =  5112: mu0 = P3A^0 P3B^1 P3C^1, S = (-12, 1, 24)
+all checks of 07_classes.py passed (2.4 s)

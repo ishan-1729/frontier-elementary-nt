@@ -1,0 +1,11 @@
+    long       leaves    139   evaluations so far     277       4.0 s   depth 17
+    reduce_sum leaves    116   evaluations so far     813       7.1 s   depth 17
+kept: reduce_sum with 116 boxes
+all box ends are multiples of 2^-7
+largest number of splits on a path: 17
+    s = 1: 116 boxes
+largest exact bound B: 130993/131072 = 0.999397278 (box ZyxYZxzyXyZxY)
+largest |kappa_i|: 8
+exact bound < 1 on every box: True
+wrote euclid_boxes.txt (116 boxes)
+total time 12.7 s
