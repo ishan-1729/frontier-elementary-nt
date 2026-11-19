@@ -1,0 +1,26 @@
+split rules (leaves, evaluations so far, seconds, largest number of splits on a path)
+    long       leaves   616   box evaluations so far   1231      2.1 s   depth 15
+    reduce_sum leaves   461   box evaluations so far   3522      2.9 s   depth 15
+    reduce_max leaves   613   box evaluations so far   5440      2.5 s   depth 16
+    dp2        leaves   401   box evaluations so far  13284     14.0 s   depth 15
+    dp4        leaves   398   box evaluations so far  37576     39.4 s   depth 15
+    long       leaves that need s = 2: 192
+    reduce_sum leaves that need s = 2: 164
+    reduce_max leaves that need s = 2: 187
+    dp2        leaves that need s = 2: 134
+    dp4        leaves that need s = 2: 135
+kept: dp4 with 398 boxes
+all box ends are multiples of 2^-6
+largest number of splits on a path: 15; per axis (x, y, z): [6, 5, 5]
+    s = 1, kappa found with k =  0:  236 boxes
+    s = 1, kappa found with k =  1:   27 boxes
+    s = 1, kappa found with k = -1:    0 boxes
+    s = 2, kappa found with k =  0:  134 boxes
+    s = 2, kappa found with k =  1:    1 boxes
+    s = 2, kappa found with k = -1:    0 boxes
+s = 1: 263 boxes, s = 2: 135 boxes
+largest exact bound B: 8191/8192 = 0.999877930 (box xyxyYXzxy)
+largest |kappa_i|: 22
+exact bound < 1 on every box: True
+wrote dh_boxes.txt (398 boxes)
+total time 61.5 s

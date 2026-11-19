@@ -1,0 +1,204 @@
+
+====================================================================================================================
+PART A. Section 1: the ring of integer triples (own arithmetic)
+====================================================================================================================
+
+--- A.1 multiplication (1.1)
+PASS  own reduction (t^j -> t^(j-3)(4t - 6)) of u(t)v(t) agrees with sympy.rem modulo t^3 - 4t + 6
+PASS  the product formula printed in (1.1) equals u(t)v(t) reduced modulo f(t)
+PASS  l^3 = 4l - 6 and l^4 = 4l^2 - 6l
+PASS  ring laws as polynomial identities: commutative, associative, distributive, unit (1,0,0)
+
+--- A.2 the norm form (1.2), derived three ways
+PASS  f = t^3 - e1 t^2 + e2 t - e3 with e1 = 0, e2 = -4, e3 = -6; power sums p1 = 0, p2 = 8 (Newton)
+      Res_t(t^3 - 4t + 6, a + bt + ct^2) = a**3 + 8*a**2*c - 4*a*b**2 + 18*a*b*c + 16*a*c**2 - 6*b**3 + 24*b*c**2 + 36*c**3
+PASS  the resultant (= product of a + b r + c r^2 over the roots r of the monic f) equals the determinant of the Sylvester matrix built here
+PASS  Newton: e3 of the conjugates, (Tr(u)^3 - 3 Tr(u) Tr(u^2) + 2 Tr(u^3))/6, equals the resultant
+PASS  the cubic form printed in (1.2): N = a^3 + 8a^2c - 4ab^2 + 18abc + 16ac^2 - 6b^3 + 24bc^2 + 36c^3
+PASS  the matrix with columns u*1, u*l, u*l^2 equals M(u) printed in (1.2); det M(u) = N(u); M(uv) = M(u) M(v)
+PASS  N(uv) = N(u) N(v) (polynomial identity in six variables)
+PASS  N(r u) = r^3 N(u) and N(-u) = -N(u)
+PASS  N(X - theta) = N(X, -6, 0) = X^3 - 144X + 1296 identically, and theta = (0,6,0) satisfies theta^3 - 144 theta + 1296 = 0
+
+--- A.3 the adjugate triple (1.3), derived by Cayley-Hamilton
+      Tr(u) = 3*a + 8*c,  s2(u) = 3*a**2 + 16*a*c - 4*b**2 + 18*b*c + 16*c**2
+PASS  Cayley-Hamilton: u (u^2 - Tr(u) u + s2(u)) = (N(u), 0, 0) as a polynomial identity
+PASS  the adjugate printed in (1.3) equals u^2 - Tr(u) u + s2(u), so u u* = (N(u), 0, 0)
+PASS  (uv)* = u* v* and N(u*) = N(u)^2 (polynomial identities)
+PASS  u* has integer polynomial coordinates, and N(1) = 1
+      (1.3a): if N(u) = +-1 then u^-1 = N(u) u* is an integer triple; if uv = 1 then N(u)N(v) = N(1) = 1, N(u) = +-1.
+      (1.3b): a rational triple with N(u) != 0 has the inverse u*/N(u), by u u* = N(u).
+PASS  example of (1.3b): u = (1/2, -3, 2/7) times u*/N(u) is (1, 0, 0)
+
+--- A.4 the norm vanishes only at 0 (1.4)
+PASS  exhaustive check mod 8: N(a,b,c) = 0 (mod 8) only if a, b, c are all even (64 of 512 residue triples have N = 0 mod 8, and all of them are even)
+      N has integer coefficients, so N mod 8 depends only on (a,b,c) mod 8: a primitive integer triple has N != 0;
+      and N(D u) = D^3 N(u) turns a rational zero u != 0 into a primitive integer zero. So N(u) = 0 only for u = 0.
+PASS  (1.4) as written: N - a^3 has even coefficients
+PASS  (1.4) as written: N(2a1, b, c) = 2P with P integral and P + 3b^3 with even coefficients
+PASS  (1.4) as written: N(2a1, 2b1, c) = 4P' with P' integral and P' - 9c^3 with even coefficients
+PASS  f = t^3 - 4t + 6 is Eisenstein at 2 (-4, 6 even; 6 not divisible by 4)
+
+--- A.5 special elements (1.5)
+PASS  the triples of (1.5) match their polynomials: l^2-5l-19, 40l^2-101l+95, l^2+l-4, l-1, 2l+5, l^2-3l+3, 45l^2-114l+107
+PASS  norms of EPS, EPS^-1, PI2, P3A, P3B, P3C, P179: [1, 1, -2, -3, -3, 3, 179] = [1, 1, -2, -3, -3, 3, 179]
+PASS  EPS EPS^-1 = 1, and EPS^-1 = EPS* (N(EPS) = 1)
+PASS  PI2^3 = (38, 10, -2) = -2 EPS, so 2 = -PI2^3 EPS^-1
+PASS  P3A P3B P3C = 3
+PASS  PI2^2 P179 = 3l^2 - 4 = (-4, 0, 3), and N(3l^2 - 4) = 716
+PASS  (extra, (5.3)) 36(3l^2 - 4) = EPS^-2 PI2^8 (P3A P3B P3C)^2 P179
+PASS  (extra, display of Theorem H) 9 - theta = EPS P3A P3B r1^2, -15 - theta = -P3A P3C r2^2, -12 - theta = -EPS P3B P3C r3^2
+
+--- A.6 real values (1.6)
+PASS  f(-3) = -9 < 0 < 6 = f(-2)
+PASS  identities for the uniqueness of the real root (own argument): f(t) = t(t - 2)(t + 2) + 6; t(2 - t) = 1 - (t - 1)^2; f(t) - f(s) = (t - s)(t^2 + ts + s^2 - 4)
+      t >= -2: t(t^2 - 4) >= 0 on [-2, 0] and on [2, oo), and = -(t + 2) t(2 - t) >= -4 on [0, 2]; so f(t) >= 2 > 0.
+      s < t <= -2: t^2, ts, s^2 >= 4, so f(t) - f(s) >= 8(t - s) > 0: f increases on (-oo, -2] and has exactly one
+      real root l1 there, in (-3, -2).  (hypothesis_H.md uses the critical values f(+-2/sqrt3) instead; checked next.)
+PASS  the doc's argument: f(+-2/sqrt3) = 6 -+ 16/(3 sqrt3), and (16/(3 sqrt3))^2 = 256/27 < 36
+PASS  f has no rational root (f(r) != 0 for r = +-1, +-2, +-3, +-6): f is irreducible over Q, l1 is irrational and 1, l1, l1^2 are linearly independent over Q
+PASS  continued fraction of l1 = [-3; 2, 9, 2, 5, 1, 1, 1, 3, 9, 1, 4, 1, 8, 2, 2, ...] (96 partial quotients): two consecutive convergents give lo < hi with f(lo) < 0 < f(hi), hi - lo < 2^-300 and -3 < lo < hi < -5/2
+      so l1 is in (lo, hi) (one real root), l1 = -2.5251022548143207; 04_ring.out.txt prints -2.525102254814321
+PASS  consistent with the value printed by 04 (lo and hi round to -2.525102254814321 at 16 digits)
+PASS  dyadic centred enclosure: [lo, hi] lies in [m - r, m + r] with m = MID/2^256, r = 2/2^256, and -3 < m - r < m + r < -5/2
+      Centred form: for x = (x0, x1, x2) and t, m in [m - r, m + r] (inside (-3, -2)),
+        (x0 + x1 t + x2 t^2) - (x0 + x1 m + x2 m^2) = (t - m)(x1 + x2 (t + m)), of absolute value <= r (|x1| + 6|x2|).
+PASS  f(t) - (t - L)(t^2 + L t + L^2 - 4) = f(L): z, zbar are the roots of t^2 + l1 t + l1^2 - 4, so s = z + zbar = -l1, p = z zbar = l1^2 - 4; the discriminant 16 - 3 l1^2 < 0 since l1 < -5/2
+PASS  z^2 = s z - p gives a + bz + cz^2 = (a - cp) + (b + cs) z (the difference is c (z^2 - s z + p))
+PASS  |X + Y z|^2 = X^2 + XY s + Y^2 p with X = a - cp, Y = b + cs gives the formula of (1.6): a^2 + s ab + (s^2 - 2p) ac + p b^2 + sp bc + p^2 c^2
+PASS  with s = -L, p = L^2 - 4 this reduces mod f(L) to the Q printed in (1.6)
+PASS  Q(u) = sigma1(u*) (identity in a, b, c, L)
+PASS  u(t)v(t) - (uv)(t) is divisible by f(t), so sigma1(uv) = sigma1(u) sigma1(v)
+PASS  mod f(L): sigma1(u) Q(u) = N(u)
+PASS  mod f(L): Q(uv) = Q(u) Q(v)
+PASS  mod f(L): Q = (a - (L/2) b + ((8 - L^2)/2) c)^2 + ((3L^2 - 16)/4)(b - L c)^2, and 3 l1^2 - 16 > 11/4 > 0
+PASS  Q vanishes on the real line through (l1^2 - 4, l1, 1) (mod f(L))
+      So Q >= 0, and Q(u) = 0 for a rational u forces b = l1 c, hence c = 0 (l1 irrational), b = 0, a = 0: Q > 0 on
+      nonzero rational triples (also N = sigma1 Q != 0 by (1.4)).
+PASS  mod f(L): T2 = sigma1^2 + 2Q equals the form printed in (1.6)
+PASS  T2 has the Gram matrix [[3,0,8],[0,3L^2-8,4L],[8,4L,32-18L-4L^2]]; leading minors 3, 9L^2 - 24, and det = 716 mod f(L); 9 l1^2 - 24 > 129/4 > 0, so T2 is positive definite
+PASS  completed squares of (1.6): (3L^2 - 8) T2 = 3(3L^2 - 8)(a + 8c/3)^2 + ((3L^2 - 8) b + 4L c)^2 + (716/3) c^2 mod f(L)
+PASS  cofactors of the Gram matrix mod f(L): 64L^2 + 68, 32 - 54L - 12L^2, 9L^2 - 24 (so (G^-1)_ii = cof_ii/716)
+PASS  inverse of the embedding (identities in a, b, c, L): (3L^2 - 4) c = sigma1 - Y1 - (3L/2) Y2, b = Y2 + L c, a = Y1 + (L/2) b - ((8 - L^2)/2) c, where Y1 = Re sigma2 and Y2 = Im sigma2 / w, w^2 = (3L^2 - 16)/4, Q = Y1^2 + w^2 Y2^2
+      values (l1 enclosed as above):   element   N    sigma1                    Q
+                                       EPS         1  0.00165267133996807       605.080983626981
+                                       EPS^-1      1  605.080983626981          0.00165267133996807
+                                       PI2        -2  -0.148960857545955        13.426345906897
+                                       P3A        -3  -3.52510225481432         0.851039142454045
+                                       P3B        -3  -0.050204509628641        59.7555881372167
+                                       P3C         3  16.9514481617113          0.17697603009377
+                                       P179      179  681.788019925909          0.262544947650227
+PASS  for each special element sigma1 has a definite sign, Q > 0, and sigma1 Q encloses N
+
+====================================================================================================================
+PART B. Section 4: the units
+====================================================================================================================
+
+--- B.1 values of EPS (4.2)
+PASS  sigma1(EPS) = l1^2 - 5 l1 - 19 lies in (1/606, 1/605)
+PASS  E := Q(EPS) = sigma1(EPS*) = sigma1(EPS^-1) = 40 l1^2 - 101 l1 + 95 lies in (605.08, 605.09)
+PASS  sigma1(EPS) E = 1: exact (EPS EPS^-1 = 1 and sigma1 is multiplicative), and the interval product contains 1
+      sigma1(EPS) = 0.00165267133996807,  E = 605.080983626981,  enclosure widths < 2^-240
+      So sigma1(EPS^-1) = E, Q(EPS) = E, Q(EPS^-1) = sigma1(EPS) = 1/E.
+
+--- B.2 descent identities and constants (4.3), (4.3')
+PASS  T2(y EPS) - T2(y) = (E - 1)(2q - x(E + 1)/E^2) and T2(y EPS^-1) - T2(y) = (E - 1)(x(E + 1) - 2q/E)
+      with E > 1, x, q > 0: T2(y EPS) < T2(y) iff x/q > rho_hi = 2E^2/(E+1);  T2(y EPS^-1) < T2(y) iff x/q < rho_lo
+      = 2/(E(E+1)).
+PASS  2q - x(E+1)/E^2 = (q (E+1)/E^2)(rho_hi - x/q) and x(E+1) - 2q/E = q(E+1)(x/q - rho_lo) (identities)
+PASS  monotonicity: rho_hi(E2) - rho_hi(E1) = 2(E2 - E1)(E1 E2 + E1 + E2)/((E1+1)(E2+1)) (rho_hi INCREASES with E), rho_lo(E1) - rho_lo(E2) = 2(E2 - E1)(E1 + E2 + 1)/(E1 E2 (E1+1)(E2+1)) (rho_lo DECREASES with E)
+      rho_hi in [1208.16526714301, 1208.16526714301],  rho_lo in [5.45363205450849e-06, 5.45363205450849e-06]
+PASS  rho_hi < 1209: rho_hi(E) <= rho_hi(60509/100) = 1208.1833... < 1209 since rho_hi increases and E < 60509/100
+PASS  rho_lo > 5453/10^9: rho_lo(E) >= rho_lo(60509/100) = 5.45347...e-6 > 5453/10^9 since rho_lo DECREASES and E < 60509/100
+      DISCREPANCY (wording, conclusion unaffected): hypothesis_H.md (4.3) says "Both rho's increase with E"; that is
+      true for rho_hi only. rho_lo = 2/(E(E+1)) decreases with E, and that is what makes E < 60509/100 give the lower
+      bound rho_lo > 5453e-9. 06_units.py has the correct identity; only the sentence in the text is wrong.
+PASS  rho_hi/rho_lo = E^3
+PASS  A = 469/5000, B = 2841/50: A^3 * 1209 <= 1 <= B^3 * 5453/10^9, so q^3 in (1/1209, 10^9/5453) gives A < q < B
+      h(A) = 62603161709/549902500 = 113.844111836,  h(B) = 22930571821/201782025 = 113.640309740
+PASS  h(A) = 62603161709/549902500 < 113.85, h(B) < 113.65, max(h(A), h(B)) = h(A) < 114
+PASS  for a unit, x q^2 = 1: x/q = q^-3 and T2 = x + 2q = h(q) = q^-2 + 2q; h''(q) = 6/q^4 > 0 (convex)
+PASS  (4.3') scaled form: with n = m^3, q = m^2 w and x = n^2/q^2: x/q = w^-3 and T2 = m^2 h(w)
+PASS  exact threshold: with q^3 = R, h(q)^3 = (1 + 2R)^3/R^2; at both ends R = 1/rho_hi = (E+1)/(2E^2) and R = 1/rho_lo = E(E+1)/2 this is K3 = 4(E^2+E+1)^3/(E^2(E+1)^2), so max h on the admissible q-range is K3^(1/3)
+PASS  K3 in [1466924.3109552092, 1466924.3109552092]: 113.62^3 < K3 < 113.63^3, i.e. 113.62 < C* = K3^(1/3) < 113.63 (06: "113.62 < C* < 113.63")
+PASS  K3 <= 113.6238^3, i.e. C0 = K3^(1/3) <= 113.6238 as stated in (2.5) (margin: K3 ~ 1466924.31 vs 1466925.06)
+PASS  C* < h(A) < 113.85 < 114 (the exact threshold is below the rounded one)
+      Lemma (4.3) as checked: a unit u with T2(u EPS) >= T2(u) and T2(u EPS^-1) >= T2(u) has rho_lo <= q^-3 <= rho_hi,
+      so A < q < B and T2(u) = h(q) <= max(h(A), h(B)) = h(A) < 113.85; sharper: T2(u) <= K3^(1/3) < 113.63.
+PASS  the values printed in 06_units.out.txt (12 significant digits) for sigma1(EPS), E, rho_lo, rho_hi agree with these enclosures to 1e-10 (relative), and its h(A), h(B) fractions are equal to these
+
+--- B.3 the units of small height (4.4)
+PASS  T2(a,b,c) = (3a^2 + 16ac - 8b^2 + 32c^2) + (8bc - 18c^2) L + (3b^2 - 4c^2) L^2, the form of (1.6)
+PASS  own box from the ellipsoid: T2 <= 114 forces |a| <= 8, |b| <= 3, |c| <= 2 (595 triples, each decided exactly): 187 have T2 <= 114
+PASS  the bounds of (4.4) from the completed squares: 9 d3 > 114 (|c| <= 2); d2 (6 - 2|k|)^2 > 114 (|b| <= 5); 3(12 - 16/3)^2 = 400/3 > 114 (|a| <= 11)
+PASS  (4.4): of the 1265 triples of the box |a| <= 11, |b| <= 5, |c| <= 2 exactly 187 have T2 <= 114, and they are the same 187 triples as in the own box
+PASS  the units with T2 <= 114 are exactly [(-1, 0, 0), (1, 0, 0)] (T2(+-1) = 3)
+      (4.5) then gives the unit theorem: the least-T2 element v of {u EPS^k} has no smaller neighbour, so T2(v) <= C* <
+      114 and v = +-1.  The next section proves (4.1) again without the descent.
+
+--- B.4 the unit theorem (4.1) by a fundamental domain for EPS (different route)
+PASS  coarse bounds for the ranges: l1 in [Llo, Lhi]/2^64, l1^2 in [L2lo, L2hi]/2^64, 3 l1^2 - 16 >= W_lo > 0
+      Ranges (rigorous, from the inverse of the embedding, A.6): for |sigma1| <= X and Q <= Qm,
+        |c| <= (X + sqrt(Qm) sqrt(1 + 9 l1^2/(3 l1^2 - 16)))/(3 l1^2 - 4)   [Cauchy-Schwarz on Y1 + (3 l1/2) Y2],
+        |b - l1 c| = |Y2| <= sqrt(Qm)/w,  |a - m(b,c)| = |Y1| <= sqrt(Qm) with m = (l1/2) b - ((8 - l1^2)/2) c,
+        |a + b l1 + c l1^2| <= X.
+PASS  enumeration A (nested ranges): |c| <= 40, 365 candidate triples, each decided exactly; 291 integer triples have |sigma1| <= 606 and Q <= 1, of which 290 have |sigma1| >= 1 (the other one is 0: a nonzero triple with |sigma1| < 1 and Q <= 1 would have 0 < |N| < 1)
+      (the expected number is about 2*606*pi/(sqrt(716)/2) = 284.6; time 0.0 s)
+PASS  enumeration B setup: T2 <= 606^2 + 2 gives |a| <= 494, |b| <= 217, |c| <= 130; l1 2^30 in [L1, L1 + 1) and l1^2 2^30 in [L2, L2 + 1) with L1 = -2711307901, L2 = 6846329693
+PASS  int64 overflow bound for enumeration B: 3278447709566330 < 2^62
+PASS  enumeration B: 112286115 triples of the box scanned, 291 kept by the int64 bounds and decided exactly: the same 291 triples as enumeration A
+      (time 13.0 s)
+PASS  units with |sigma1| <= 606 and Q <= 1: (-1, 0, 0) = -EPS^0, sigma1 = -1; (1, 0, 0) = EPS^0, sigma1 = 1; (-95, 101, -40) = -EPS^-1, sigma1 = -605.0809836; (95, -101, 40) = EPS^-1, sigma1 = 605.0809836
+PASS  units in the fundamental domain 1 <= |sigma1| < 1/sigma1(EPS) = sigma1(EPS^-1): [(-1, 0, 0), (1, 0, 0)]; +-EPS^-1 lie exactly on the excluded end (|sigma1(+-EPS^-1)| = 1/sigma1(EPS), exactly, since EPS EPS^-1 = 1)
+      NOTE on the task statement: the closed region with the rounded bound 606 contains the four units +-1, +-EPS^-1;
+      only +-1 lie in the half-open domain 1 <= |sigma1| < 1/sigma1(EPS) (= 605.08...), which is what the proof uses.
+      Proof of (4.1) by this route: let u be a unit and e = sigma1(EPS), 1/606 < e < 1/605. |sigma1(u EPS^k)| =
+      |sigma1(u)| e^k decreases strictly in k, is <= |sigma1(u)| 605^-k -> 0 (k -> oo) and >= |sigma1(u)| 605^|k| -> oo
+      (k -> -oo). Let k0 be the largest k with |sigma1(u)| e^k >= 1; then v = u EPS^k0 is a unit with
+      1 <= |sigma1(v)| < 1/e < 606 and Q(v) = 1/|sigma1(v)| <= 1 (sigma1 Q = N = +-1, Q > 0). By the enumeration
+      v = +-1, so u = +-EPS^(-k0). k is unique: sigma1(EPS^k) = e^k is not +-1 for k != 0.
+PASS  uniqueness of k: 0 < sigma1(EPS) < 1, so sigma1(EPS^k) = sigma1(EPS)^k != +-1 for k != 0
+PASS  the four classes of (4.1) are representable: every unit is s EPS^l v^2 with s = +-1, l in {0, 1} (EPS^k = EPS^l (EPS^k1)^2 for k = 2k1 + l), e.g. EPS^3 = EPS (EPS)^2 and EPS^-3 = EPS (EPS^-2)^2
+
+--- B.5 Remark (4.6)
+PASS  a square has sigma1 > 0, while sigma1(-1) = -1 < 0 and sigma1(-EPS) < 0 < sigma1(EPS)
+PASS  a unit v with v^2 = EPS would have sigma1(v)^2 = 1/E and Q(v)^2 = E, so T2(v) = 1/E + 2 sqrt(E) < 114 (1/E < 1 and 4E < 113^2); by B.3 v = +-1, but (+-1)^2 = 1 != EPS
+      T2(EPS) = 1210.16196999, T2(EPS^-1) = 366123.000052 (06 prints 1210.16196999 and 366123.000052)
+PASS  T2(EPS) and T2(EPS^-1) agree with the values printed by 06 to 1e-9 (relative), and both exceed 114
+
+====================================================================================================================
+PART C. Brute force: every triple with |a|, |b|, |c| <= 60 and N = +-1
+====================================================================================================================
+PASS  N = a^3 + k2 a^2 + k1 a + k0 with k2 = 8c, k1 = -4b^2 + 18bc + 16c^2, k0 = -6b^3 + 24bc^2 + 36c^3 (read off the resultant)
+PASS  1771561 triples scanned exactly; the triples with N = +-1 are: (-19, -5, 1) = EPS^1; (-1, 0, 0) = -EPS^0; (1, 0, 0) = EPS^0; (19, 5, -1) = -EPS^1
+      (+-EPS^-1 = +-(95, -101, 40) and +-EPS^2 = +-(421, 144, -9) lie outside the box; time 1.0 s)
+
+====================================================================================================================
+PART D. Negative controls
+====================================================================================================================
+
+--- D.1 EPS^2 in place of EPS: domain 1 <= |sigma1| < 1/sigma1(EPS^2), rounded bound 606^2
+PASS  sigma1(EPS^2) = sigma1(EPS)^2 lies in (1/606^2, 1/605^2); EPS^2 = (421, 144, -9), EPS^-2 = (57505, -61110, 24201)
+PASS  219587 candidates (|c| <= 24274), 172457 triples with |sigma1| <= 606^2 and Q <= 1; units in the domain: (-95, 101, -40) = -EPS^-1, (-1, 0, 0) = -EPS^0, (1, 0, 0) = EPS^0, (95, -101, 40) = EPS^-1; on the excluded end: -EPS^-2, EPS^-2
+PASS  control caught: with EPS^2 the domain contains the units +-EPS^-1 besides +-1, so the argument cannot conclude "every unit is +-EPS^(2k)"; it exhibits EPS^-1, whose inverse is the extra unit EPS
+      (time 2.1 s)
+
+--- D.2 EPS^2, mirrored domain sigma1(EPS^2) < |sigma1| <= 1 (so 1 <= Q < 1/sigma1(EPS^2) for units), bound 606^2
+PASS  209737 candidates (|c| <= 176), 172479 triples with |sigma1| <= 1 and Q <= 606^2; units in the domain: (-19, -5, 1) = EPS^1, (-1, 0, 0) = -EPS^0, (1, 0, 0) = EPS^0, (19, 5, -1) = -EPS^1; on the excluded end: -EPS^2, EPS^2
+PASS  control caught: the mirrored domain for EPS^2 contains the extra unit EPS itself
+      (time 3.2 s)
+
+--- D.3 the same enumeration with EPS: mirrored domain sigma1(EPS) < |sigma1| <= 1, bound 606 (no extra unit)
+PASS  291 triples with |sigma1| <= 1 and Q <= 606; units in sigma1(EPS) < |sigma1| <= 1: [(-1, 0, 0), (1, 0, 0)] (all units there: EPS^1, -EPS^0, EPS^0, -EPS^1)
+
+--- D.4 planted errors
+PASS  control caught: the perturbed norm N + abc is not multiplicative
+PASS  control caught: a perturbed adjugate (second coordinate + c^2) fails u u* = (N(u), 0, 0)
+PASS  control caught: the product formula (1.1) does not match the reduction modulo t^3 - 4t - 6 (wrong sign)
+PASS  control caught: for t^3 - 4t (not Eisenstein, reducible) the residue test of A.4 finds 192 non-even residue triples with N = 0 mod 8 (e.g. (0, 0, 1)), so it does not certify (1.4) there
+PASS  control (detection): the enumeration of B.3 with the bound 1211 (box |a| <= 28, |b| <= 12, |c| <= 7) finds the units [(-19, -5, 1), (-1, 0, 0), (1, 0, 0), (19, 5, -1)], i.e. +-1 and +-EPS (T2(EPS) = 1210.16...), and with the bound 1210 only +-1
+
+====================================================================================================================
+SUMMARY
+====================================================================================================================
+ALL 101 CHECKS PASSED (20.7 s).  Section 1: the norm form (resultant = Sylvester = Newton), the adjugate (Cayley-Hamilton), multiplicativity, (1.4) (mod 8 exhaustive and the quoted parities), the identities of (1.5) and the real-embedding facts of (1.6) are confirmed.  Section 4: (4.2) and the descent constants are confirmed (rho_lo decreases with E: the sentence "both rho's increase" in (4.3) is a wording error with no effect); (4.4) is confirmed (187 triples, units +-1); the unit theorem (4.1) is confirmed by a fundamental domain for EPS (291 lattice points with |sigma1| <= 606, Q <= 1, found twice; units there +-1 and +-EPS^-1, the latter on the excluded end).  Brute force |a|,|b|,|c| <= 60: units +-1, +-EPS.  Controls: EPS^2 in place of EPS exposes +-EPS^-1 and +-EPS; planted errors are all caught.

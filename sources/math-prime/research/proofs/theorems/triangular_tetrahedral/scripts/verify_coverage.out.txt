@@ -1,0 +1,319 @@
+verify_coverage.py -- independent re-check of 01_coverage.py (exact; own arithmetic, own intervals)
+
+======================================================================================================================
+CLASS (1,0)   F = (36, 0, 0, -6, 1)   f(t) = t^4 + (-6) t^3 + (0) t^2 + (0) t + (36)
+   [ok] integral basis is triangular and closed under multiplication (structure constants integral)
+   [ok] norm form Res_t(f, x(t)) has 23 terms, all integer
+   [ok] N(n - m alpha) = F(m,n) as a polynomial identity in m, n
+   [ok] the coefficient of x0^4 in the norm form is 1
+   [ok] N(eps1) = N(eps2) = 1 for eps1 = (0, 1, -1, 0), eps2 = (-86, -41, -117, 30) (norm form)
+   [ok] eps1^-1, eps2^-1 lie in O (exact solve)
+   disc(f) = -33405696;  real roots (Sturm count) = 2;  real isolating intervals (width < 2^-220):
+      [2.097213054364627, 2.097213054364627]  exact sign change of f: True
+      [5.817114318622028, 5.817114318622028]  exact sign change of f: True
+   [ok] exactly two real roots, in two disjoint intervals with exact sign changes
+   [ok] disc(f) < 0, consistent with signature (2,1)
+   [ok] Rouche certificate: exactly one root in |z - z0| < 2^-300, z0 = -0.957163686493 + 1.426437211516 i (Im z0 > 2^-300)
+   [ok] z0 lies in sympy's exact isolating rectangle of the root with Im > 0
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) (rigorous intervals):
+      (a,b)=(-1,-1)  f = (1.19979e-05, 1688.14, 7.02656)   widths < 2.1e-64   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.9e-06
+      (a,b)=(-1, 0)  f = (0.537363, 31.8074, 0.241881)   widths < 2.7e-66   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.0e-06
+      (a,b)=(-1, 1)  f = (24067.4, 0.599304, 0.00832649)   widths < 3.1e-63   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 5.7e-07
+      (a,b)=( 0,-1)  f = (2.23274e-05, 53.0739, 29.0496)   widths < 1.4e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 7.5e-07
+      (a,b)=( 0, 1)  f = (44788, 0.0188417, 0.0344239)   widths < 5.8e-63   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.8e-06
+      (a,b)=( 1,-1)  f = (4.155e-05, 1.6686, 120.099)   widths < 2.0e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 2.6e-06
+      (a,b)=( 1, 0)  f = (1.86094, 0.0314392, 4.13426)   widths < 3.4e-67   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.4e-06
+      (a,b)=( 1, 1)  f = (83347.8, 0.000592368, 0.142317)   widths < 1.1e-62   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.2e-06
+   [ok] the f-vectors agree with 01's printed values (6 significant digits)
+   [ok] clipping gives 4 vertices = the basic feasible solutions of all pairs of constraints
+   [ok] every vertex of P+ has all coordinates > 0 (hypothesis of the lemma)
+      vertex (0.000022, 0.763916, 0.236062)
+      vertex (0.000041, 0.024017, 0.975942)
+      vertex (0.977009, 0.014872, 0.008120)
+      vertex (0.525471, 0.472772, 0.001758)
+   [ok] the vertex set agrees with 01's printed vertices (6 decimals)
+   kappa = (2.244598e-05, 1.487163e-02, 1.757809e-03);  kappa1 kappa2 kappa3^2 = 1.031433e-12;  b_min = 7.676147e-07
+   [ok] b_min agrees with 01's printed value
+   [ok] b_min >= kappa1 kappa2 kappa3^2 (the linear bound is the weaker one)
+   linear bound T'(c) (least T' with T'^4 >= c^2/(kappa1 kappa2 kappa3^2)): {1: 993, 4: 1985, 9: 2977, 36: 5954}
+   product bound T(c) (least T with T^4 >= c^2/b_min), for comparison:      {1: 34, 4: 68, 9: 102, 36: 203}
+   [ok] the product bounds T(c) equal 01's T values
+   [ok] T'(c) >= T(c)
+   [ok] lower form is symmetric
+   lower form A = A0 - diag(sum_j delta_ij), entries in 2^-40 Z; largest diagonal shift 3.64e-12
+   [ok] x^T A x <= E(x) on 200 random integer vectors (rigorous E), as the shift argument proves
+   [ok] A is positive definite (LDL pivots > 0) and A = U^T D U exactly; scale S has 250 bits
+   nonzero lattice points with x^T A x <= T(c): {1: 74, 4: 278, 9: 638, 36: 2536}   (01 printed {1: 74, 4: 278, 9: 638, 36: 2536})
+   [ok] same numbers of lattice points as 01 at its bounds T(c)
+   exact enumeration of all x with x^T A x <= T'_max = 5954: 2179075 lattice points (incl. 0), 114 with N(x) in {-1,1,4,9,36}  [0.5 s]
+   [ok] the fast norm evaluation agrees with the norm form on every kept point
+   [ok] the fast norm evaluation agrees with the norm form on 1815 sampled leaves, kept or not (mismatches: 0)
+   [ok] the 7442 units +-eps1^a eps2^b, |a|,|b| <= 30, are pairwise distinct
+   c = 1: 18 elements of norm 1 with x^T A x <= T'(1) = 993; exponents (sign, a, b):
+      (-1, -1, 0), (1, -1, 0), (1, 0, -1), (-1, 0, -1), (-1, 0, 0), (1, 0, 0), (1, 1, -1), (-1, 1, -1), (1, 1, 0), (-1, 1, 0), (-1, 2, -1), (1, 2, -1), (1, 2, 0), (-1, 2, 0), (-1, 3, 0), (1, 3, 0), (-1, 4, 0), (1, 4, 0)
+   [ok] every one of them is +-eps1^a eps2^b with |a|,|b| <= 30 (exact table lookup)
+      => by the lemma (c = 1): every unit of norm +1 of O lies in <-1, eps1, eps2>, so two elements of
+         equal norm c != 0 lie in one orbit of <-1, eps1, eps2> iff their quotient lies in O.
+   by-product: elements of norm -1 with x^T A x <= T'(1) = 993: 0  => (lemma with c = -1, same bound since c^2 = 1) O has no unit of norm -1, so the unit group of O is exactly <-1, eps1, eps2> = {+-1} x <eps1> x <eps2> (eps1, eps2 are fundamental units of O)
+   c =  1: T'(c) = 993;  elements of norm c with x^T A x <= T'(c): 18;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 34 certified for 8 (undecided 0); 01 listed 8
+   [ok] orbit count for c = 1 agrees with 01
+   [ok] count of norm-1 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-1, 0, 0, 0): N = 1, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, 0, 0, 0)  E = 3.0000  (18 members listed)
+   [ok] known solution (m,n) = (0,1): N(n - m alpha) = F(m,n) = 1
+      known (m,n) = (0,1): z = (1, 0, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, 0, 0, 0): (sign, a, b) = (-1, 0, 0)
+   [ok] known solution (0,1) lies in a listed orbit
+   c =  4: T'(c) = 1985;  elements of norm c with x^T A x <= T'(c): 24;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 68 certified for 4 (undecided 0); 01 listed 4
+   [ok] orbit count for c = 4 agrees with 01
+   [ok] count of norm-4 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (2, -1, 0, 0): N = 4, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-2, 1, 0, 0)  E = 25.3594  (24 members listed)
+   [ok] known solution (m,n) = (1,2): N(n - m alpha) = F(m,n) = 4
+      known (m,n) = (1,2): z = (2, -1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (2, -1, 0, 0): (sign, a, b) = (1, 0, 0)
+   [ok] known solution (1,2) lies in a listed orbit
+   c =  9: T'(c) = 2977;  elements of norm c with x^T A x <= T'(c): 22;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 102 certified for 2 (undecided 0); 01 listed 2
+   [ok] orbit count for c = 9 agrees with 01
+   [ok] count of norm-9 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-3, 0, 6, -1): N = 9, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-3, 0, 6, -1)  E = 36.7714  (22 members listed)
+   c = 36: T'(c) = 5954;  elements of norm c with x^T A x <= T'(c): 20;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 203 certified for 6 (undecided 0); 01 listed 6
+   [ok] orbit count for c = 36 agrees with 01
+   [ok] count of norm-36 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (0, 0, 6, -1): N = 36, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (0, 0, -6, 1)  E = 21.4486  (20 members listed)
+   [ok] known solution (m,n) = (1,0): N(n - m alpha) = F(m,n) = 36
+      known (m,n) = (1,0): z = (0, -1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (0, 0, 6, -1): (sign, a, b) = (-1, -1, 0)
+   [ok] known solution (1,0) lies in a listed orbit
+   [ok] known solution (m,n) = (1,6): N(n - m alpha) = F(m,n) = 36
+      known (m,n) = (1,6): z = (6, -1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (0, 0, 6, -1): (sign, a, b) = (1, 1, 0)
+   [ok] known solution (1,6) lies in a listed orbit
+   [class done in 1.0 s]
+======================================================================================================================
+CLASS (0,1)   F = (-5, 14, 24, 2, 1)   f(t) = t^4 + (2) t^3 + (24) t^2 + (14) t + (-5)
+   [ok] integral basis is triangular and closed under multiplication (structure constants integral)
+   [ok] norm form Res_t(f, x(t)) has 35 terms, all integer
+   [ok] N(n - m alpha) = F(m,n) as a polynomial identity in m, n
+   [ok] the coefficient of x0^4 in the norm form is 1
+   [ok] N(eps1) = N(eps2) = 1 for eps1 = (0, -1, 1, 0), eps2 = (-21, 36, 16, 14) (norm form)
+   [ok] eps1^-1, eps2^-1 lie in O (exact solve)
+   disc(f) = -33405696;  real roots (Sturm count) = 2;  real isolating intervals (width < 2^-220):
+      [-0.860578889067903, -0.860578889067903]  exact sign change of f: True
+      [0.248668477804735, 0.248668477804735]  exact sign change of f: True
+   [ok] exactly two real roots, in two disjoint intervals with exact sign changes
+   [ok] disc(f) < 0, consistent with signature (2,1)
+   [ok] Rouche certificate: exactly one root in |z - z0| < 2^-300, z0 = -0.694044794368 + 4.783608909043 i (Im z0 > 2^-300)
+   [ok] z0 lies in sympy's exact isolating rectangle of the root with Im > 0
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) (rigorous intervals):
+      (a,b)=(-1,-1)  f = (0.000852461, 7756.77, 0.388886)   widths < 1.4e-63   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 4.4e-07
+      (a,b)=(-1, 0)  f = (3.00407, 112.973, 0.0542821)   widths < 1.8e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 3.2e-06
+      (a,b)=(-1, 1)  f = (10586.3, 1.6454, 0.0075769)   widths < 8.6e-63   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 3.8e-06
+      (a,b)=( 0,-1)  f = (0.000283769, 68.6601, 7.16416)   widths < 1.3e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.5e-06
+      (a,b)=( 0, 1)  f = (3524, 0.0145645, 0.139584)   widths < 2.9e-63   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 2.7e-06
+      (a,b)=( 1,-1)  f = (9.44614e-05, 0.607755, 131.98)   widths < 4.8e-67   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.1e-06
+      (a,b)=( 1, 0)  f = (0.332882, 0.00885164, 18.4223)   widths < 8.0e-67   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.7e-06
+      (a,b)=( 1, 1)  f = (1173.07, 0.00012892, 2.57145)   widths < 9.7e-64   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 3.7e-06
+   [ok] the f-vectors agree with 01's printed values (6 significant digits)
+   [ok] clipping gives 6 vertices = the basic feasible solutions of all pairs of constraints
+   [ok] every vertex of P+ has all coordinates > 0 (hypothesis of the lemma)
+      vertex (0.000270, 0.734150, 0.265579)
+      vertex (0.000244, 0.008369, 0.991387)
+      vertex (0.316982, 0.000095, 0.682923)
+      vertex (0.861497, 0.000122, 0.138381)
+      vertex (0.952237, 0.010693, 0.037071)
+      vertex (0.000734, 0.945451, 0.053815)
+   [ok] the vertex set agrees with 01's printed vertices (6 decimals)
+   kappa = (2.444657e-04, 9.464646e-05, 3.707052e-02);  kappa1 kappa2 kappa3^2 = 3.179653e-11;  b_min = 2.010792e-06
+   [ok] b_min agrees with 01's printed value
+   [ok] b_min >= kappa1 kappa2 kappa3^2 (the linear bound is the weaker one)
+   linear bound T'(c) (least T' with T'^4 >= c^2/(kappa1 kappa2 kappa3^2)): {1: 422, 4: 843, 9: 1264, 36: 2527}
+   product bound T(c) (least T with T^4 >= c^2/b_min), for comparison:      {1: 27, 4: 54, 9: 80, 36: 160}
+   [ok] the product bounds T(c) equal 01's T values
+   [ok] T'(c) >= T(c)
+   [ok] lower form is symmetric
+   lower form A = A0 - diag(sum_j delta_ij), entries in 2^-40 Z; largest diagonal shift 3.64e-12
+   [ok] x^T A x <= E(x) on 200 random integer vectors (rigorous E), as the shift argument proves
+   [ok] A is positive definite (LDL pivots > 0) and A = U^T D U exactly; scale S has 251 bits
+   nonzero lattice points with x^T A x <= T(c): {1: 44, 4: 168, 9: 388, 36: 1556}   (01 printed {1: 44, 4: 168, 9: 388, 36: 1556})
+   [ok] same numbers of lattice points as 01 at its bounds T(c)
+   exact enumeration of all x with x^T A x <= T'_max = 2527: 392675 lattice points (incl. 0), 64 with N(x) in {-1,1,4,9,36}  [0.1 s]
+   [ok] the fast norm evaluation agrees with the norm form on every kept point
+   [ok] the fast norm evaluation agrees with the norm form on 509 sampled leaves, kept or not (mismatches: 0)
+   [ok] the 7442 units +-eps1^a eps2^b, |a|,|b| <= 30, are pairwise distinct
+   c = 1: 12 elements of norm 1 with x^T A x <= T'(1) = 422; exponents (sign, a, b):
+      (-1, -1, 0), (1, -1, 0), (1, 0, -1), (-1, 0, -1), (-1, 0, 0), (1, 0, 0), (1, 1, -1), (-1, 1, -1), (-1, 1, 0), (1, 1, 0), (1, 2, 0), (-1, 2, 0)
+   [ok] every one of them is +-eps1^a eps2^b with |a|,|b| <= 30 (exact table lookup)
+      => by the lemma (c = 1): every unit of norm +1 of O lies in <-1, eps1, eps2>, so two elements of
+         equal norm c != 0 lie in one orbit of <-1, eps1, eps2> iff their quotient lies in O.
+   by-product: elements of norm -1 with x^T A x <= T'(1) = 422: 0  => (lemma with c = -1, same bound since c^2 = 1) O has no unit of norm -1, so the unit group of O is exactly <-1, eps1, eps2> = {+-1} x <eps1> x <eps2> (eps1, eps2 are fundamental units of O)
+   c =  1: T'(c) = 422;  elements of norm c with x^T A x <= T'(c): 12;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 27 certified for 4 (undecided 0); 01 listed 4
+   [ok] orbit count for c = 1 agrees with 01
+   [ok] count of norm-1 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-1, 0, 0, 0): N = 1, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, 0, 0, 0)  E = 3.0000  (12 members listed)
+   [ok] known solution (m,n) = (0,1): N(n - m alpha) = F(m,n) = 1
+      known (m,n) = (0,1): z = (1, 0, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, 0, 0, 0): (sign, a, b) = (-1, 0, 0)
+   [ok] known solution (0,1) lies in a listed orbit
+   c =  4: T'(c) = 843;  elements of norm c with x^T A x <= T'(c): 14;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 54 certified for 2 (undecided 0); 01 listed 2
+   [ok] orbit count for c = 4 agrees with 01
+   [ok] count of norm-4 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-1, -1, 0, 0): N = 4, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, -1, 0, 0)  E = 24.5551  (14 members listed)
+   [ok] known solution (m,n) = (-1,1): N(n - m alpha) = F(m,n) = 4
+      known (m,n) = (-1,1): z = (1, 1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, -1, 0, 0): (sign, a, b) = (-1, 0, 0)
+   [ok] known solution (-1,1) lies in a listed orbit
+   c =  9: T'(c) = 1264;  elements of norm c with x^T A x <= T'(c): 14;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 80 certified for 4 (undecided 0); 01 listed 4
+   [ok] orbit count for c = 9 agrees with 01
+   [ok] count of norm-9 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-3, -2, -3, -1): N = 9, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-3, -2, -3, -1)  E = 32.9387  (14 members listed)
+   [ok] known solution (m,n) = (4,1): N(n - m alpha) = F(m,n) = 9
+      known (m,n) = (4,1): z = (1, -4, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-3, -2, -3, -1): (sign, a, b) = (1, 2, 1)
+   [ok] known solution (4,1) lies in a listed orbit
+   c = 36: T'(c) = 2527;  elements of norm c with x^T A x <= T'(c): 8;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 160 certified for 4 (undecided 0); 01 listed 4
+   [ok] orbit count for c = 36 agrees with 01
+   [ok] count of norm-36 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (1, -1, 0, 0): N = 36, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, 1, 0, 0)  E = 29.7790  (8 members listed)
+   [ok] known solution (m,n) = (1,1): N(n - m alpha) = F(m,n) = 36
+      known (m,n) = (1,1): z = (1, -1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (1, -1, 0, 0): (sign, a, b) = (1, 0, 0)
+   [ok] known solution (1,1) lies in a listed orbit
+   [class done in 0.6 s]
+======================================================================================================================
+CLASS (1,1)   F = (-8, 4, 24, 4, 1)   f(t) = t^4 + (4) t^3 + (24) t^2 + (4) t + (-8)
+   [ok] integral basis is triangular and closed under multiplication (structure constants integral)
+   [ok] norm form Res_t(f, x(t)) has 35 terms, all integer
+   [ok] N(n - m alpha) = F(m,n) as a polynomial identity in m, n
+   [ok] the coefficient of x0^4 in the norm form is 1
+   [ok] N(eps1) = N(eps2) = 1 for eps1 = (-1, 0, 1, 0), eps2 = (1, -3, -5, -2) (norm form)
+   [ok] eps1^-1, eps2^-1 lie in O (exact solve)
+   disc(f) = -33405696;  real roots (Sturm count) = 2;  real isolating intervals (width < 2^-220):
+      [-0.706816472573604, -0.706816472573604]  exact sign change of f: True
+      [0.481813241270922, 0.481813241270922]  exact sign change of f: True
+   [ok] exactly two real roots, in two disjoint intervals with exact sign changes
+   [ok] disc(f) < 0, consistent with signature (2,1)
+   [ok] Rouche certificate: exactly one root in |z - z0| < 2^-300, z0 = -1.887498384349 + 4.464136748981 i (Im z0 > 2^-300)
+   [ok] z0 lies in sympy's exact isolating rectangle of the root with Im > 0
+   U = {eps1^a eps2^b : a,b in {-1,0,1}, (a,b) != (0,0)};  f_v(u) = s_v(u) (rigorous intervals):
+      (a,b)=(-1,-1)  f = (1218.1, 1.86667, 0.0209712)   widths < 7.1e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 3.0e-06
+      (a,b)=(-1, 0)  f = (4.23946, 55.6599, 0.0650989)   widths < 6.6e-66   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 2.8e-07
+      (a,b)=(-1, 1)  f = (0.0147549, 1659.65, 0.20208)   widths < 2.7e-64   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 9.5e-07
+      (a,b)=( 0,-1)  f = (287.325, 0.0335371, 0.322144)   widths < 1.7e-65   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.5e-06
+      (a,b)=( 0, 1)  f = (0.00348038, 29.8177, 3.1042)   widths < 4.8e-66   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 1.0e-06
+      (a,b)=( 1,-1)  f = (67.774, 0.000602537, 4.94853)   widths < 4.1e-66   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 7.0e-07
+      (a,b)=( 1, 0)  f = (0.235879, 0.0179663, 15.3612)   widths < 1.1e-68   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 3.1e-06
+      (a,b)=( 1, 1)  f = (0.000820948, 0.535712, 47.6844)   widths < 1.1e-67   N(u) = 1 and 1 in f1 f2 f3^2: True   max rel. diff. to 01: 2.6e-07
+   [ok] the f-vectors agree with 01's printed values (6 significant digits)
+   [ok] clipping gives 6 vertices = the basic feasible solutions of all pairs of constraints
+   [ok] every vertex of P+ has all coordinates > 0 (hypothesis of the lemma)
+      vertex (0.010084, 0.926055, 0.063861)
+      vertex (0.003205, 0.838715, 0.158080)
+      vertex (0.002379, 0.016638, 0.980984)
+      vertex (0.217232, 0.000505, 0.782262)
+      vertex (0.683424, 0.000558, 0.316018)
+      vertex (0.920947, 0.028128, 0.050924)
+   [ok] the vertex set agrees with 01's printed vertices (6 decimals)
+   kappa = (2.378573e-03, 5.053568e-04, 5.092440e-02);  kappa1 kappa2 kappa3^2 = 3.117213e-09;  b_min = 3.808329e-05
+   [ok] b_min agrees with 01's printed value
+   [ok] b_min >= kappa1 kappa2 kappa3^2 (the linear bound is the weaker one)
+   linear bound T'(c) (least T' with T'^4 >= c^2/(kappa1 kappa2 kappa3^2)): {1: 134, 4: 268, 9: 402, 36: 803}
+   product bound T(c) (least T with T^4 >= c^2/b_min), for comparison:      {1: 13, 4: 26, 9: 39, 36: 77}
+   [ok] the product bounds T(c) equal 01's T values
+   [ok] T'(c) >= T(c)
+   [ok] lower form is symmetric
+   lower form A = A0 - diag(sum_j delta_ij), entries in 2^-40 Z; largest diagonal shift 3.64e-12
+   [ok] x^T A x <= E(x) on 200 random integer vectors (rigorous E), as the shift argument proves
+   [ok] A is positive definite (LDL pivots > 0) and A = U^T D U exactly; scale S has 257 bits
+   nonzero lattice points with x^T A x <= T(c): {1: 18, 4: 86, 9: 180, 36: 730}   (01 printed {1: 18, 4: 86, 9: 180, 36: 730})
+   [ok] same numbers of lattice points as 01 at its bounds T(c)
+   exact enumeration of all x with x^T A x <= T'_max = 803: 79271 lattice points (incl. 0), 144 with N(x) in {-1,1,4,9,36}  [0.0 s]
+   [ok] the fast norm evaluation agrees with the norm form on every kept point
+   [ok] the fast norm evaluation agrees with the norm form on 183 sampled leaves, kept or not (mismatches: 0)
+   [ok] the 7442 units +-eps1^a eps2^b, |a|,|b| <= 30, are pairwise distinct
+   c = 1: 14 elements of norm 1 with x^T A x <= T'(1) = 134; exponents (sign, a, b):
+      (1, -1, 0), (-1, -1, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 1), (-1, 0, 1), (1, 1, -1), (-1, 1, -1), (-1, 1, 0), (1, 1, 0), (-1, 1, 1), (1, 1, 1), (-1, 2, -1), (1, 2, -1)
+   [ok] every one of them is +-eps1^a eps2^b with |a|,|b| <= 30 (exact table lookup)
+      => by the lemma (c = 1): every unit of norm +1 of O lies in <-1, eps1, eps2>, so two elements of
+         equal norm c != 0 lie in one orbit of <-1, eps1, eps2> iff their quotient lies in O.
+   by-product: elements of norm -1 with x^T A x <= T'(1) = 134: 0  => (lemma with c = -1, same bound since c^2 = 1) O has no unit of norm -1, so the unit group of O is exactly <-1, eps1, eps2> = {+-1} x <eps1> x <eps2> (eps1, eps2 are fundamental units of O)
+   c =  1: T'(c) = 134;  elements of norm c with x^T A x <= T'(c): 14;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 13 certified for 2 (undecided 0); 01 listed 2
+   [ok] orbit count for c = 1 agrees with 01
+   [ok] count of norm-1 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-1, 0, 0, 0): N = 1, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, 0, 0, 0)  E = 3.0000  (14 members listed)
+   [ok] known solution (m,n) = (0,1): N(n - m alpha) = F(m,n) = 1
+      known (m,n) = (0,1): z = (1, 0, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, 0, 0, 0): (sign, a, b) = (-1, 0, 0)
+   [ok] known solution (0,1) lies in a listed orbit
+   c =  4: T'(c) = 268;  elements of norm c with x^T A x <= T'(c): 36;  orbits: 3   (01: 3)
+      of these, E(x) <= T(c) = 26 certified for 12 (undecided 0); 01 listed 12
+   [ok] orbit count for c = 4 agrees with 01
+   [ok] count of norm-4 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (3, -1, -2, -1): N = 4, listed here, orbit #0
+   [ok] 01 seed (2, -1, -1, -1): N = 4, listed here, orbit #2
+   [ok] 01 seed (0, 0, -1, 0): N = 4, listed here, orbit #1
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-3, 1, 2, 1)  E = 9.6317  (12 members listed)
+      orbit #1: least-E member (0, 0, -1, 0)  E = 9.9954  (12 members listed)
+      orbit #2: least-E member (-2, 1, 1, 1)  E = 10.5043  (12 members listed)
+   c =  9: T'(c) = 402;  elements of norm c with x^T A x <= T'(c): 14;  orbits: 1   (01: 1)
+      of these, E(x) <= T(c) = 39 certified for 4 (undecided 0); 01 listed 4
+   [ok] orbit count for c = 9 agrees with 01
+   [ok] count of norm-9 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (-1, -1, 0, 0): N = 9, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (-1, -1, 0, 0)  E = 22.9979  (14 members listed)
+   [ok] known solution (m,n) = (-1,1): N(n - m alpha) = F(m,n) = 9
+      known (m,n) = (-1,1): z = (1, 1, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, -1, 0, 0): (sign, a, b) = (-1, 0, 0)
+   [ok] known solution (-1,1) lies in a listed orbit
+   [ok] known solution (m,n) = (2,1): N(n - m alpha) = F(m,n) = 9
+      known (m,n) = (2,1): z = (1, -2, 0, 0) lies in orbit #0;  z = sign * eps1^a eps2^b * w with w = 01 seed (-1, -1, 0, 0): (sign, a, b) = (-1, 1, -1)
+   [ok] known solution (2,1) lies in a listed orbit
+   c = 36: T'(c) = 803;  elements of norm c with x^T A x <= T'(c): 44;  orbits: 3   (01: 3)
+      of these, E(x) <= T(c) = 77 certified for 8 (undecided 0); 01 listed 8
+   [ok] orbit count for c = 36 agrees with 01
+   [ok] count of norm-36 elements with E <= T(c) agrees with 01
+   [ok] 01 seed (6, -2, -3, -2): N = 36, listed here, orbit #2
+   [ok] 01 seed (-1, -2, -3, -1): N = 36, listed here, orbit #1
+   [ok] 01 seed (0, -1, -3, -1): N = 36, listed here, orbit #0
+   [ok] 01's seeds lie in distinct orbits and meet every orbit
+      orbit #0: least-E member (0, -1, -3, -1)  E = 22.2390  (16 members listed)
+      orbit #1: least-E member (-1, -2, -3, -1)  E = 31.2268  (14 members listed)
+      orbit #2: least-E member (-6, 2, 3, 2)  E = 34.6729  (14 members listed)
+   [class done in 0.7 s]
+
+======================================================================================================================
+APPENDIX: exact random tests of prod_i l_i(sum_j t_j V_j) >= min_j prod_i l_i(V_j) for affine l_i > 0 on the V_j
+   [ok] product inequality held in all random exact trials (violations: 0)
+
+======================================================================================================================
+DATA: the retyped tables against core.py's CLASSES / UNITS / KNOWN
+   [ok] class (1,0): F, BASIS, UNITS, KNOWN identical to core.py
+   [ok] class (0,1): F, BASIS, UNITS, KNOWN identical to core.py
+   [ok] class (1,1): F, BASIS, UNITS, KNOWN identical to core.py
+
+TOTAL ORBITS over the 12 pairs (class, c): 16  (01: 16)
+   [ok] total orbit count 16
+SEEDS (01 seeds, one per orbit found here):
+    '10': {1: [(-1, 0, 0, 0)], 4: [(2, -1, 0, 0)], 9: [(-3, 0, 6, -1)], 36: [(0, 0, 6, -1)]},
+    '01': {1: [(-1, 0, 0, 0)], 4: [(-1, -1, 0, 0)], 9: [(-3, -2, -3, -1)], 36: [(1, -1, 0, 0)]},
+    '11': {1: [(-1, 0, 0, 0)], 4: [(3, -1, -2, -1), (0, 0, -1, 0), (2, -1, -1, -1)], 9: [(-1, -1, 0, 0)], 36: [(0, -1, -3, -1), (-1, -2, -3, -1), (6, -2, -3, -2)]},
+
+ALL CHECKS PASSED: the independent enumeration with the weaker linear bound finds exactly the orbits of 01.
+[done in 2.4 s]

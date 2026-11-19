@@ -1,0 +1,221 @@
+6.1 prime lattices
+6.1(a) the ring facts used (re-checked)
+PASS  u(t)v(t) - mul(u,v)(t) = q(t) f(t) with q(t) = cf t + (bf + ce): mul is the product reduced modulo f
+PASS  the quotient q has integer coefficients (f is monic)
+PASS  the columns of matrix(u) are the triples u*1, u*l, u*l^2
+PASS  M(uv) = M(u) M(v)
+PASS  N(u) = det M(u)
+PASS  u * adj(u) = (N(u), 0, 0)
+PASS  N(uv) = N(u) N(v)
+PASS  N vanishes only at 0 (the 2-adic descent of Section 1, re-checked): N - a^3, N(2a1,b,c)/2 + b^3 and N(2a1,2b1,c)/4 - c^3 have even coefficients, so a primitive zero would have a, b, c all even
+6.1(b) reduction modulo (p,g) is a ring homomorphism when g | f mod p
+    By 6.1(a), mul(u,v)(t) = u(t)v(t) - q(t)f(t) with q integral. Reducing modulo p and g, and using g | f mod p,
+    gives phi(uv) = phi(u)phi(v); phi is additive and phi(1) = 1. phi(l) = t is a root of f in F_p[t]/(g), since
+    g | f; this is the image of l^3 - 4l + 6 = 0. phi is onto: every class mod g has a representative of degree
+    < deg g <= 3. F_p[t]/(g) is a field because g is irreducible (Euclid's algorithm in F_p[t]). So P(p,g) =
+    ker phi is closed under addition and under multiplication by R; and beta in P(p,g) gives (N(beta),0,0) =
+    beta*adj(beta) in P(p,g), i.e. p | N(beta). Contrapositive: p does not divide N(pi) => pi not in P(p,g).
+PASS  l^3 = 4l - 6 in R (the triple of l^3 - 4l + 6 is 0), matching f(t) = 0 in F_p[t]/(g) when g | f mod p
+6.1(c) the triangular basis of P(p,g); 6.1(d) the index lemma (checked on every entry of 6.4 and 6.5)
+    Spanning: for beta in P(p,g), beta - sum_(i >= deg g) beta_i (e_i - (t^i mod g)) lies in P(p,g) and has degree
+    < deg g as a polynomial, so all its coordinates are divisible by p. The basis matrix B is upper triangular
+    with diagonal (p,..,p,1,..,1), so det B = p^deg g.
+    Index lemma: if pi in P(p,g) then pi*1, pi*l, pi*l^2 lie in P(p,g), so M(pi) = B C with C integral. If also
+    |N(pi)| = p^deg g = det B, then det C = +-1, C^-1 = +-adj(C) is integral, and B = M(pi) C^-1 shows that every
+    basis vector of P(p,g) is pi times an element of R. Hence P(p,g) = pi R.
+PASS  for every factor g of f mod p, for every prime p <= 31 and p = 179: the basis is upper triangular, lies in P(p,g) and has determinant p^deg g; for p <= 7 every beta in P(p,g) with |coordinates| <= p has integer coordinates in it
+6.2 p | N(beta) implies beta in P(p,g) for a factor g of f mod p
+6.2(a) the factors of f mod p
+PASS  (36t + 81) f(t) + (-12t^2 - 27t + 32) f'(t) = 358 = 2*179, with f'(t) = 3t^2 - 4 (disc f = -716 = -4*179)
+    So a repeated root r of f mod p (f(r) = f'(r) = 0 mod p) forces p | 358, i.e. p = 2 or p = 179.
+    Patterns: no root: f is irreducible (a cubic without root); three distinct roots; exactly one root r and
+    f = (t - r)q with q(r) != 0, so q has no root and is irreducible; otherwise a repeated root (p = 2, 179).
+    Every monic irreducible factor g of f mod p is in the list: deg g = 1 gives a root; deg g = 2 gives f = g(t - r')
+    with r' the only root (g has none), so g = f/(t - r'); deg g = 3 gives g = f without root.
+    pattern counts for p < 3000: {'triple': 1, 'split': 69, 'inert': 135, 'lin*quad': 224, 'double': 1}  repeated roots: {2: ('triple', [('t', 3)]), 179: ('double', [('t - 47', 2), ('t - 85', 1)])}
+PASS  for every prime p < 3000 the listed factors multiply back to f mod p, and those of degree 2 or 3 have no root
+PASS  repeated roots occur only at p = 2 (f = t^3) and p = 179 (f = (t - 47)^2 (t - 85))
+6.2(b) the proof, and the resultant identity
+    Suppose no factor g of f mod p divides beta(t). Then gcd(beta(t), f(t)) = 1 in F_p[t] (a common factor of
+    positive degree would have a monic irreducible factor dividing f, i.e. a listed g), so Euclid's algorithm
+    gives u(t)beta(t) + v(t)f(t) = 1 mod p. With U = (u mod f) as a triple, mul(U, beta) = (1,0,0) mod p
+    (6.1(a); a polynomial of degree <= 2 that is 1 modulo f mod p is 1), so M(U)M(beta) = I mod p and
+    N(U)N(beta) = 1 mod p: p does not divide N(beta).
+PASS  Res_t(t^3 - 4t + 6, a + bt + ct^2) = N(a,b,c), the alternative route (p | Res iff a common factor mod p)
+6.2(c) exhaustive confirmation over all residues mod p
+PASS  for every prime p <= 47 and every residue beta mod p: p | N(beta) iff beta lies in some P(p,g)
+PASS  p = 179 (all 179^3 residues, int64 arithmetic, every value < 2^31): 179 | N(beta) iff beta in P(179, t - 47) or P(179, t - 85)
+6.3 the box principle
+PASS  b0 = 1, b1 = 1 + l, b2 = l^2 + l - 3 is a basis of R: the matrix of the columns b_i is upper triangular with diagonal 1
+PASS  the weights t = (2, 1, 1/2) satisfy t0 t1 t2 = 1
+    F(x) = N(x0 + x1(1 + l) + x2(l^2 + l - 3)) = x0**3 + 3*x0**2*x1 - x0**2*x2 - x0*x1**2 + 8*x0*x1*x2 + 9*x0*x2**2 - 9*x1**3 + 3*x1**2*x2 - 15*x1*x2**2 + 9*x2**3
+PASS  F is the cubic form x0^3 + 3x0^2x1 - x0^2x2 - x0x1^2 + 8x0x1x2 + 9x0x2^2 - 9x1^3 + 3x1^2x2 - 15x1x2^2 + 9x2^3
+PASS  each B_i(s) = C(3,i) s^i (1-s)^(3-i) is >= 0 on [0,1] and the 64 products B_I(s)B_J(u)B_K(w) sum to 1, so on a box |F| is at most the largest |Bernstein coefficient|
+    the box |x0| <= 2, |x1| <= 1, |x2| <= 1/2, cut into 2x2x1 sub-boxes:
+PASS  the sub-boxes tile the box: along each axis the cut points run from -t_i to t_i in increasing order
+PASS  sub-box x0 in [-2,0], x1 in [-1,0], x2 in [-1/2,1/2]: the Bernstein form reproduces F exactly, corner coefficients are corner values, max |coefficient| = 535/24 = 22.2917
+PASS  sub-box x0 in [-2,0], x1 in [0,1], x2 in [-1/2,1/2]: the Bernstein form reproduces F exactly, corner coefficients are corner values, max |coefficient| = 149/8 = 18.6250
+PASS  sub-box x0 in [0,2], x1 in [-1,0], x2 in [-1/2,1/2]: the Bernstein form reproduces F exactly, corner coefficients are corner values, max |coefficient| = 149/8 = 18.6250
+PASS  sub-box x0 in [0,2], x1 in [0,1], x2 in [-1/2,1/2]: the Bernstein form reproduces F exactly, corner coefficients are corner values, max |coefficient| = 535/24 = 22.2917
+PASS  C0 := max over the sub-boxes = 535/24 = 22.2917 < 23, so |F(x)| <= C0 whenever |x_i| <= t_i
+    Hence |F(x)| <= C0 s^3 when |x_i| <= t_i s, for every real s > 0 (F is homogeneous of degree 3).
+    Lemma (box principle). Let p be prime and r a root of f mod p. Put B_i = floor(t_i p^(1/3)). Then
+    (B_i + 1)^3 > t_i^3 p, so prod (B_i + 1) > t0 t1 t2 p = p, and two of the points c with 0 <= c_i <= B_i have
+    the same residue (sum c_i b_i)(r) mod p. Their difference x gives beta = sum x_i b_i != 0 (the b_i are a basis)
+    in P(p, t - r), with |x_i| <= B_i <= t_i p^(1/3); so |N(beta)| = |F(x)| <= C0 p, i.e. |N(beta)| <= 22p.
+PASS  for every prime p < 3000: B_i^3 <= t_i^3 p < (B_i + 1)^3 and prod (B_i + 1) > p (as the lemma proves in general)
+6.3(c) remark, not used: the plan's bound through the real root (power basis, triangle inequality)
+PASS  f(-3) = -9 < 0 < 6 = f(-2)
+PASS  the real root l1 lies in [-2.525102254814321, -2.525102254814321] (sign change, width < 2^-60)
+PASS  f(t) = (t - x)(t^2 + x t + x^2 - 4) + f(x), and 16 - 3 l1^2 < 0 on the interval, so the other two roots are a complex pair with sum s = -l1 and product p_c = l1^2 - 4
+PASS  N(a,b,c) = sigma1 * Q with sigma1 = a + b l1 + c l1^2 and Q = A^2 + sAB + p_c B^2, A = a - c p_c, B = b + c s (the identity holds modulo f(x)); Q(1) = 1, Q(l) = p_c, Q(l^2) = p_c^2
+PASS  with t' = (9/5, 1, 5/9) the plan's bound (t0 + t1|l1| + t2 l1^2)(t0 + t1 sqrt(p_c) + t2 p_c)^2 is at most 170.959219 < 171 (sqrt(Q) is a seminorm because 4p_c - s^2 = 3 l1^2 - 16 > 0)
+    With C0' the table of 6.4 would have to reach p = 167; the direct bound C0 = 535/24 needs only p <= 19.
+6.4 the table: generators of P(p,g) for every prime p <= 22 and for p = 179
+PASS  p = 2: f = (t)^3 mod 2 (triple); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(2, t): the T2 search finds 2 elements of norm +-2 in its box, the least T2 one (-4, 1, 1) is an associate of PI2 = (-4, 1, 1)
+PASS      P(2, t) = pi R for pi = PI2 = (-4, 1, 1) = l^2 + l - 4, N(pi) = -2: pi in P, |N(pi)| = 2^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 3: f = (t) * (t - 1) * (t - 2) mod 3 (split); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(3, t): the T2 search finds 2 elements of norm +-3 in its box, the least T2 one (-9, 4, 3) is an associate of P3C = (3, -3, 1)
+PASS      P(3, t) = pi R for pi = P3C = (3, -3, 1) = l^2 - 3l + 3, N(pi) = 3: pi in P, |N(pi)| = 3^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS      P(3, t - 1): the T2 search finds 2 elements of norm +-3 in its box, the least T2 one (-1, 1, 0) is an associate of P3A = (-1, 1, 0)
+PASS      P(3, t - 1) = pi R for pi = P3A = (-1, 1, 0) = l - 1, N(pi) = -3: pi in P, |N(pi)| = 3^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS      P(3, t - 2): the T2 search finds 2 elements of norm +-3 in its box, the least T2 one (-5, -2, 0) is an associate of P3B = (5, 2, 0)
+PASS      P(3, t - 2) = pi R for pi = P3B = (5, 2, 0) = 2l + 5, N(pi) = -3: pi in P, |N(pi)| = 3^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 5: f = (t^3 + t + 1) mod 5 (inert); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(5, t^3 + t + 1) = pi R for pi = 5 = (5, 0, 0) = 5, N(pi) = 125: pi in P, |N(pi)| = 5^3, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 7: f = (t - 3) * (t^2 + 3t + 5) mod 7 (lin*quad); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(7, t - 3): the T2 search finds 2 elements of norm +-7; take the least T2 one
+PASS      P(7, t - 3) = pi R for pi = pi_7 = (-1, 2, 1) = l^2 + 2l - 1, N(pi) = 7: pi in P, |N(pi)| = 7^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS      p/pi_r = (5, -4, 1): pi_r * (p/pi_r) = p
+PASS      P(7, t^2 + 3t + 5) = pi R for pi = 7/pi_7 = (5, -4, 1) = l^2 - 4l + 5, N(pi) = 49: pi in P, |N(pi)| = 7^2, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 11: f = (t - 6) * (t^2 + 6t + 10) mod 11 (lin*quad); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(11, t - 6): the T2 search finds 2 elements of norm +-11; take the least T2 one
+PASS      P(11, t - 6) = pi R for pi = pi_11 = (-1, -3, -1) = -l^2 - 3l - 1, N(pi) = 11: pi in P, |N(pi)| = 11^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS      p/pi_r = (7, -9, 4): pi_r * (p/pi_r) = p
+PASS      P(11, t^2 + 6t + 10) = pi R for pi = 11/pi_11 = (7, -9, 4) = 4l^2 - 9l + 7, N(pi) = 121: pi in P, |N(pi)| = 11^2, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 13: f = (t^3 + 9t + 6) mod 13 (inert); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(13, t^3 + 9t + 6) = pi R for pi = 13 = (13, 0, 0) = 13, N(pi) = 2197: pi in P, |N(pi)| = 13^3, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 17: f = (t^3 + 13t + 6) mod 17 (inert); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(17, t^3 + 13t + 6) = pi R for pi = 17 = (17, 0, 0) = 17, N(pi) = 4913: pi in P, |N(pi)| = 17^3, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 19: f = (t^3 + 15t + 6) mod 19 (inert); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(19, t^3 + 15t + 6) = pi R for pi = 19 = (19, 0, 0) = 19, N(pi) = 6859: pi in P, |N(pi)| = 19^3, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS  p = 179: f = (t - 47)^2 * (t - 85) mod 179 (double); the factors multiply back to f and those of degree >= 2 have no root
+PASS      P(179, t - 47): the T2 search finds 2 elements of norm +-179 in its box, the least T2 one (-1, -5, -2) is an associate of P179 = (107, -114, 45)
+PASS      P(179, t - 47) = pi R for pi = P179 = (107, -114, 45) = 45l^2 - 114l + 107, N(pi) = 179: pi in P, |N(pi)| = 179^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+PASS      P(179, t - 85): the T2 search finds 2 elements of norm +-179; take the least T2 one
+PASS      P(179, t - 85) = pi R for pi = Q179 = (-23, 11, 8) = 8l^2 + 11l - 23, N(pi) = 179: pi in P, |N(pi)| = 179^1, B^-1 M(pi) integral with det +-1, the basis of P divisible by pi
+    table:
+    p    pattern     g               generator                                 N
+    2    triple      t               PI2 = l^2 + l - 4                         -2
+    3    split       t               P3C = l^2 - 3l + 3                        3
+    3    split       t - 1           P3A = l - 1                               -3
+    3    split       t - 2           P3B = 2l + 5                              -3
+    5    inert       t^3 + t + 1     5                                         125
+    7    lin*quad    t - 3           pi_7 = l^2 + 2l - 1                       7
+    7    lin*quad    t^2 + 3t + 5    7/pi_7 = l^2 - 4l + 5                     49
+    11   lin*quad    t - 6           pi_11 = -l^2 - 3l - 1                     11
+    11   lin*quad    t^2 + 6t + 10   11/pi_11 = 4l^2 - 9l + 7                  121
+    13   inert       t^3 + 9t + 6    13                                        2197
+    17   inert       t^3 + 13t + 6   17                                        4913
+    19   inert       t^3 + 15t + 6   19                                        6859
+    179  double      t - 47          P179 = 45l^2 - 114l + 107                 179
+    179  double      t - 85          Q179 = 8l^2 + 11l - 23                    179
+PASS  the table has 14 entries (12 for the 8 primes p <= 22, 2 for p = 179)
+PASS  PI2^3 = -2 EPS and P3A P3B P3C = 3 (so 2 and 3 factor completely into the S-primes)
+PASS  P179^2 * Q179 = 179 * unit, with Q179 = (-23, 11, 8) the generator of P(179, t - 85) (so 179 is ramified)
+PASS  PI2^2 * P179 = 3l^2 - 4 = f'(l), which vanishes at the double root 47 mod 179
+6.5 the descent for p > 22, run constructively for every prime 23 <= p < 3000
+    Argument. Let p > C0 and r a root of f mod p. 6.3 gives beta in P(p, t - r) with |N(beta)| = kp, 1 <= k <= 22.
+    While k > 1, take a prime q | k (so q <= 22 < p); then q | N(beta), and by 6.2 beta lies in some P(q,g),
+    which is pi R for the table's pi (6.4). So beta = pi beta'. Since p does not divide N(pi) = +-q^deg g, phi(pi)
+    != 0 in F_p (6.1(b)), and phi(beta) = phi(pi)phi(beta') = 0 gives beta' in P(p, t - r), with |N(beta')| =
+    (k/q^deg g) p. When k = 1, the index lemma gives P(p, t - r) = beta R.
+    Quadratic factor (f = (t - r)g mod p): pi' = p/pi_r lies in P(p,g), because phi_g(pi_r) != 0 (otherwise
+    f | pi_r(t) mod p and p^3 | N(pi_r)) and phi_g(pi_r)phi_g(pi') = phi_g(p) = 0; |N(pi')| = p^2, so P(p,g) = pi' R.
+    Inert p: P(p,f) = pR, since a polynomial of degree <= 2 is divisible by f mod p only if it is 0 mod p.
+    first cases (p < 200): p, r, box (B0,B1,B2), points examined, x, k = |N(beta)|/p, divisions, generator
+    p=23   r=10   box=(5, 2, 1) pts=11   x=(1, 2, 0) k=3  divided by: P(3,t); pi = 4l^2 + 5l - 13, N = -23
+    p=31   r=18   box=(6, 3, 1) pts=18   x=(2, 0, 1) k=1  divided by: none; pi = l^2 + l - 1, N = 31
+    p=31   r=19   box=(6, 3, 1) pts=23   x=(2, 3, 0) k=7  divided by: P(7,t - 3); pi = -l^2 + l + 1, N = -31
+    p=31   r=25   box=(6, 3, 1) pts=11   x=(1, 1, -1) k=1  divided by: none; pi = -l^2 + 5, N = -31
+    p=37   r=5    box=(6, 3, 1) pts=17   x=(2, -2, -1) k=3  divided by: P(3,t); pi = -2l^2 + 13, N = 37
+    p=41   r=15   box=(6, 3, 1) pts=5    x=(0, 2, -1) k=3  divided by: P(3,t - 2); pi = 5l^2 - 13l + 13, N = 41
+    p=53   r=43   box=(7, 3, 1) pts=10   x=(1, -2, 1) k=2  divided by: P(2,t); pi = -2l^2 + 6l - 5, N = -53
+    p=61   r=27   box=(7, 3, 1) pts=18   x=(2, -3, 1) k=4  divided by: P(2,t), P(2,t); pi = 22l^2 - 56l + 53, N = 61
+    p=61   r=45   box=(7, 3, 1) pts=58   x=(7, 0, 1) k=6  divided by: P(2,t), P(3,t - 1); pi = l^2 - 3l + 1, N = 61
+    p=61   r=50   box=(7, 3, 1) pts=42   x=(5, -1, 1) k=1  divided by: none; pi = l^2 + 1, N = 61
+    p=71   r=45   box=(8, 4, 2) pts=61   x=(4, -3, -1) k=4  divided by: P(2,t), P(2,t); pi = 23l^2 - 58l + 55, N = 71
+    p=73   r=19   box=(8, 4, 2) pts=26   x=(1, 3, 1) k=3  divided by: P(3,t - 1); pi = -2l^2 - l + 11, N = 73
+    p=79   r=71   box=(8, 4, 2) pts=30   x=(1, 4, 2) k=7  divided by: P(7,t - 3); pi = -l^2 + 2l + 1, N = -79
+    p=97   r=55   box=(9, 4, 2) pts=17   x=(1, -3, 1) k=3  divided by: P(3,t - 1); pi = 2l^2 + 3l - 7, N = -97
+    p=103  r=96   box=(9, 4, 2) pts=18   x=(1, -4, 2) k=9  divided by: P(3,t), P(3,t - 1); pi = 2l^2 - 4l - 23, N = -103
+    p=107  r=7    box=(9, 4, 2) pts=18   x=(1, 0, 2) k=1  divided by: none; pi = 2l^2 + 2l - 5, N = 107
+    p=107  r=27   box=(9, 4, 2) pts=17   x=(1, -4, 1) k=6  divided by: P(2,t), P(3,t); pi = l^2 + l - 7, N = -107
+    p=107  r=73   box=(9, 4, 2) pts=27   x=(1, 3, 2) k=2  divided by: P(2,t); pi = -3l + 5, N = 107
+    p=109  r=24   box=(9, 4, 2) pts=37   x=(2, 2, -1) k=1  divided by: none; pi = -l^2 + l + 7, N = -109
+    p=113  r=37   box=(9, 4, 2) pts=16   x=(1, -3, 0) k=2  divided by: P(2,t); pi = -2l^2 + 7l - 7, N = -113
+    p=127  r=85   box=(10, 5, 2) pts=73   x=(4, -3, 0) k=1  divided by: none; pi = -3l + 1, N = 127
+    p=131  r=80   box=(10, 5, 2) pts=72   x=(3, 5, 2) k=6  divided by: P(2,t), P(3,t - 2); pi = -26l^2 + 65l - 61, N = -131
+    p=137  r=119  box=(10, 5, 2) pts=98   x=(5, 2, 1) k=2  divided by: P(2,t); pi = -2l^2 + 2l - 1, N = -137
+    p=149  r=37   box=(10, 5, 2) pts=55   x=(3, -4, 0) k=3  divided by: P(3,t - 2); pi = -12l^2 + 30l - 29, N = -149
+    p=149  r=126  box=(10, 5, 2) pts=37   x=(2, -5, -2) k=9  divided by: P(3,t), P(3,t - 1); pi = -8l^2 - 15l + 13, N = -149
+    p=149  r=135  box=(10, 5, 2) pts=73   x=(4, -2, -1) k=1  divided by: none; pi = -l^2 - 3l + 5, N = 149
+    p=157  r=31   box=(10, 5, 2) pts=19   x=(1, -2, -2) k=1  divided by: none; pi = -2l^2 - 4l + 5, N = 157
+    p=163  r=39   box=(10, 5, 2) pts=67   x=(3, 4, 0) k=3  divided by: P(3,t - 2); pi = 4l^2 - 10l + 11, N = 163
+    p=167  r=25   box=(11, 5, 2) pts=91   x=(5, -1, -1) k=1  divided by: none; pi = -l^2 - 2l + 7, N = 167
+    p=173  r=33   box=(11, 5, 2) pts=70   x=(3, 5, 0) k=6  divided by: P(2,t), P(3,t - 2); pi = -41l^2 + 103l - 97, N = -173
+    p=173  r=67   box=(11, 5, 2) pts=91   x=(5, -1, -2) k=2  divided by: P(2,t); pi = -2l^2 + 5l - 7, N = -173
+    p=173  r=73   box=(11, 5, 2) pts=39   x=(2, -1, 2) k=1  divided by: none; pi = 2l^2 + l - 5, N = 173
+    p=179  r=47   box=(11, 5, 2) pts=84   x=(4, 3, 2) k=1  divided by: none; pi = 2l^2 + 5l + 1, N = 179
+    p=179  r=85   box=(11, 5, 2) pts=133  x=(7, 2, 0) k=3  divided by: P(3,t); pi = 8l^2 + 11l - 23, N = 179
+    p=181  r=144  box=(11, 5, 2) pts=19   x=(1, -5, 0) k=6  divided by: P(2,t), P(3,t - 1); pi = l^2 - 2l + 5, N = 181
+    p=193  r=47   box=(11, 5, 2) pts=31   x=(1, 4, 0) k=3  divided by: P(3,t - 1); pi = -3l^2 - 3l + 13, N = 193
+    p=193  r=67   box=(11, 5, 2) pts=14   x=(0, 4, 1) k=3  divided by: P(3,t - 2); pi = 7l^2 - 17l + 17, N = 193
+    p=193  r=79   box=(11, 5, 2) pts=101  x=(5, 3, 1) k=1  divided by: none; pi = l^2 + 4l + 5, N = 193
+    p=197  r=131  box=(11, 5, 2) pts=37   x=(2, -3, 0) k=1  divided by: none; pi = -3l - 1, N = 197
+    primes 23 <= p < 3000: 422 ({'inert': 131, 'split': 68, 'lin*quad': 222, 'double': 1, 'triple': 0}); prime lattices: 781, of which 428 built by the box principle
+    k = |N(beta)|/p after the box principle: {1: 98, 2: 59, 3: 118, 4: 31, 6: 45, 7: 13, 9: 58, 11: 4, 12: 2}; at most 3 divisions; largest coordinate of a generator: 2709; run time 0.6 s
+PASS  every one of the 781 prime lattices P(p,g), 23 <= p < 3000, equals pi R for the element built (box principle, descent through the table, index lemma; p/pi_r for quadratic factors, p for inert primes)
+    Only lattices of norm <= 22 can occur in the descent: q^deg g divides k <= 22. An inert q <= 22 would need
+    q^3 <= 22, and the quadratic lattices of 7 and 11 would need 49 or 121 <= 22. So the descent needs only the
+    six degree-one lattices P(2,t), P(3,t), P(3,t - 1), P(3,t - 2), P(7,t - 3), P(11,t - 6).
+PASS  the descent used exactly the lattices ['P(2,t)', 'P(3,t)', 'P(3,t - 2)', 'P(3,t - 1)', 'P(7,t - 3)', 'P(11,t - 6)'], all among those six
+PASS  p = 179 (> 22) through the run as well: the elements built for t - 47 and t - 85 are associates of P179 and Q179
+6.6 unique factorization: tests
+    Proof (logic). Every prime lattice is pi R (6.4, 6.5); such a pi is a prime element: pi | xy gives
+    phi(x)phi(y) = 0 in the field F_p[t]/(g), so pi | x or pi | y. A nonzero non-unit alpha has a prime p | N(alpha)
+    and then a P(p,g) containing alpha (6.2), so a prime element divides it; induction on |N| gives a
+    factorization into prime elements, and Euclid's lemma gives uniqueness up to order and units.
+    X = -15   N(X - theta) = 81            X - theta = unit * P3C^1 P3B^2 P3A^1
+              class (not used): X - theta = -P3A*P3C * S^2, S = (5, 2, 0)
+    X = -12   N(X - theta) = 1296          X - theta = unit * PI2^4 P3C^1 P3B^1 P3A^2
+              class (not used): X - theta = -eps*P3B*P3C * S^2, S = (-8, 8, -3)
+    X = -8    N(X - theta) = 1936          X - theta = unit * PI2^4 pi_11^2
+              class (not used): X - theta = 1 * S^2, S = (4, -2, -1)
+    X = 0     N(X - theta) = 1296          X - theta = unit * PI2^4 P3C^2 P3B^1 P3A^1
+              class (not used): X - theta = eps*P3A*P3B * S^2, S = (36, -38, 15)
+    X = 4     N(X - theta) = 784           X - theta = unit * PI2^4 pi_7^2
+              class (not used): X - theta = 1 * S^2, S = (-2, 0, 1)
+    X = 9     N(X - theta) = 729           X - theta = unit * P3C^4 P3B^1 P3A^1
+              class (not used): X - theta = eps*P3A*P3B * S^2, S = (45, -48, 19)
+    X = 12    N(X - theta) = 1296          X - theta = unit * PI2^4 P3C^1 P3B^2 P3A^1
+              class (not used): X - theta = -P3A*P3C * S^2, S = (-2, 2, 1)
+    X = 24    N(X - theta) = 11664         X - theta = unit * PI2^4 P3C^1 P3B^1 P3A^4
+              class (not used): X - theta = -eps*P3B*P3C * S^2, S = (26, -28, 11)
+    X = 40    N(X - theta) = 59536         X - theta = unit * PI2^4 P(61,t - 27)^2
+              class (not used): X - theta = 1 * S^2, S = (-4, -2, 1)
+    X = 48    N(X - theta) = 104976        X - theta = unit * PI2^4 P3C^1 P3B^6 P3A^1
+              class (not used): X - theta = -P3A*P3C * S^2, S = (8, -4, -3)
+    X = 108   N(X - theta) = 1245456       X - theta = unit * PI2^4 P3C^2 P3B^1 P3A^1 P(31,t - 18)^2
+              class (not used): X - theta = eps*P3A*P3B * S^2, S = (102, -108, 43)
+    X = 252   N(X - theta) = 15968016      X - theta = unit * PI2^4 P3C^4 P3B^1 P3A^1 P(37,t - 5)^2
+              class (not used): X - theta = eps*P3A*P3B * S^2, S = (150, -160, 63)
+    X = 420   N(X - theta) = 74028816      X - theta = unit * PI2^4 P3C^1 P3B^1 P3A^2 P(239,t - 70)^2
+              class (not used): X - theta = -eps*P3B*P3C * S^2, S = (-88, 92, -37)
+    X = 4953  N(X - theta) = 121507319241  X - theta = unit * P3C^1 P3B^2 P3A^1 pi_7^2 pi_11^2 P(503,t - 71)^2
+              class (not used): X - theta = -P3A*P3C * S^2, S = (97, -46, -32)
+PASS  each X - theta (14 integral X) is (unit) * (product of the generators found), exactly
+PASS  cross-check of Section 5, not used here: each X - theta = mu0 * S^2 exactly, with S in R and mu0 in {1, eps P3A P3B, -P3A P3C, -eps P3B P3C} read off from the primes with odd exponent
+PASS  300 random elements unit * pi_1 ... pi_k (k <= 5, pi_i among the 793 generators of 6.4 and 6.5) re-factored smallest-prime-first and largest-prime-first give back the same multiset of lattices
+all checks of 08_ufd_box.py passed (6.7 s)
