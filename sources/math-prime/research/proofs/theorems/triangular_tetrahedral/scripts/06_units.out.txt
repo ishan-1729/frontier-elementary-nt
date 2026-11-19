@@ -1,0 +1,57 @@
+4.1 root interval
+PASS  f(-13/5) = -147/125 < 0 < 3/8 = f(-5/2)
+PASS  l1 in [lo, hi], f(lo) < 0 < f(hi), width < 2^-200, l1 = -2.525102254814321 (the only real root: 04: 1.6)
+4.2 the real values of EPS
+PASS  sigma1(EPS) = l1^2 - 5 l1 - 19 lies in (1/606, 1/605), in particular 0 < sigma1(EPS) < 1
+PASS  adj(EPS) = EPS_INV, so E := Q(EPS) = sigma1(EPS_INV) = 40 l1^2 - 101 l1 + 95
+    sigma1(EPS) in [0.00165267133997, 0.00165267133997], E = Q(EPS) in [605.080983627, 605.080983627]
+PASS  E in (605.08, 605.09)
+PASS  sigma1(EPS) * Q(EPS) = N(EPS) = 1: exact identity mod f(L), and the product interval contains 1
+PASS  1/sigma1(EPS) lies in the interval of E as well (consistency)
+PASS  sigma1(EPS^-1) = sigma1(EPS_INV) = E and Q(EPS^-1) = sigma1(adj EPS_INV) = sigma1(EPS) = 1/E
+4.3 descent lemma
+PASS  T2(y EPS) - T2(y) = (E - 1)(2q - x(E+1)/E^2)
+PASS  T2(y EPS^-1) - T2(y) = (E - 1)(x(E+1) - 2q/E)
+PASS  as E > 1, x > 0, q > 0: T2(y EPS) < T2(y) iff x/q > rho_hi = 2E^2/(E+1), T2(y EPS^-1) < T2(y) iff x/q < rho_lo = 2/(E(E+1))
+PASS  rho_hi / rho_lo = E^3
+    rho_lo in [5.45363205451e-06, 5.45363205451e-06], rho_hi in [1208.16526714, 1208.16526714]
+PASS  monotone in E > 0: 2Eh^2/(Eh+1) - 2E^2/(E+1) = 2(Eh-E)(Eh E + Eh + E)/((Eh+1)(E+1)) and 2/(E(E+1)) - 2/(Eh(Eh+1)) = 2(Eh-E)(Eh+E+1)/(E Eh (E+1)(Eh+1))
+PASS  so with E < Eh = 60509/100: rho_hi < 2Eh^2/(Eh+1) = 1208.183300 < RH = 1209 and rho_lo > 2/(Eh(Eh+1)) = 5.453470e-06 > RL = 5453/10^9
+PASS  A = 469/5000 = 0.0938: A^3 * 1209 = 0.997780 <= 1, so q^3 >= 1/rho_hi > 1/1209 >= A^3 gives q > A
+PASS  B = 2841/50 = 56.82: B^3 * 5453/10^9 = 1.000321 >= 1, so q^3 <= 1/rho_lo < 10^9/5453 <= B^3 gives q < B
+    h(A) = 62603161709/549902500 = 113.844112,  h(B) = 22930571821/201782025 = 113.640310
+PASS  h(A) < 113.85 < 114 and h(B) < 113.65 < 114
+PASS  for a unit (x q^2 = 1): x/q = q^-3 and T2 = x + 2q = h(q) = q^-2 + 2q
+PASS  endpoint lemma, identities: h(q) - h(A) = (q - A)(2 - (q + A)/(q^2 A^2)), h(q) - h(B) = (q - B)(2 - (q + B)/(q^2 B^2)), and (q + A)/A^2 - (q + B)/B^2 = q(1/A^2 - 1/B^2) + (1/A - 1/B) >= 0 for 0 < A <= B
+    (so for A <= q <= B: if 2 - (q+A)/(q^2A^2) <= 0 then h(q) <= h(A); otherwise 2 - (q+B)/(q^2B^2) > 0 and
+    h(q) <= h(B). Equivalently: h is convex, h''(q) = 6/q^4 > 0.)
+PASS  h''(q) = 6/q^4
+    Lemma (units): if T2(u EPS) >= T2(u) and T2(u EPS^-1) >= T2(u), then A < Q(u) < B and T2(u) <= h(A) < 114.
+    So T2(u) > 114 (indeed T2(u) >= 113.85) implies T2(u EPS) < T2(u) or T2(u EPS^-1) < T2(u).
+PASS  scaled form: with n = m^3 (m = n^(1/3) > 0) and q = m^2 w: x = n^2/q^2 gives x/q = w^-3 and T2 = m^2 h(w)
+    Lemma (scaled): for a nonzero rational triple y with |N(y)| = n, if neither T2(y EPS) nor T2(y EPS^-1) is
+    smaller than T2(y), then w = Q(y)/n^(2/3) lies in (A, B) and T2(y) = n^(2/3) h(w) <= h(A) n^(2/3) < 114 n^(2/3).
+PASS  remark (not used): the exact threshold is C* = h(q*) with q*^3 = 1/rho_hi = (E+1)/(2E^2); h(q)^3 = (1 + 2q^3)^3/q^6, so C*^3 = 4(E^2+E+1)^3/(E^2(E+1)^2); q^2 (h(Eq) - h(q)) = (E-1)(2q^3 - (E+1)/E^2), so also C* = h(E q*) (the two neighbours tie there); and 113.62 < C* < 113.63
+4.4 the units of small height
+    d2 = 3l1^2 - 8 in [11.1284241918, 11.1284241918], k = 4l1/d2 in [-0.907622574874, -0.907622574874], d3 = 716/(3 d2) in [21.4465824229, 21.4465824229]
+PASS  mod f(L): (3L^2-8) T2 = 3(3L^2-8)(a + 8c/3)^2 + ((3L^2-8) b + 4L c)^2 + (716/3) c^2 (04: 1.6), and T2 = sigma1^2 + 2Q
+PASS  d2 > 0 and d3 > 0, so each of the three terms is >= 0
+PASS  T2 <= 114 forces |c| <= 2: 9 d3 >= 193.0192 > 114
+PASS  then |b| <= 5: for |b| >= 6, |c| <= 2: d2 (b + kc)^2 >= d2 (6 - 2|k|)^2 >= 194.8829 > 114
+PASS  then |a| <= 11: for |a| >= 12, |c| <= 2: 3(a + 8c/3)^2 >= 3(12 - 16/3)^2 = 400/3 > 114
+    (in general T2 <= M gives c^2 <= M/d3, (b + kc)^2 <= M/d2, (a + 8c/3)^2 <= M/3: finitely many triples)
+PASS  box of 1265 triples; T2 <= 114 decided for every one (undecided: 0); 187 triples have T2 <= 114
+PASS  the units with T2 <= 114 are exactly (1,0,0) and (-1,0,0) (T2 = 3); units anywhere in the box: [(-1, 0, 0), (1, 0, 0)]
+    the six smallest values of T2 on the box (all triples, not only units): [0.0, 3.0, 11.128424, 12.0, 14.128424, 21.874881]
+4.5 conclusion
+PASS  0 < sigma1(EPS) < 1, so sigma1(EPS^k) = sigma1(EPS)^k is < 1 for k > 0 and > 1 for k < 0, while |sigma1(+-1)| = 1: EPS^k = +-1 only for k = 0
+    Every unit u is +-EPS^k: the set {u EPS^k : T2(u EPS^k) <= T2(u)} is finite (4.4) and nonempty; its element
+    v = u EPS^j of least T2 has T2(v EPS) >= T2(v) and T2(v EPS^-1) >= T2(v), so T2(v) < 114 (4.3) and v = +-1 (4.4).
+    k is unique since EPS^k = +-1 only for k = 0. Writing k = 2k1 + l: u = sigma EPS^l (EPS^k1)^2, l in {0,1}.
+PASS  signs: sigma1(-1) = -1 < 0 < sigma1(EPS), and sigma1(v^2) = sigma1(v)^2 > 0, so -1 and -EPS are not squares and sigma = +-1 is the sign of sigma1(u)
+PASS  size: a unit v with v^2 = EPS would have Q(v)^2 = E and sigma1(v)^2 = 1/E, so T2(v) = 1/E + 2 sqrt(E) < 114 (1/E < 1 and 4E < 113^2); then v = +-1 by 4.4, but (+-1)^2 = 1 != EPS: EPS is not a square
+    So the four classes +-1, +-EPS are distinct modulo squares of units (pairwise quotients are -1, +-EPS^-1, -EPS,
+    none a square), and every unit is sigma EPS^l v^2 with sigma = +-1, l in {0,1}, v a unit.
+PASS  illustration: the greedy descent (multiply by EPS or EPS^-1 while T2 decreases) takes +-EPS^k to +-1 in |k| steps, |k| <= 4
+    T2(EPS) in [1210.16196999, 1210.16196999], T2(EPS^-1) in [366123.000052, 366123.000052]  (both > 114)
+all checks of 06_units.py passed

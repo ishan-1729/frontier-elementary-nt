@@ -1,0 +1,103 @@
+2.1 Taylor identity
+PASS  N(v+w) = N(v) + sum g_i(v) w_i + sum_(i<=j) q_ij(v) w_i w_j + N(w), with g and q as printed below
+PASS  the coefficients n_m of N(a,b,c) = a^3 + 8a^2c - 4ab^2 + 18abc + 16ac^2 - 6b^3 + 24bc^2 + 36c^3
+    g_1 = 3*x**2 + 16*x*z - 4*y**2 + 18*y*z + 16*z**2
+    g_2 = -8*x*y + 18*x*z - 18*y**2 + 24*z**2
+    g_3 = 8*x**2 + 18*x*y + 32*x*z + 48*y*z + 108*z**2
+    q_ij: q11 = 3*x + 8*z, q12 = -8*y + 18*z, q13 = 16*x + 18*y + 32*z, q22 = -4*x - 18*y, q23 = 18*x + 48*z, q33 = 16*x + 24*y + 108*z
+    sum of |n_m| = 113
+2.2 the table dh_boxes.txt
+PASS  the table has a unit line (2^-6) and 398 boxes
+PASS  all 398 boxes: the path is a word in x,y,z,X,Y,Z and gives the listed corners, the box lies in D, its ends are dyadic (multiples of 2^-6), s in {1,2}, kappa is an integer triple, and B < 1
+    boxes: 398; with s = 1: 263; with s = 2: 135
+    largest B: 8191/8192 = 0.999877930, on box xyxyYXzxy (s = 1, kappa = (-1, 0, 0))
+    largest |kappa_i|: 22; boxes with all |kappa_i| <= 4: 375, with some |kappa_i| > 4: 23
+    longest path: 15 splits; most splits along one axis (x, y, z): [6, 5, 5]
+    39 different pairs (s, kappa); the most frequent: s=1 kappa=(0, 0, 0): 56; s=1 kappa=(-1, 1, 0): 42; s=1 kappa=(1, 0, 0): 34; s=2 kappa=(0, -1, 1): 25; s=1 kappa=(2, -2, 1): 23; s=2 kappa=(0, 0, 1): 23; s=2 kappa=(-1, 0, 1): 20; s=1 kappa=(0, -1, 0): 18
+    number of boxes by B: [0, 1/2): 2; [1/2, 9/10): 138; [9/10, 99/100): 207; [99/100, 999/1000): 40; [999/1000, 1): 11
+2.3 the boxes cover D
+PASS  no path occurs twice
+PASS  the 398 paths are exactly the leaves of a binary split tree of D: every node is either a box of the table or is halved at the midpoint of one axis into two nodes, and the file lists the leaves in depth-first order
+    By induction from the leaves, the boxes below a node cover that node's box (a box that is halved is the
+    union of its two halves). So the boxes cover D, and two of them meet at most in boundary points.
+PASS  second argument: each of the 64*64*32 = 131072 cells of side 1/64 that tile D lies in exactly one box
+PASS  the volumes of the boxes add up to vol(D) = 1/2 (sum = 1/2)
+2.4 part (b): the 7 classes xi in (1/2)R with xi not in R
+PASS  xi = ('0', '0', '1/2'): kappa = (-1, 1, 0), N(xi - kappa) = N(2, -2, 1)/8 = 1/2, and 0 < |N| < 1
+PASS  xi = ('0', '1/2', '0'): kappa = (0, 0, 0), N(xi - kappa) = N(0, 1, 0)/8 = -3/4, and 0 < |N| < 1
+PASS  xi = ('0', '1/2', '1/2'): kappa = (2, 0, 0), N(xi - kappa) = N(-4, 1, 1)/8 = -1/4, and 0 < |N| < 1
+PASS  xi = ('1/2', '0', '0'): kappa = (0, 0, 0), N(xi - kappa) = N(1, 0, 0)/8 = 1/8, and 0 < |N| < 1
+PASS  xi = ('1/2', '0', '1/2'): kappa = (0, 1, 1), N(xi - kappa) = N(1, -2, -1)/8 = -7/8, and 0 < |N| < 1
+PASS  xi = ('1/2', '1/2', '0'): kappa = (0, 1, 0), N(xi - kappa) = N(1, -1, 0)/8 = 3/8, and 0 < |N| < 1
+PASS  xi = ('1/2', '1/2', '1/2'): kappa = (-1, 2, 0), N(xi - kappa) = N(3, -3, 1)/8 = 3/8, and 0 < |N| < 1
+2.5 remark (not used by (H)): R is not norm-Euclidean
+PASS  EPS*xi* - xi* = ('-6', '-27', '-10') and EPS^-1*xi* - xi* = ('150', '-161', '63') are integer triples, so EPS and EPS^-1 map the coset C = xi* + R into itself
+PASS  N(xi* - 2) = N(-139/109, 247/327, 142/327) = -121/109
+  2.5.1 the real root l1 of f(t) = t^3 - 4t + 6, and the two real forms sigma1 and Q
+PASS  f(-3) = -9 < 0 < 6 = f(-2)
+PASS  l1 in [lo, hi] = [-2.52510225481432049927542, -2.52510225481432049922121]: f(lo) <= 0 < f(hi), width 2^-64
+PASS  f(t) = (t - L)(t^2 - s t + p) + f(L) with s = -L, p = L^2 - 4; so at L = l1 the other two roots are those of t^2 - s t + p, whose discriminant s^2 - 4p = 16 - 3 l1^2 is < 0 (l1^2 > hi^2 > 16/3)
+    sigma1(a,b,c) = a + b l1 + c l1^2; Q(a,b,c) = A^2 + s A B + p B^2 with A = a - c p, B = b + c s
+    (Q is |value at a complex root|^2: a + b t + c t^2 = A + B t modulo t^2 - s t + p)
+PASS  sigma1(uv) = sigma1(u) sigma1(v) (identity modulo f(L))
+PASS  Q(uv) = Q(u) Q(v) (identity modulo f(L))
+PASS  N(u) = sigma1(u) Q(u) (identity modulo f(L))
+PASS  Q = (A + sB/2)^2 + (p - s^2/4) B^2 with p - s^2/4 = 3 l1^2/4 - 4 > 0, so Q >= 0, and Q(y) > 0 when N(y) != 0
+PASS  T2 := sigma1^2 + 2Q = 3a^2 + 16ac + (3 l1^2 - 8) b^2 + 8 l1 bc + (-4 l1^2 - 18 l1 + 32) c^2 (modulo f(L))
+  2.5.2 the scaled descent lemma under EPS = (-19,-5,1) = l^2 - 5l - 19
+PASS  E := sigma1(EPS) = l1^2 - 5 l1 - 19 lies in [E-, E+] = [0.00165267133996806889293225, 0.00165267133996806943775493] (t^2 - 5t - 19 decreases for t < 5/2), and 0 < E < 1
+    N(EPS) = 1 = E Q(EPS) gives Q(EPS) = 1/E; EPS*EPS^-1 = 1 gives sigma1(EPS^-1) = 1/E, Q(EPS^-1) = E.
+    For y with r = sigma1(y)^2 and q = Q(y): T2(EPS y) = E^2 r + 2q/E and T2(EPS^-1 y) = r/E^2 + 2Eq.
+PASS  T2(EPS y) - T2(y) = (1 - E)(2q/E - (1 + E) r) and T2(EPS^-1 y) - T2(y) = (1 - E)((1 + E) r/E^2 - 2q)
+PASS  with lambda = 2/(E(1+E)) and mu = 2E^2/(1+E): (1+E) lambda = 2/E and (1+E) mu/E^2 = 2; so r > lambda q gives T2(EPS y) < T2(y), and r < mu q gives T2(EPS^-1 y) < T2(y)
+PASS  psi(t) = (t+2)^3/t has psi'(t) = 2(t+2)^2(t-1)/t^2 (decreasing on (0,1], increasing on [1,oo)), and T2^3/N^2 = (r + 2q)^3/(r q^2) = psi(r/q)
+PASS  lambda <= lambda+ = 2/(E-(1+E-)) = 1208.165267 and mu >= mu- = 2E-^2/(1+E-) = 5.453632e-06 (lambda decreases and mu increases with E), and mu- < 1 < lambda+
+    K3 := max(psi(mu-), psi(lambda+)) = 1466924.310955 (psi(mu-) = 1466924.310955, psi(lambda+) = 1466924.310955); C0 := K3^(1/3) <= 568119/5000 = 113.6238
+    Lemma. For every triple y with N(y) != 0 (every rational y != 0, as N vanishes only at 0):
+    T2(EPS y) < T2(y), or T2(EPS^-1 y) < T2(y), or T2(y)^3 <= K3 N(y)^2.
+    Proof. N = sigma1 Q != 0 gives r > 0 and q > 0. r > lambda q and r < mu q are the first two cases.
+    Otherwise mu- <= mu <= r/q <= lambda <= lambda+, and T2(y)^3 = N(y)^2 psi(r/q) <= K3 N(y)^2, because psi
+    decreases and then increases, so it is largest at an end of [mu-, lambda+].
+    Orbit minimum. T2(EPS^k y) = E^(2k) r + 2 E^(-k) q tends to infinity as k -> +-infinity, so the orbit
+    {EPS^k y} has an element y0 of least T2; for it the lemma gives T2(y0)^3 <= K3 N(y0)^2 = K3 N(y)^2,
+    that is T2(y0) <= C0 |N(y)|^(2/3).
+  2.5.3 a rational lower bound for T2 and an exact enumeration of C
+PASS  each entry of the Gram matrix G of T2 lies within rho = 2^-20 of the rational matrix G' (entries rounded to multiples of 2^-20)
+    so T2(y) - y^T G' y >= -rho (sum |y_i|)^2 >= -3 rho sum y_i^2, and T2(y) >= Glow(y) := y^T (G' - 3 rho I) y.
+    G' - 3 rho I = [['3145725/1048576', '0', '8'], ['0', '2917249/262144', '-5295523/524288'], ['8', '-5295523/524288', '54470663/1048576']]
+PASS  Glow(y) = d1 (y1 + m12 y2 + m13 y3)^2 + d2 (y2 + m23 y3)^2 + d3 y3^2 with d1 = 2.999997, d2 = 11.128422, d3 = 21.446558 all > 0 (exact), so Glow is positive definite
+PASS  T_e = 60909/500 = 121.818 satisfies T_e^3 >= K3 (121/109)^2
+PASS  every listed y is in C and has Glow(y) <= T_e
+PASS  the 204 elements y of C with Glow(y) <= T_e have min |N(y)| = 121/109, attained only at [('-139/109', '247/327', '142/327')] = xi* - 2
+    the next values of |N| on the list: 401/327, 496/327, 511/327, 521/327, 189/109
+    Conclusion. Let y in C with |N(y)| < 121/109, and y0 the element of least T2 in its EPS-orbit (inside C).
+    Then Glow(y0)^3 <= T2(y0)^3 <= K3 N(y)^2 < K3 (121/109)^2 <= T_e^3, so y0 is on the list, where
+    |N| >= 121/109 > |N(y)| = |N(y0)|: impossible. So min over C of |N| = 121/109, attained at xi* - 2:
+    no kappa in R has |N(xi* - kappa)| < 1, and R is not norm-Euclidean.
+  2.5.4 the 654 classes of fixed points of EPS mod R (exploration)
+PASS  EPS - 1 = (-20, -5, 1) has norm -654; the fixed points of EPS mod R are the xi with (EPS - 1) xi in R, that is xi in adj(EPS - 1) R / -654, adj(EPS - 1) = (126, -106, 41)
+PASS  the group they generate modulo Z^3 has 654 = |N(EPS - 1)| classes, each fixed by EPS, and the class of xi* is one of them
+PASS  T_1 = 14203/125 satisfies T_1^3 >= K3
+PASS  for each of the 653 classes zeta != 0, list y in zeta + R with Glow(y) <= T_1 (182 to 202 elements each): exactly 2 classes have no listed y with |N(y)| < 1, the classes of xi* and -xi*
+    By the orbit-minimum argument with 1 in place of 121/109, these 2 classes have no element with |N| < 1;
+    the other 651 contain one (listed). Largest values of min |N| over the listed elements:
+         121/109 = 1.110092   class of ('79/109', '247/327', '142/327')
+         121/109 = 1.110092   class of ('30/109', '80/327', '185/327')
+          99/109 = 0.908257   class of ('67/109', '108/109', '59/109')
+          99/109 = 0.908257   class of ('42/109', '1/109', '50/109')
+         593/654 = 0.906728   class of ('77/109', '278/327', '223/654')
+         593/654 = 0.906728   class of ('32/109', '49/327', '431/654')
+2.6 remark: Bernstein enclosures (a second, sharper certificate; not needed for the proof)
+PASS  u^i = sum_(I >= i) C(I,i)/C(3,i) B_I(u) for i = 0..3, where B_I(u) = C(3,I) u^I (1-u)^(3-I) >= 0 on [0,1] and sum_I B_I(u) = 1
+    So on each box, with xi = lo + (hi - lo) u, u in [0,1]^3, the cubic P(u) = N(s*xi - kappa) is
+    sum b_IJK B_I(u1) B_J(u2) B_K(u3) with weights >= 0 adding up to 1: |N(s*xi - kappa)| <= max |b_IJK|,
+    and the corner coefficients (I, J, K in {0,3}) are the values at the corners. The monomial coefficients
+    of P come from the Taylor identity 2.1 at the corner v = s*lo - kappa, with w_i = s (hi_i - lo_i) u_i.
+PASS  on every box the corner coefficients equal the values of N(s*xi - kappa) at the corners
+PASS  on every box max |b_IJK| < 1; the largest over all boxes is 4093/4096 = 0.999268
+    it is the corner coefficient at xi = ('-5/16', '-5/16', '1/4') of box xyxyYXzxy (s = 1, kappa = (-1, 0, 0)), so it is attained:
+    with the table's choices, max over D of |N(s*xi - kappa)| = 4093/4096 = 0.999268 exactly.
+    Taylor bound / Bernstein bound on a box: at most 1.76; largest Bernstein bound among the boxes with s = 1: 0.999268, with s = 2: 0.999268
+2.7 confirmation (not used by the proof): random Dedekind-Hasse divisions
+PASS  3302 pairs: 0 < |N(s alpha - kappa beta)| < |N(beta)| whenever beta does not divide alpha (s = 1 from the table: 2374, s = 2 from the table: 623, from the list 2.4: 304, beta | alpha: 1); alpha/beta = xi* uses s = 2
+all checks of 05_dh_cover.py passed (7.2 s)

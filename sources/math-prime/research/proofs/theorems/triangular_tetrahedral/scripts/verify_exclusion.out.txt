@@ -1,0 +1,324 @@
+verify_exclusion.py -- independent re-implementation of the exclusion step (exact)
+(nothing imported from core.py, lifting2.py, 02_exclusion.py; data retyped; compared with 02_exclusion.out.txt)
+
+==============================================================================================================
+CLASS (1,0)  F = (36, 0, 0, -6, 1)  f(t) = t**4 - 6*t**3 + 36
+   order: structure constants integral = True; f irreducible = True; real roots = 2; disc(f) = -33405696; [O : Z[alpha]] = 36; disc(O) = -25776
+   eps1 = (0, 1, -1, 0): N = 1 (det) = 1 (resultant); inverse in O = (0, 0, 1, 0)
+   eps2 = (-86, -41, -117, 30): N = 1 (det) = 1 (resultant); inverse in O = (-2, 2, -3, 0)
+   log|sigma_1|, log|sigma_2| of eps1 = (0.310541, -1.729849), eps2 = (5.354848, -1.985842); det = 8.646394 (float, information only)
+   |G_q| <= 5000 recomputed (BFS): 4(8), 8(32), 16(128), 32(512), 64(2048), 3(36), 9(108), 27(972), 5(124), 25(3100), 7(200), 49(1400), 11(732), 13(2196), 17(4912), 19(3429), 31(450)
+   agrees with the printed "moduli available" line (values and skipped moduli): True
+==============================================================================================================
+CLASS (0,1)  F = (-5, 14, 24, 2, 1)  f(t) = t**4 + 2*t**3 + 24*t**2 + 14*t - 5
+   order: structure constants integral = True; f irreducible = True; real roots = 2; disc(f) = -33405696; [O : Z[alpha]] = 36; disc(O) = -25776
+   eps1 = (0, -1, 1, 0): N = 1 (det) = 1 (resultant); inverse in O = (7, 4, 5, 2)
+   eps2 = (-21, 36, 16, 14): N = 1 (det) = 1 (resultant); inverse in O = (-5, -4, -4, -2)
+   log|sigma_1|, log|sigma_2| of eps1 = (-0.549984, -2.363576), eps2 = (4.083676, -2.114584); det = 10.815066 (float, information only)
+   |G_q| <= 5000 recomputed (BFS): 4(8), 8(32), 16(128), 32(512), 64(2048), 3(36), 9(108), 27(972), 5(124), 25(3100), 7(144), 11(300), 13(2196), 17(4912), 19(3429), 31(3840)
+   agrees with the printed "moduli available" line (values and skipped moduli): True
+==============================================================================================================
+CLASS (1,1)  F = (-8, 4, 24, 4, 1)  f(t) = t**4 + 4*t**3 + 24*t**2 + 4*t - 8
+   order: structure constants integral = True; f irreducible = True; real roots = 2; disc(f) = -33405696; [O : Z[alpha]] = 72; disc(O) = -6444
+   eps1 = (-1, 0, 1, 0): N = 1 (det) = 1 (resultant); inverse in O = (-1, -3, -5, -2)
+   eps2 = (1, -3, -5, -2): N = 1 (det) = 1 (resultant); inverse in O = (-19, 10, 13, 8)
+   log|sigma_1|, log|sigma_2| of eps1 = (-0.722218, -2.009630), eps2 = (-2.830307, 1.697551); det = -6.913872 (float, information only)
+   |G_q| <= 5000 recomputed (BFS): 4(16), 8(32), 16(128), 32(512), 64(2048), 3(72), 9(216), 27(1944), 5(124), 25(3100), 7(200), 11(1464), 13(2196), 17(4912), 41(4200)
+   agrees with the printed "moduli available" line (values and skipped moduli): True
+
+seeds of 02_exclusion.out.txt == seeds of 01_coverage.out.txt: True
+
+==============================================================================================================
+CLASS (1,0)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - 0 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(1,3),(0,8)> [index certified]; candidate classes = 1 (printed 1)
+   Prop. 17 at zero (0, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(1, 3), (0, 8)], script [(8, 0), (-5, 1)], unimod [(-1, -3), (2, 14)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 3; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 3; val >= Lambda(i+j) on i+j <= 6: True
+   sieve after q =   4: 1 candidate classes, 1 certified, 0 sibling-empty, 0 left
+   final lattice <(1,3),(0,8)>, index 8 (printed 8); live classes left: 0
+   printed "class (0, 0) contains (0, 1), Prop. 17 at q = 4 (lambda = 0, nu(J) = 0, e = 2)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [4]
+   direct check over all 8 classes mod the final lattice: 7 excluded by a candidate test, 1 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,0)  c = 4  seed w = (2, -1, 0, 0)
+   known solution (m,n) = (1, 2): eps1^0 eps2^0 w = +(2 - 1 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(1,3),(0,8)> [index certified]; candidate classes = 2 (printed 2)
+   q =  31 = 31^1: |G_q| =   450 (printed 450); Lambda_q = <(15,15),(0,30)> [index certified]; candidate classes = 4 (printed 4)
+   q =   7 = 7^1: |G_q| =   200 (printed 200); Lambda_q = <(1,41),(0,200)> [index certified]; candidate classes = 8 (printed 8)
+   Prop. 17 at zero (1, 2), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=3; script: lam=0 nuJ=3; unimod: lam=0 nuJ=3  -> bound e-1-iota = 0: fails   [bases: own [(1, 3), (0, 8)], script [(8, 0), (-5, 1)], unimod [(1, 19), (0, -8)]]
+   Prop. 17 at zero (1, 2), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(15, 15), (0, 30)], script [(30, 0), (-15, 15)], unimod [(15, 75), (15, 45)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (1, 2), q =   7 (p = 7, e = 1, iota = 0): own: lam=0 nuJ=1; script: lam=0 nuJ=1; unimod: lam=0 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(1, 41), (0, 200)], script [(200, 0), (-39, 1)], unimod [(1, 241), (2, 282)]]
+   sieve after q =   4: 2 candidate classes, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =  31: 4 candidate classes, 1 certified, 1 sibling-empty, 2 left
+   sieve after q =   7: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   sibling-empty class (0, 30) (step q = 31): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(31, (1, 2))]
+   final lattice <(60,60),(0,600)>, index 36000 (printed 36000); live classes left: 0
+   printed "class (0, 0) contains (1, 2), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   direct check over all 36000 classes mod the final lattice: 35992 excluded by a candidate test, 8 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,0)  c = 9  seed w = (-3, 0, 6, -1)
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(1,3),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(1,3),(0,8)>, index 8 (printed 8); live classes left: 0
+   direct check over all 8 classes mod the final lattice: 8 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,0)  c = 36  seed w = (0, 0, 6, -1)
+   known solution (m,n) = (1, 0): eps1^-1 eps2^0 w = -(0 - 1 alpha)  [exact]
+   known solution (m,n) = (1, 6): eps1^1 eps2^0 w = +(6 - 1 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(1,3),(0,8)> [index certified]; candidate classes = 2 (printed 2)
+   q =  31 = 31^1: |G_q| =   450 (printed 450); Lambda_q = <(15,15),(0,30)> [index certified]; candidate classes = 4 (printed 4)
+   Prop. 17 at zero (1, 0), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(1, 3), (0, 8)], script [(8, 0), (-5, 1)], unimod [(0, 8), (-1, -19)]]
+   Prop. 17 at zero (1, 6), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=3; script: lam=0 nuJ=3; unimod: lam=0 nuJ=3  -> bound e-1-iota = 0: fails   [bases: own [(1, 3), (0, 8)], script [(8, 0), (-5, 1)], unimod [(2, -2), (1, 3)]]
+   Prop. 17 at zero (1, 0), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(15, 15), (0, 30)], script [(30, 0), (-15, 15)], unimod [(30, 60), (15, 15)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (1, 6), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(15, 15), (0, 30)], script [(30, 0), (-15, 15)], unimod [(15, -15), (0, -30)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   sieve after q =   4: 2 candidate classes, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =  31: 4 candidate classes, 2 certified, 2 sibling-empty, 0 left
+   sibling-empty class (1, 30) (step q = 31): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(31, (1, 6))]
+   sibling-empty class (14, 15) (step q = 31): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(31, (1, 0))]
+   final lattice <(15,45),(0,120)>, index 1800 (printed 1800); live classes left: 0
+   printed "class (1, 0) contains (1, 6), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (1, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   printed "class (119, 0) contains (1, 0), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (-1, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   direct check over all 1800 classes mod the final lattice: 1796 excluded by a candidate test, 4 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(-1, 0), (1, 0)]; exact zeros [(-1, 0), (1, 0)] (known exponents [(-1, 0), (1, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (0,1)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - 0 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(4,1),(0,2)> [index certified]; candidate classes = 1 (printed 1)
+   q =   7 = 7^1: |G_q| =   144 (printed 144); Lambda_q = <(6,6),(0,24)> [index certified]; candidate classes = 4 (printed 4)
+   q =   3 = 3^1: |G_q| =    36 (printed 36); Lambda_q = <(3,9),(0,12)> [index certified]; candidate classes = 6 (printed 6)
+   Prop. 17 at zero (0, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=7; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(4, 1), (0, 2)], script [(8, 0), (-4, 1)], unimod [(0, -2), (4, 3)]]
+   Prop. 17 at zero (0, 1), q =   7 (p = 7, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(6, 6), (0, 24)], script [(24, 0), (-18, 6)], unimod [(0, 24), (-6, -30)]]
+      proof mechanism (script basis): relabel (indices False, markers True); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (0, 1), q =   3 (p = 3, e = 1, iota = 0): own: lam=0 nuJ=1; script: lam=0 nuJ=1; unimod: lam=0 nuJ=1  -> bound e-1-iota = 0: fails   [bases: own [(3, 9), (0, 12)], script [(12, 0), (-3, 3)], unimod [(-3, -21), (-6, -30)]]
+   sieve after q =   4: 1 candidate classes, 0 certified, 0 sibling-empty, 1 left
+   sieve after q =   7: 2 candidate classes, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =   3: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(24,0),(0,24)>, index 576 (printed 576); live classes left: 0
+   printed "class (0, 0) contains (0, 1), Prop. 17 at q = 7 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [7]
+   direct check over all 576 classes mod the final lattice: 575 excluded by a candidate test, 1 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (0,1)  c = 4  seed w = (-1, -1, 0, 0)
+   known solution (m,n) = (-1, 1): eps1^0 eps2^0 w = -(1 - -1 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(4,1),(0,2)> [index certified]; candidate classes = 2 (printed 2)
+   q =  31 = 31^1: |G_q| =  3840 (printed 3840); Lambda_q = <(16,32),(0,240)> [index certified]; candidate classes = 4 (printed 4)
+   q =   8 = 2^3: |G_q| =    32 (printed 32); Lambda_q = <(8,2),(0,4)> [index certified]; candidate classes = 4 (printed 4)
+   Prop. 17 at zero (-1, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(4, 1), (0, 2)], script [(8, 0), (-4, 1)], unimod [(4, 3), (-8, -4)]]
+   Prop. 17 at zero (-1, 1), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(16, 32), (0, 240)], script [(240, 0), (-112, 16)], unimod [(0, 240), (-16, -272)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (-1, 1), q =   8 (p = 2, e = 3, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 1: fails   [bases: own [(8, 2), (0, 4)], script [(16, 0), (-8, 2)], unimod [(8, -2), (0, -4)]]
+   sieve after q =   4: 2 candidate classes, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =  31: 2 candidate classes, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =   8: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(16,32),(0,240)>, index 3840 (printed 3840); live classes left: 0
+   printed "class (0, 0) contains (-1, 1), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   direct check over all 3840 classes mod the final lattice: 3839 excluded by a candidate test, 1 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (0,1)  c = 9  seed w = (-3, -2, -3, -1)
+   known solution (m,n) = (4, 1): eps1^2 eps2^1 w = +(1 - 4 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(4,1),(0,2)> [index certified]; candidate classes = 1 (printed 1)
+   q =   8 = 2^3: |G_q| =    32 (printed 32); Lambda_q = <(8,2),(0,4)> [index certified]; candidate classes = 2 (printed 2)
+   q =  31 = 31^1: |G_q| =  3840 (printed 3840); Lambda_q = <(16,32),(0,240)> [index certified]; candidate classes = 6 (printed 6)
+   q =   3 = 3^1: |G_q| =    36 (printed 36); Lambda_q = <(3,9),(0,12)> [index certified]; candidate classes = 18 (printed 18)
+   Prop. 17 at zero (4, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=6; script: lam=0 nuJ=2; unimod: lam=0 nuJ=3  -> bound e-1-iota = 0: fails   [bases: own [(4, 1), (0, 2)], script [(8, 0), (-4, 1)], unimod [(4, 3), (0, 2)]]
+   Prop. 17 at zero (4, 1), q =   8 (p = 2, e = 3, iota = 1): own: lam=0 nuJ=4; script: lam=0 nuJ=3; unimod: lam=0 nuJ=3  -> bound e-1-iota = 1: fails   [bases: own [(8, 2), (0, 4)], script [(16, 0), (-8, 2)], unimod [(-8, 6), (-8, 2)]]
+   Prop. 17 at zero (4, 1), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(16, 32), (0, 240)], script [(240, 0), (-112, 16)], unimod [(16, 32), (16, -208)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (4, 1), q =   3 (p = 3, e = 1, iota = 0): own: lam=1 nuJ=2; script: lam=1 nuJ=2; unimod: lam=1 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(3, 9), (0, 12)], script [(12, 0), (-3, 3)], unimod [(3, 21), (0, 12)]]
+   sieve after q =   4: 1 candidate classes, 0 certified, 0 sibling-empty, 1 left
+   sieve after q =   8: 2 candidate classes, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =  31: 2 candidate classes, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =   3: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(48,96),(0,240)>, index 11520 (printed 11520); live classes left: 0
+   printed "class (2, 1) contains (4, 1), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (2, 1) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   direct check over all 11520 classes mod the final lattice: 11517 excluded by a candidate test, 3 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(2, 1)]; exact zeros [(2, 1)] (known exponents [(2, 1)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (0,1)  c = 36  seed w = (1, -1, 0, 0)
+   known solution (m,n) = (1, 1): eps1^0 eps2^0 w = +(1 - 1 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =     8 (printed 8); Lambda_q = <(4,1),(0,2)> [index certified]; candidate classes = 2 (printed 2)
+   q =  31 = 31^1: |G_q| =  3840 (printed 3840); Lambda_q = <(16,32),(0,240)> [index certified]; candidate classes = 6 (printed 6)
+   q =   8 = 2^3: |G_q| =    32 (printed 32); Lambda_q = <(8,2),(0,4)> [index certified]; candidate classes = 4 (printed 4)
+   Prop. 17 at zero (1, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 0: fails   [bases: own [(4, 1), (0, 2)], script [(8, 0), (-4, 1)], unimod [(-4, -1), (-8, 0)]]
+   Prop. 17 at zero (1, 1), q =  31 (p = 31, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(16, 32), (0, 240)], script [(240, 0), (-112, 16)], unimod [(16, 32), (0, -240)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (1, 1), q =   8 (p = 2, e = 3, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 1: fails   [bases: own [(8, 2), (0, 4)], script [(16, 0), (-8, 2)], unimod [(0, -4), (-8, -2)]]
+   sieve after q =   4: 2 candidate classes, 0 certified, 0 sibling-empty, 2 left
+   sieve after q =  31: 2 candidate classes, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =   8: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(16,32),(0,240)>, index 3840 (printed 3840); live classes left: 0
+   printed "class (0, 0) contains (1, 1), Prop. 17 at q = 31 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [31]
+   direct check over all 3840 classes mod the final lattice: 3839 excluded by a candidate test, 1 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 1  seed w = (-1, 0, 0, 0)
+   known solution (m,n) = (0, 1): eps1^0 eps2^0 w = -(1 - 0 alpha)  [exact]
+   q =   9 = 3^2: |G_q| =   216 (printed 216); Lambda_q = <(3,45),(0,72)> [index certified]; candidate classes = 2 (printed 2)
+   q =   3 = 3^1: |G_q| =    72 (printed 72); Lambda_q = <(3,21),(0,24)> [index certified]; candidate classes = 6 (printed 6)
+   q =  27 = 3^3: |G_q| =  1944 (printed 1944); Lambda_q = <(9,135),(0,216)> [index certified]; candidate classes = 2 (printed 2)
+   q =  13 = 13^1: |G_q| =  2196 (printed 2196); Lambda_q = <(3,73),(0,732)> [index certified]; candidate classes = 20 (printed 20)
+   Prop. 17 at zero (0, 1), q =   9 (p = 3, e = 2, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 1: HOLDS   [bases: own [(3, 45), (0, 72)], script [(24, 0), (-9, 9)], unimod [(-3, -189), (-3, -117)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 2, E = [(1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (0, 1), q =   3 (p = 3, e = 1, iota = 0): own: lam=0 nuJ=1; script: lam=0 nuJ=1; unimod: lam=0 nuJ=1  -> bound e-1-iota = 0: fails   [bases: own [(3, 21), (0, 24)], script [(24, 0), (-3, 3)], unimod [(-6, -66), (3, 21)]]
+   Prop. 17 at zero (0, 1), q =  27 (p = 3, e = 3, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 2: HOLDS   [bases: own [(9, 135), (0, 216)], script [(72, 0), (-27, 27)], unimod [(9, -81), (0, 216)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 3, E = [(1, 0)]; f2': s* = 3 = e + delta, E = [(0, 1)]; Lambda(2) = 6; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 3, E = [(1, 0)]; f2': s* = 3 = e + delta, E = [(0, 1)]; Lambda(2) = 6; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (0, 1), q =  13 (p = 13, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(3, 73), (0, 732)], script [(2196, 0), (-1113, 1)], unimod [(0, 732), (3, 1537)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   sieve after q =   9: 2 candidate classes, 1 certified, 0 sibling-empty, 1 left
+   sieve after q =   3: 1 candidate classes, 0 certified, 0 sibling-empty, 1 left
+   sieve after q =  27: 1 candidate classes, 0 certified, 0 sibling-empty, 1 left
+   sieve after q =  13: 1 candidate classes, 0 certified, 1 sibling-empty, 0 left
+   sibling-empty class (0, 6588) (step q = 13): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(13, (0, 1))]
+   final lattice <(9,12663),(0,13176)>, index 118584 (printed 118584); live classes left: 0
+   printed "class (0, 0) contains (0, 1), Prop. 17 at q = 9 (lambda = 0, nu(J) = 0, e = 2)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [9]
+   direct check over all 118584 classes mod the final lattice: 118582 excluded by a candidate test, 2 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0)]; exact zeros [(0, 0)] (known exponents [(0, 0)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 4  seed w = (3, -1, -2, -1)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 4  seed w = (2, -1, -1, -1)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 4  seed w = (0, 0, -1, 0)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 9  seed w = (-1, -1, 0, 0)
+   known solution (m,n) = (-1, 1): eps1^0 eps2^0 w = -(1 - -1 alpha)  [exact]
+   known solution (m,n) = (2, 1): eps1^1 eps2^-1 w = -(1 - 2 alpha)  [exact]
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 4 (printed 4)
+   q =   8 = 2^3: |G_q| =    32 (printed 32); Lambda_q = <(2,10),(0,16)> [index certified]; candidate classes = 4 (printed 4)
+   q =  16 = 2^4: |G_q| =   128 (printed 128); Lambda_q = <(4,20),(0,32)> [index certified]; candidate classes = 8 (printed 8)
+   q =  41 = 41^1: |G_q| =  4200 (printed 4200); Lambda_q = <(15,50),(0,280)> [index certified]; candidate classes = 6 (printed 6)
+   q =  25 = 5^2: |G_q| =  3100 (printed 3100); Lambda_q = <(5,40),(0,620)> [index certified]; candidate classes = 28 (printed 28)
+   Prop. 17 at zero (-1, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=3; script: lam=0 nuJ=3; unimod: lam=0 nuJ=3  -> bound e-1-iota = 0: fails   [bases: own [(2, 2), (0, 8)], script [(8, 0), (-6, 2)], unimod [(-2, 14), (-2, 6)]]
+   Prop. 17 at zero (2, 1), q =   4 (p = 2, e = 2, iota = 1): own: lam=0 nuJ=8; script: lam=0 nuJ=7; unimod: lam=0 nuJ=13  -> bound e-1-iota = 0: fails   [bases: own [(2, 2), (0, 8)], script [(8, 0), (-6, 2)], unimod [(-2, 14), (0, 8)]]
+   Prop. 17 at zero (-1, 1), q =   8 (p = 2, e = 3, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 1: fails   [bases: own [(2, 10), (0, 16)], script [(16, 0), (-6, 2)], unimod [(0, 16), (2, -6)]]
+   Prop. 17 at zero (2, 1), q =   8 (p = 2, e = 3, iota = 1): own: lam=0 nuJ=4; script: lam=0 nuJ=4; unimod: lam=0 nuJ=4  -> bound e-1-iota = 1: fails   [bases: own [(2, 10), (0, 16)], script [(16, 0), (-6, 2)], unimod [(0, 16), (2, 42)]]
+   Prop. 17 at zero (-1, 1), q =  16 (p = 2, e = 4, iota = 1): own: lam=0 nuJ=2; script: lam=0 nuJ=2; unimod: lam=0 nuJ=2  -> bound e-1-iota = 2: HOLDS   [bases: own [(4, 20), (0, 32)], script [(32, 0), (-12, 4)], unimod [(0, -32), (-4, 12)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 4, E = [(1, 0)]; f2': s* = 6 = e + delta, E = [(0, 1)]; Lambda(2) = 7; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 4, E = [(0, 1), (1, 0)]; f2': s* = 6 = e + delta, E = [(0, 1)]; Lambda(2) = 7; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (2, 1), q =  16 (p = 2, e = 4, iota = 1): own: lam=0 nuJ=4; script: lam=0 nuJ=4; unimod: lam=0 nuJ=4  -> bound e-1-iota = 2: fails   [bases: own [(4, 20), (0, 32)], script [(32, 0), (-12, 4)], unimod [(4, 20), (-4, -52)]]
+   Prop. 17 at zero (-1, 1), q =  41 (p = 41, e = 1, iota = 0): own: lam=0 nuJ=1; script: lam=0 nuJ=1; unimod: lam=0 nuJ=1  -> bound e-1-iota = 0: fails   [bases: own [(15, 50), (0, 280)], script [(420, 0), (-165, 10)], unimod [(-15, -610), (-15, -330)]]
+   Prop. 17 at zero (2, 1), q =  41 (p = 41, e = 1, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 0: HOLDS   [bases: own [(15, 50), (0, 280)], script [(420, 0), (-165, 10)], unimod [(-30, -380), (-15, -50)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 1, E = [(0, 1), (1, 0)]; f2': s* = 1 = e + delta, E = [(0, 1)]; Lambda(2) = 2; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (-1, 1), q =  25 (p = 5, e = 2, iota = 0): own: lam=0 nuJ=0; script: lam=0 nuJ=0; unimod: lam=0 nuJ=0  -> bound e-1-iota = 1: HOLDS   [bases: own [(5, 40), (0, 620)], script [(155, 0), (-75, 20)], unimod [(0, -620), (5, -1200)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 2 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+   Prop. 17 at zero (2, 1), q =  25 (p = 5, e = 2, iota = 0): own: lam=0 nuJ=1; script: lam=0 nuJ=1; unimod: lam=0 nuJ=1  -> bound e-1-iota = 1: HOLDS   [bases: own [(5, 40), (0, 620)], script [(155, 0), (-75, 20)], unimod [(-5, -40), (5, 660)]]
+      proof mechanism (script basis): relabel (indices False, markers False); f1: s* = 2, E = [(0, 1), (1, 0)]; f2': s* = 3 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+      proof mechanism (unimod basis): relabel (indices True, markers False); f1: s* = 2, E = [(1, 0)]; f2': s* = 3 = e + delta, E = [(0, 1)]; Lambda(2) = 4; val >= Lambda(i+j) on i+j <= 6: True
+   sieve after q =   4: 4 candidate classes, 0 certified, 0 sibling-empty, 4 left
+   sieve after q =   8: 4 candidate classes, 0 certified, 0 sibling-empty, 4 left
+   sieve after q =  16: 8 candidate classes, 1 certified, 0 sibling-empty, 7 left
+   sieve after q =  41: 10 candidate classes, 1 certified, 1 sibling-empty, 8 left
+   sieve after q =  25: 4 candidate classes, 0 certified, 4 sibling-empty, 0 left
+   sibling-empty class (31, 939) (step q = 41): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(41, (2, 1))]
+   sibling-empty class (30, 240) (step q = 25): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(25, (-1, 1))]
+   sibling-empty class (90, 31100) (step q = 25): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(25, (-1, 1))]
+   sibling-empty class (91, 9399) (step q = 25): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(25, (2, 1))]
+   sibling-empty class (61, 30859) (step q = 25): inside the Lambda_qq-class of a certified zero for (qq, zero) in [(25, (2, 1))]
+   final lattice <(120,27000),(0,34720)>, index 4166400 (printed 4166400); live classes left: 0
+   printed "class (0, 0) contains (-1, 1), Prop. 17 at q = 16 (lambda = 0, nu(J) = 2, e = 4)": rep == exponent (0, 0) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 2; Prop. 17 holds there at q in [16]
+   printed "class (2281, 39) contains (2, 1), Prop. 17 at q = 41 (lambda = 0, nu(J) = 0, e = 1)": rep == exponent (1, -1) mod the lattice of that step: True; recomputed lambda = 0, nu(J) = 0; Prop. 17 holds there at q in [41]
+   direct check over all 4166400 classes mod the final lattice: 4166392 excluded by a candidate test, 8 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: [(0, 0), (1, -1)]; exact zeros [(0, 0), (1, -1)] (known exponents [(0, 0), (1, -1)])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 36  seed w = (6, -2, -3, -2)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 36  seed w = (-1, -2, -3, -1)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+==============================================================================================================
+CLASS (1,1)  c = 36  seed w = (0, -1, -3, -1)
+   q =   4 = 2^2: |G_q| =    16 (printed 16); Lambda_q = <(2,2),(0,8)> [index certified]; candidate classes = 0 (printed 0)
+   sieve after q =   4: 0 candidate classes, 0 certified, 0 sibling-empty, 0 left
+   final lattice <(2,2),(0,8)>, index 16 (printed 16); live classes left: 0
+   direct check over all 16 classes mod the final lattice: 16 excluded by a candidate test, 0 inside the Lambda_q-class of a zero certified by Prop. 17, 0 unaccounted
+   box |a|,|b| <= 400: zeros of both markers mod 1073741789 and mod 1073741783: []; exact zeros [] (known exponents [])
+   ORBIT CONFIRMED: zeros = exponents of the known solutions
+
+==============================================================================================================
+NEGATIVE CONTROLS (do the checks above have teeth?)
+   class (1,0) c = 1 seed (-1, 0, 0, 0): without Prop. 17: 1 live classes after the sieve, 1 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 0 live classes left;  mechanism check rejects all 0 (q, zero) pairs where the hypotheses fail: True
+   class (1,0) c = 4 seed (2, -1, 0, 0): without Prop. 17: 8 live classes after the sieve, 8 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 4 live classes left;  mechanism check rejects all 2 (q, zero) pairs where the hypotheses fail: True
+   class (1,0) c = 36 seed (0, 0, 6, -1): without Prop. 17: 4 live classes after the sieve, 4 unaccounted in the direct check (>= 2 expected): True;  without the sibling rule: 2 live classes left;  mechanism check rejects all 2 (q, zero) pairs where the hypotheses fail: True
+   class (0,1) c = 1 seed (-1, 0, 0, 0): without Prop. 17: 1 live classes after the sieve, 1 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 0 live classes left;  mechanism check rejects all 2 (q, zero) pairs where the hypotheses fail: True
+   class (0,1) c = 4 seed (-1, -1, 0, 0): without Prop. 17: 1 live classes after the sieve, 1 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 0 live classes left;  mechanism check rejects all 2 (q, zero) pairs where the hypotheses fail: True
+   class (0,1) c = 9 seed (-3, -2, -3, -1): without Prop. 17: 3 live classes after the sieve, 3 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 0 live classes left;  mechanism check rejects all 3 (q, zero) pairs where the hypotheses fail: True
+   class (0,1) c = 36 seed (1, -1, 0, 0): without Prop. 17: 1 live classes after the sieve, 1 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 0 live classes left;  mechanism check rejects all 2 (q, zero) pairs where the hypotheses fail: True
+   class (1,1) c = 1 seed (-1, 0, 0, 0): without Prop. 17: 2 live classes after the sieve, 2 unaccounted in the direct check (>= 1 expected): True;  without the sibling rule: 1 live classes left;  mechanism check rejects all 1 (q, zero) pairs where the hypotheses fail: True
+   class (1,1) c = 9 seed (-1, -1, 0, 0): without Prop. 17: 8 live classes after the sieve, 8 unaccounted in the direct check (>= 2 expected): True;  without the sibling rule: 5 live classes left;  mechanism check rejects all 6 (q, zero) pairs where the hypotheses fail: True
+
+SUMMARY
+   class (1,0) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,0) c =  4 seed (2, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,0) c =  9 seed (-3, 0, 6, -1): 0 known solution pair(s); independently confirmed: True
+   class (1,0) c = 36 seed (0, 0, 6, -1): 2 known solution pair(s); independently confirmed: True
+   class (0,1) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (0,1) c =  4 seed (-1, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (0,1) c =  9 seed (-3, -2, -3, -1): 1 known solution pair(s); independently confirmed: True
+   class (0,1) c = 36 seed (1, -1, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,1) c =  1 seed (-1, 0, 0, 0): 1 known solution pair(s); independently confirmed: True
+   class (1,1) c =  4 seed (3, -1, -2, -1): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c =  4 seed (2, -1, -1, -1): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c =  4 seed (0, 0, -1, 0): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c =  9 seed (-1, -1, 0, 0): 2 known solution pair(s); independently confirmed: True
+   class (1,1) c = 36 seed (6, -2, -3, -2): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c = 36 seed (-1, -2, -3, -1): 0 known solution pair(s); independently confirmed: True
+   class (1,1) c = 36 seed (0, -1, -3, -1): 0 known solution pair(s); independently confirmed: True
+ALL 16 ORBITS INDEPENDENTLY CONFIRMED; no discrepancy with 02_exclusion.out.txt
+[done in 3.7 s]

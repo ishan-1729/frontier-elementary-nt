@@ -1,0 +1,100 @@
+0. own arithmetic in R_Q = Q[t]/(f), f(t) = t^3 - 4t + 6; a triple (a, b, c) is a + b t + c t^2
+PASS  t*t^2 = t^3 = -6 + 4t and t^2*t^2 = t^4 = -6t + 4t^2 by long division by f
+PASS  the product printed in (1.1) equals polynomial product mod f on the 9 pairs of basis triples; both are bilinear, so they agree on all triples
+PASS  the product is commutative and associative on basis triples (9 pairs, 27 triples), hence everywhere (bi-/trilinearity), and (1,0,0) is its unit
+PASS  the matrix printed in (1.2) is the matrix of multiplication (columns u*1, u*l, u*l^2): equal on the basis, both linear in u
+PASS  det M(a,b,c) equals the printed cubic form N(a,b,c) on {0,1,2,3}^3; both are cubic forms (degree <= 3 in each variable), so they are the same polynomial
+PASS  u * adj(u) = (N(u), 0, 0) with adj as printed in (1.3), on {0,1,2,3}^3 (degree <= 3 in each variable), so it is an identity
+    Multiplicativity: (uv)x = u(vx) for all x (associative, commutative), so M(uv) = M(u)M(v) and
+    N(uv) = det M(uv) = N(u)N(v) for all rational triples; N(-u) = -N(u) since N is a cubic form.
+PASS  sanity: N(uv) = N(u)N(v) on 30 random pairs of rational triples
+1. the real root l1 of f(t) = t^3 - 4t + 6
+PASS  Newton's iteration from -5/2 (rounded to 2^-200), then an exact sign change: f(lo) < 0 < f(hi) for [lo, hi] = [L, L+1]/2^100, so f has a root l1 in it (width 2^-100); l1 = -2.5251022548143207
+PASS  l1 is the only real root: f(t) = (t+2) t (t-2) + 6 (a cubic identity, checked at t = 0,1,2,3). On [-2,0] and [2,oo) the product is >= 0; on [0,2] it is >= -4 (t(t-2) = (t-1)^2 - 1 >= -1, 0 < t+2 <= 4); so f >= 2 on [-2,oo). On (-oo,-2], f' = 3t^2 - 4 >= 8 > 0, and f(-3) = -9 < 0 < 6 = f(-2); our interval lies in (-3,-2)
+PASS  f has no rational root (a rational root of a monic integer polynomial is an integer dividing 6: f(r) != 0 for r = +-1, +-2, +-3, +-6), so the cubic f is irreducible over Q and 1, l1, l1^2 are linearly independent over Q: sigma1(y) = y0 + y1 l1 + y2 l1^2 != 0 for every rational triple y != 0
+(a) the table dh_boxes.txt
+PASS  the header says 'unit 2^-6', and every data line has the form: path (letters x y z X Y Z), six integer corner coordinates, s, three integers kappa (398 lines, 0 malformed)
+PASS  398 boxes, as stated in Section 2.1 (398)
+PASS  every box lies in D: -32 <= lo_a < hi_a <= 32, -32 <= lo_b < hi_b <= 32, 0 <= lo_c < hi_c <= 32 (units of 1/64); s in {1, 2}; kappa is an integer triple (parsed as integer literals)
+PASS  file consistency (not used below): each path, read as midpoint splits of D, gives the listed corners; no path occurs twice
+PASS  Remark 2.4 counts: s = 1 on 263 boxes and s = 2 on 135 (text: 263, 135); all |kappa_i| <= 4 on 375 boxes (text: 375); largest |kappa_i| = 22 (text: 22); longest path 15 splits (text: 15)
+(b) Lemma 2.1(a) on every box, by N = sigma1 * Q (a different bound from the Taylor bound of 05)
+PASS  N = sigma1 * Q in Q[L]/(f)[a,b,c], with sigma1 = a + bL + cL^2 and Q = a^2 - L ab + (8 - L^2) ac + (L^2 - 4) b^2 + 6 bc + (16 - 6L - 4L^2) c^2: (a,b,c) * Q(a,b,c) = (N(a,b,c), 0, 0) on {0,1,2,3}^3, degree <= 3 in each variable, so it is an identity; evaluating L at the root l1 gives N(v) = sigma1(v) Q(v) for all real v
+PASS  Q = (a - (L/2) b + ((8 - L^2)/2) c)^2 + ((3L^2 - 16)/4) (b - L c)^2 in Q[L]/(f)[a,b,c]: equal on {0,1,2}^3, degree <= 2 in each variable
+PASS  3 l1^2 - 16 >= 3 hi^2 - 16 = 3.12842419 > 0 (|l1| >= |hi|). So at L = l1, Q(x) >= 0 for every real x: Q is positive semidefinite
+PASS  Q is only semidefinite, as (1.6) says: Q(L^2 - 4, L, 1) = 0 in Q[L]/(f) (and Q(1,0,0) = 1)
+    Convexity. For a positive semidefinite form, Q(tx + (1-t)y) = tQ(x) + (1-t)Q(y) - t(1-t)Q(x-y) <= tQ(x) +
+    (1-t)Q(y): Q is convex. |sigma1| is the absolute value of a linear form: convex. xi -> s xi - kappa is affine,
+    so on a box both xi -> |sigma1(s xi - kappa)| and xi -> Q(s xi - kappa) are convex; every point of a box is a
+    convex combination of its 8 corners, so each is at most its largest corner value. With N = sigma1 Q, Q >= 0:
+      sup over the box of |N(s xi - kappa)| <= max_corners |sigma1(s xi - kappa)| * max_corners Q(s xi - kappa).
+    The corner values are enclosed with l1 in [L, L+1]/2^100, in exact integer arithmetic.
+PASS  Lemma 2.1(a): on every one of the 398 boxes, sup |N(s xi - kappa)| < 1 by the corner product bound. 209 boxes directly; 189 boxes needed dyadic subdivision (octants); 2722 sub-boxes in all, at most 7 splits deep; largest bound on a sub-box 0.999931573; the sub-boxes of each box fill it (volumes add up) [0.4 s]
+PASS  the largest exact corner value met is |N(s xi - kappa)| = 4093/4096 = 0.999267578 at xi = (-5/16, -5/16, 1/4), box xyxyYXzxy (s = 1, kappa = (-1, 0, 0)): Remark 2.4 names 4093/4096 at (-5/16, -5/16, 1/4), s = 1, kappa = (-1, 0, 0)
+PASS  bracket for Remark 2.4: refining until every sub-box bound is < 4093/4096 + 2^-20 succeeds (2876 sub-boxes, at most 16 splits deep) [0.4 s]. So the largest value of |N(s xi - kappa)| over the boxes, each with its own (s, kappa), lies in [4093/4096, 4093/4096 + 2^-20): the stated sharp value 4093/4096 is confirmed to within 2^-20
+  (b2) the text's own Taylor data, typed from Section 2.1 and recomputed (a check of the text, not of the lemma)
+PASS  N(v + w) = N(v) + sum g_i(v) w_i + sum_{i<=j} q_ij(v) w_i w_j + N(w) with g_i, q_ij exactly as printed in Section 2.1: equal on {0,1,2,3}^6 (4096 points, degree <= 3 in each of the 6 variables), so an identity
+PASS  the ten coefficients n_m of N are those of (1.2) (sum of |n_m| = 113)
+PASS  the text's bound B, recomputed from these formulas: B < 1 on all 398 boxes, largest B = 8191/8192 on box xyxyYXzxy (text: 8191/8192)
+(c) the boxes cover D (not the split-tree replay nor the 1/64-cell count of 05)
+PASS  the volumes of the boxes add up exactly to vol(D) = 1/2 (sum = 131072/2^18 = 1/2)
+PASS  the interiors of the boxes are pairwise disjoint: all 79003 pairs tested (some axis separates the two open boxes) [0.1 s]
+    Hence the boxes cover D: their union U is closed and lies in D. If some p in D were not in U, a small closed
+    cube K in D near p would miss U, and vol(D) >= vol(U) + vol(K) > vol(U) = sum of the volumes (interiors
+    disjoint) = vol(D), a contradiction.
+PASS  second argument, a sweep: in each of the 374 cells [xa,xb] x [ya,yb] cut out by consecutive x-breakpoints and then y-breakpoints, the z-intervals of the boxes spanning the cell, sorted, chain from 0 to 1/2 with no gap (and no overlap: True). Every (x, y, z) in D lies in such a cell and z-interval, so in a box
+PASS  100000 random rational points of D (each coordinate n/d with d uniform in [1, 10^6]): each lies in some box, and |N(s xi - kappa)| < 1 exactly for every box containing it (100005 point-box pairs, 5 points in more than one box; largest value 0.958857293) [6.9 s]
+PASS  20000 random dyadic points of D (denominators 2^1..2^8, so many on faces, edges and corners of boxes): same (39134 point-box pairs, 11315 points in more than one box; largest value 0.991333008)
+(d) Lemma 2.1(b), Corollary 2.2 and Division 2.3
+PASS  the table of Lemma 2.1(b) lists the 7 vectors x in {0,1}^3 other than 0; every xi with 2xi in R and xi not in R is x/2 + r with r in R (take x = 2xi mod 2), and N(x/2 + r - (kappa + r)) = N(x/2 - kappa)
+PASS  xi = (0, 0, 1/2), kappa = (-1, 1, 0): N(xi - kappa) = 1/2 (text: 1/2), 0 < |N| < 1 [4 kappa in [-3,3]^3 work]
+PASS  xi = (0, 1/2, 0), kappa = (0, 0, 0): N(xi - kappa) = -3/4 (text: -3/4), 0 < |N| < 1 [6 kappa in [-3,3]^3 work]
+PASS  xi = (0, 1/2, 1/2), kappa = (2, 0, 0): N(xi - kappa) = -1/4 (text: -1/4), 0 < |N| < 1 [2 kappa in [-3,3]^3 work]
+PASS  xi = (1/2, 0, 0), kappa = (0, 0, 0): N(xi - kappa) = 1/8 (text: 1/8), 0 < |N| < 1 [4 kappa in [-3,3]^3 work]
+PASS  xi = (1/2, 0, 1/2), kappa = (0, 1, 1): N(xi - kappa) = -7/8 (text: -7/8), 0 < |N| < 1 [2 kappa in [-3,3]^3 work]
+PASS  xi = (1/2, 1/2, 0), kappa = (0, 1, 0): N(xi - kappa) = 3/8 (text: 3/8), 0 < |N| < 1 [4 kappa in [-3,3]^3 work]
+PASS  xi = (1/2, 1/2, 1/2), kappa = (-1, 2, 0): N(xi - kappa) = 3/8 (text: 3/8), 0 < |N| < 1 [2 kappa in [-3,3]^3 work]
+PASS  2000 pairs (alpha, beta), xi = alpha/beta by Cramer's rule: 0 < |N(s alpha - kappa beta)| < |N(beta)| and N(s alpha - kappa beta) = N(s xi - kappa) N(beta), for every box containing the reduced point (beta | alpha: 100; Lemma 2.1(b): 201; table with s = 1: 1106, with s = 2: 593) [4.6 s]
+PASS  the 300 pairs with alpha/beta in xi* + R or -xi* + R (EPS^k xi* + r, k = -2..2, and the pair 237 + 247l + 142l^2 over 327 itself) all reduce to xi' = (-30/109, -80/327, 142/327); the boxes containing it are [('xyxYyZZzyZ', 2)], all with s = 2, as they must be by Remark 2.5
+(e) Remark 2.5: R is not norm-Euclidean (a normalisation by EPS powers, not 05's T2 descent)
+PASS  EPS = (-19,-5,1) and EPS^-1 = (95,-101,40): EPS * EPS^-1 = 1, N(EPS) = N(EPS^-1) = 1
+PASS  EPS xi* - xi* = (-6, -27, -10) (text: (-6, -27, -10)) and EPS^-1 xi* - xi* = (150, -161, 63) are in R; with EPS R = R this gives EPS C = C for C = xi* + R
+PASS  N(xi* - 2) = -121/109 (text: -121/109), and 327 xi* = (237, 247, 142)
+PASS  E := sigma1(EPS^-1) = 95 - 101 l1 + 40 l1^2 in [605.080983626981, 605.080983626981], inside (605.08, 605.09); sigma1(EPS) in (1/606, 1/605); sigma1(EPS) sigma1(EPS^-1) = sigma1(1) = 1, so sigma1(EPS) = 1/E
+PASS  sigma1 = w + (3L/2) u + (3L^2 - 4) c with w = a - (L/2) b + ((8 - L^2)/2) c and u = b - L c (linear in (a,b,c): checked on the basis); with the sum of squares of (b), Q = w^2 + ((3L^2 - 16)/4) u^2
+    Normalisation. Let y in C with |N(y)| < 121/109. y != 0 (xi* is not in R), so sigma1(y) != 0 (Section 1).
+    E > 1, so some k in Z has E^k <= |sigma1(y)| < E^(k+1). y' = EPS^k y lies in C (EPS^+-1 C = C), N(y') = N(y),
+    sigma1(y') = sigma1(EPS)^k sigma1(y) = E^-k sigma1(y), so 1 <= |sigma1(y')| < E; and Q(y') = |N(y')|/|sigma1(y')|
+    <= |N(y)| < 121/109. So it suffices to list every y in C with |sigma1(y)| < E and Q(y) <= 121/109 and to show
+    |N| >= 121/109 on that list.
+    Enumeration. Q <= T gives |w| <= sqrt(T) and |u| <= sqrt(4T/(3 l1^2 - 16)); then
+    |c| <= (E + |w| + (3|l1|/2)|u|)/(3 l1^2 - 4), b in l1 c + [-|u|, |u|], a in (l1/2) b - ((8 - l1^2)/2) c + [-|w|, |w|],
+    all with rational outer bounds; candidates are kept exactly (a superset of the set to be listed).
+PASS  with T = 121/109: |w| <= 1053609/1000000, |u| <= 119137/100000, |c| <= 40.3642231; 398 candidates, all in C; least |N| among them = 121/109 (no candidate below 121/109), attained only at ['(-4281/109, 13654/327, -5417/327)']; the next values 401/327, 496/327, 511/327, 521/327, 189/109 [0.0 s]
+PASS  that element is EPS^k (xi* - 2) with k = [-1]; xi* - 2 itself has sigma1 in [-0.413725317, -0.413725317], |sigma1| < 1, so it is not in the normalised range [1, E) and the normalised orbit point is this one
+    Conclusion: no y in C has |N(y)| < 121/109, and N(xi* - 2) = -121/109. So min over C of |N| = 121/109; no kappa
+    in R has |N(xi* - kappa)| < 1, and 327 xi* = 237 + 247l + 142l^2 cannot be divided by 327 with a smaller
+    remainder. As N(-y) = -N(y), the same holds on -C.
+PASS  cross-check with floats (a guide, not part of the proof): scanning |a|, |b| <= 130, |c| <= 50 in C finds 314 points with |sigma1| < E and Q < 121/109 (none on the edge of the scan); all are candidates
+  (e2) the 654 classes of fixed points of EPS mod R (the last paragraph of Remark 2.5)
+PASS  EPS - 1 = (-20, -5, 1), N(EPS - 1) = -654. A Hermite form of M(EPS - 1) (lower triangular, diagonal (2, 1, 327)) gives representatives r of Z^3 / M(EPS - 1) Z^3; the fixed classes are (EPS - 1)^-1 r mod R: 654 distinct classes, among them those of xi*, -xi* and 2 xi*
+PASS  for each of the 653 classes z != 0, the candidates with T = 1 (360 to 370 each): exactly 2 classes have no element with |N| < 1, those of xi* and -xi*; for the other 651 the least |N| on the list is the exact minimum of |N| over the class (an element with |N| = m < 1 normalises into the list), and the largest of these minima is 99/109, for 2 classes (text: 99/109) [25.7 s]
+    min |N| =  121/109 = 1.11009   class of (79/109, 247/327, 142/327)
+    min |N| =  121/109 = 1.11009   class of (30/109, 80/327, 185/327)
+    min |N| =   99/109 = 0.908257   class of (67/109, 108/109, 59/109)
+    min |N| =   99/109 = 0.908257   class of (42/109, 1/109, 50/109)
+    min |N| =  593/654 = 0.906728   class of (77/109, 278/327, 223/654)
+    min |N| =  593/654 = 0.906728   class of (32/109, 49/327, 431/654)
+PASS  the class of 2 xi* (used by the table near +-xi*) has minimum |N| = 22/327 < 1
+(f) negative controls: planted errors that the checks must catch
+PASS  control 'kappa of box xyxyYXzxy (the box of the maximum) changed from (-1,0,0) to (0,0,0)': the checker fails (failing: bound; required: bound); bound check: box xyxyYXzxy (s = 1, kappa = (0, 0, 0)): at the corner xi = (-3/8, -3/8, 1/4), |N(s xi - kappa)| = 519/512 = 1.01367188 >= 1
+PASS  control: each of the 6 unit changes of kappa on 4 boxes (xyxyYXzxy, the first, the 200th, the last) is caught by the bound check: 24 of 24
+PASS  control 'a corner of box xyxyyz moved: hi_a -16 -> -17 (leaves a gap)': the checker fails (failing: volume, sweep, points; required: volume, sweep, points)
+PASS  control 'a corner of box xyxyyz moved: hi_a -16 -> -15 (overlaps a neighbour)': the checker fails (failing: volume, disjoint; required: volume, disjoint)
+PASS  control 'box xyxyyz shifted by +1/64 along a (same volume)': the checker fails (failing: disjoint, sweep, points; required: disjoint, sweep)
+PASS  control 'the largest box xYyz dropped': the checker fails (failing: volume, sweep, points; required: volume, sweep, points)
+PASS  control 'the smallest box XyXYYZzZxXYXYzx dropped (volume 2^-18)': the checker fails (failing: volume, sweep, points; required: volume, sweep)
+PASS  control: the identity check N = sigma1 * Q fails when the coefficient 6 of bc in Q is changed to 5
+PASS  control: with kappa for x = (1,0,1) in Lemma 2.1(b) changed to (0,0,0) (N(1/2, 0, 1/2) = 61/8), the division test fails
+PASS  control: the same enumeration on the EPS-stable class of 2 xi* does find small norms (least |N| = 22/327 < 1), so the bound 121/109 on C is a property of C, not of the method
+SUMMARY: all 61 checks passed (60.2 s). Section 2 of hypothesis_H.md confirmed independently: (a) the table is well formed; (b) Lemma 2.1(a) holds on every box by the factored bound |N| <= max|sigma1| * max Q (189 of 398 boxes split, 2722 sub-boxes), and the largest value is 4093/4096 to within 2^-20; (c) the boxes cover D (volume + disjointness, and a sweep); (d) Lemma 2.1(b) and 2000 divisions; (e) min over xi* + R of |N| = 121/109, so R is not norm-Euclidean, and of the 654 fixed classes only +-xi* have no element of norm below 1 (next 99/109); (f) every planted error was caught.
