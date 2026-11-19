@@ -154,7 +154,7 @@ for positive x,y. The archived complete theorem classifies the **positive intege
 \]
 It records the finite mixed seed tuples (k,u,v)=(1,1,1),(5,1,2),(5,2,1), while the square-multiple family comes from axis and reflection orbits. The full proof handles both orientations, nonprimitive labels and exact rational offsets in a wider parameter range.
 
-**Check one example:** x=y=1 gives 2/(1+3)=1/2, **not** an integer; this illustrates why **seed coordinates in the source's transformed u,v system are not the original x,y values**. Verify the reconstruction map rather than treating a seed label as a solution tuple. The proof and its statement must be read with exact variable names.
+**Explicit reconstructed witnesses:** (x,y)=(1,2) gives quotient (1+4)/(2+3)=1; (x,y)=(1,7) gives (1+49)/(7+3)=5; and (x,y)=(3,9) gives (9+81)/(27+3)=3. These are actual integer solutions. The source's intermediate seed labels (u,v)=(1,1),(1,2),(2,1) are **not** identical to (x,y): for example x=y=1 gives only 1/2, not 1. Verify the reconstruction map and both directions rather than mistaking orbit seeds for original solutions.
 
 **Read:** [classification](../sources/math-treasure/research/positive-offset-classification/proof.md), [README with examples](../sources/math-treasure/research/positive-offset-classification/README.md).
 
