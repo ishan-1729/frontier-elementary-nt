@@ -69,7 +69,7 @@ Treat **both** equations jointly. Introduce Ghost squarefree kernels b_−,b_0,b
 
 **First outputs:** prove a novel infinite subclass excludes triples (e.g. a condition on gcd, small squarefree kernel, or a prime divisor in the middle), or derive a new unconditional inequality whose hypotheses are strictly weaker than published 2025 cases. **Do not propose brute-force enumeration as a route to the universal negative statement.**
 
-**Adjacent target:** [Erdős 365](https://www.erdosproblems.com/365), whether every pair of consecutive powerful integers has a square among them, is also structurally suited to two-term Pell/Ghost methods; verify current status.
+**Adjacent target, with a vital prior-art correction:** [Erdős 365](https://www.erdosproblems.com/365) asks, among other things, whether the number of pairs of consecutive powerful integers up to X is bounded by (log X)^{O(1)}. Its older square-or-not subquestion is **already false**, not open: 12167=23³ and 12168=2³·3²·13² are both powerful but neither is a square; Walker proved infinitely many such nonsquare pairs. Work on the **open counting/growth question** or new structural refinements, not on proving that false statement.
 
 **Why promising:** adjacent factors, square/cube allocations and multi-constraint Ghosts are the archive's specialty, though the full question is difficult.
 
